@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+  <meta charset=utf-8>
+  <link rel=stylesheet href=../css/foundation.min.css>
+  <link rel=stylesheet href=../css/style.css>
+  <title>Bio.JS registry</title>
+</head>
+
+<body ng-app=registry>
+
+
+  <div ng-controller=list class=row>
+    <form>
+      Search by name: <input ng-model='filter.search' type=search>
+    </form>
+    <table class=component-list>
+      <thead>
+        <tr>
+          <th>Name
+          <th>Summary
+          <th>Version
+          <th>Author
+          <th><a ng-click=filter.togglePresent('tests')>Readme</a>
+          <th><a ng-click=filter.togglePresent('demos')>Demos</a>
+          <th><a ng-click=filter.togglePresent('jsdocs')>JSDocs</a>
+          <th><a ng-click=filter.togglePresent('tests')>Tests</a>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat='component in components | componentFilter:filter'>
+          <td>{{ component.name }}
+          <td>{{ component.summary }}
+          <td>{{ component.version }}
+          <td>{{ component.author }}
+          <td>{{ component | present:'readme' }}
+          <td>{{ component | present:'demos' }}
+          <td>{{ component | present:'jsdocs' }}
+          <td>{{ component | present:'tests' }}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src=../vendor/es6-collections.js></script>
+
+  <script src=../vendor/angular.min.js></script>
+
+  <script src=models.js></script>
+  <script src=registry.js></script>
+</body>
