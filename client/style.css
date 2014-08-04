@@ -1,0 +1,20 @@
+ul.tags {
+    list-style: none;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+}
+
+tr {
+    border-top: solid 2px gray;
+}
+
+.tag-box {
+    display: inline-block;
+    border: dotted 1px black;
+    padding: 2px 3px;
+    font-weight: bold;
+    cursor: pointer;
+}

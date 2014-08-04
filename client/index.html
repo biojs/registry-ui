@@ -5,11 +5,12 @@
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
+    <link rel="stylesheet" href="style.css">
+
     <script src="lib/es5-shim/es5-shim.min.js"></script>
     <script src="lib/es6-shim/es6-shim.min.js"></script>
     <script src="lib/lodash/dist/lodash.min.js"></script>
     <script src="lib/angular/angular.js"></script>
-
 
     <script src="module.js"></script>
 
@@ -24,20 +25,6 @@
     <script src="component-row/component-row-directive.js"></script>
     <script src="component-table/component-table-directive.js"></script>
 
-    <style>
-        ul.tags {
-            list-style: none;
-            display: inline-flex;
-            flex-flow: row wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            margin: 0;
-        }
-        td {
-            border: solid 1px red;
-        }
-    </style>
-
 </head>
 
 <body ng-app="registry" ng-controller="AppController">
@@ -46,14 +33,10 @@
 
     <p>
         Filtering:
-        <tag-list tags="filter.tags"></tag-list>
-        <span ng-if="filter.searchTerm && filter.searchTerm.length > 0"
-             style="display: inline-block;
-                    border: dotted 1px black;
-                    font-weight: bold;
-                    padding: 2px 3px;">
-            search: <span style="font-style: italic">{{filter.searchTerm}}</span>
+        <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
+            search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
         </span>
+        <tag-list tags="filter.tags"></tag-list>
     </p>
 
     <component-table filter="filter"></component-table>
