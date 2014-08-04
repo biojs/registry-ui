@@ -1,0 +1,15 @@
+<table class="component-list">
+    <tr>
+        <th>Name
+        <th>Summary
+        <th>Version
+        <th>Author
+        <th>Readme
+        <th>Demo
+        <th>JsDocs
+        <th>Tests
+        <th>Tags
+    </tr>
+    <tr ng-repeat="component in components | filter:filterFn"
+        component-row component="component"></tr>
+</table>

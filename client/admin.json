@@ -1,0 +1,12 @@
+{
+    "components": {
+        "cool-component": {
+            "name": "cool-component",
+            "tags": ["A", "B", "C"]
+        },
+        "lame-component": {
+            "name": "lame-component",
+            "tags": ["B"]
+        }
+    }
+}

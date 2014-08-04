@@ -1,0 +1,9 @@
+<td>{{ component.name }}
+<td>{{ component.summary }}
+<td>{{ component.version }}
+<td>{{ component.author }}
+<td>{{ component | present:'readme' }}
+<td>{{ component | present:'demos' }}
+<td>{{ component | present:'jsdocs' }}
+<td>{{ component | present:'tests' }}
+<td><tag-list tags="component.tags"></tag-list>
