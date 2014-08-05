@@ -83,6 +83,18 @@ tr {
     }
 }
 
+.navbar-brand img {
+    transform: rotate(0deg);
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.navbar-brand img:hover {
+    transform: rotate(180deg);
+}
+
 .component-list {
     margin-top: 3ex;
 }
