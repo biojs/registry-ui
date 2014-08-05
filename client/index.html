@@ -37,7 +37,9 @@
             <span class='filter-label'>
               Filtering:
             </span>
-            <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
+            <span ng-if="filter.searchTerm && filter.searchTerm.length > 0"
+                  ng-click="filter.searchTerm = ''"
+                  class="tag-box">
                 search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
             </span>
             <tag-list filter="filter" tags="filter.tags"></tag-list>
