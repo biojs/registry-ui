@@ -49,8 +49,16 @@
         </div>
     </div>
 
-    <component-table filter="filter"></component-table>
+    <div ng-if="layout == 'table'">
+      <component-table filter="filter"></component-table>
+    </div>
 
+    <div ng-if="layout == 'cards'">
+      <component-cards components="displayedComponents"></component-cards>
+    </div>
+
+    <a ng-click="layout = 'table'">Table</a>
+    <a ng-click="layout = 'cards'">Cards</a>
 </div>
 
 
@@ -73,4 +81,5 @@
 <script src="component-filter/component-filter-service.js"></script>
 <script src="component-search/component-search-directive.js"></script>
 <script src="component-table/component-table-directive.js"></script>
+<script src="component-cards/component-cards.js"></script>
 </body>

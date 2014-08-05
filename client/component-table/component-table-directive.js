@@ -13,7 +13,6 @@ angular.module('registry').directive('componentTable', function (Component, notD
                 $scope.hiddenCount = _.countBy($scope.components, $scope.filter.match, $scope.filter)[false];
             }, true);
 
-            $scope.components = Component.query();
 
             $scope.notDisplayedInColumn = notDisplayedInColumn;
         }

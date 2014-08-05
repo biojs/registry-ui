@@ -1,5 +1,6 @@
 {
     "biojs-io-clustal": {
+        "imageUrl": "https://biojs.github.io/img/showcase/intbundle.png",
         "github": {
             "archive_url": "https:\/\/api.github.com\/repos\/biojs\/biojs2\/{archive_format}{\/ref}",
             "assignees_url": "https:\/\/api.github.com\/repos\/biojs\/biojs2\/assignees{\/user}",

@@ -117,3 +117,16 @@ a.home {
     float: right;
     line-height: 64px;
 }
+
+.component-cards {
+  list-style-type: none;
+  overflow: auto;
+  margin: 0;
+  margin-top: 2em;
+  padding: 0;
+}
+.component-card {
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
