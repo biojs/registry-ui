@@ -4,7 +4,8 @@ angular.module('registry').directive('componentSearch', [function () {
         templateUrl: 'component-search/component-search-view.html',
         replace: true,
         scope: {
-            filter: '='
-        }
+            query: '='
+        },
+        link: function postLink($scope, iElement, iAttrs/*, controller*/) {}
     };
 }]);
