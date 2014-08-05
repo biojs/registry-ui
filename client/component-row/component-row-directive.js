@@ -1,11 +1,14 @@
-angular.module('registry').directive('componentRow', [function () {
+angular.module('registry').directive('componentRow', function (notDisplayedInColumn) {
     return {
         restrict: 'A',
         templateUrl: 'component-row/component-row-view.html',
         replace: false,
-        scope: true,
+        scope: {
+          filter: "=",
+          component: "=",
+        },
         link: function ($scope, iElement, iAttrs/*, controller*/) {
-            $scope.component = $scope.$parent.$eval(iAttrs.component);
+            $scope.notDisplayedInColumn = notDisplayedInColumn;
         }
     };
-}]);
+});

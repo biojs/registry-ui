@@ -2,11 +2,11 @@
     "components": {
         "cool-component": {
             "name": "cool-component",
-            "tags": ["A", "B", "C"]
+            "tags": ["ebi", "uniprot", "jsdocs"]
         },
         "lame-component": {
             "name": "lame-component",
-            "tags": ["B"]
+            "tags": ["uniprot", "readme", "tests"]
         }
     }
 }

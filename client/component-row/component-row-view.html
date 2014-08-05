@@ -6,4 +6,4 @@
 <td>{{ component | present:'demos' }}
 <td>{{ component | present:'jsdocs' }}
 <td>{{ component | present:'tests' }}
-<td><tag-list tags="component.tags"></tag-list>
+<td><tag-list filter=filter tags="component.tags | filter:notDisplayedInColumn"></tag-list>

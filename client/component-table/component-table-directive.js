@@ -16,4 +16,16 @@ angular.module('registry').directive('componentTable', function (Component) {
             $scope.components = Component.query();
         }
     };
+})
+.constant("tagsDisplayedInOwnColumn", {
+  readme: 1,
+  demos: 1,
+  jsdocs: 1,
+  tests: 1,
+})
+.factory("notDisplayedInColumn", function(tagsDisplayedInOwnColumn) {
+  return function(tag) {
+    return !(tag in tagsDisplayedInOwnColumn);
+  };
 });
+
