@@ -18,3 +18,7 @@ tr {
     font-weight: bold;
     cursor: pointer;
 }
+
+.happy {
+    background: green;
+}

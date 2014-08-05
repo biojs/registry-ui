@@ -5,6 +5,8 @@
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
+    <link rel="stylesheet" href="lib/flatstrap3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/flatstrap3/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="style.css">
 
     <script src="lib/es5-shim/es5-shim.min.js"></script>
@@ -29,16 +31,24 @@
 
 <body ng-app="registry" ng-controller="AppController">
 
-    <component-search query="filter.searchTerm"></component-search>
 
-    <p>
-        Filtering:
-        <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
-            search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
-        </span>
-        <tag-list tags="filter.tags"></tag-list>
-    </p>
 
-    <component-table filter="filter"></component-table>
+    <div class="container">
+
+      <h1>BioJS registry</h1>
+
+      <component-search query="filter.searchTerm"></component-search>
+
+      <p>
+          Filtering:
+          <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
+              search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
+          </span>
+          <tag-list tags="filter.tags"></tag-list>
+      </p>
+
+      <component-table filter="filter"></component-table>
+
+    </div>
 
 </body>
