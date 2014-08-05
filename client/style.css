@@ -91,7 +91,7 @@ tr {
     -o-transition: .5s;
     transition: .5s;
 }
-.navbar-brand img:hover {
+.navbar-brand:hover img {
     transform: rotate(180deg);
 }
 
