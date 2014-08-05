@@ -1,4 +1,4 @@
-<table class="component-list">
+<table class="component-list table">
     <tr>
         <th>Name
         <th>Summary
@@ -11,5 +11,16 @@
         <th>Tags
     </tr>
     <tr ng-repeat="component in components | filter:filterFn"
-        component-row component="component"></tr>
+      component-row component="component">
+    </tr>
+    <tr ng-show='hiddenCount > 0'>
+      <td colspan=9>
+        {{ hiddenCount }} components hidden
+      </td>
+    </tr>
+    <tr>
+      <td colspan=9 class=add>
+        <button class="btn happy">Add your component!</button>
+      </td>
+    </tr>
 </table>

@@ -25,7 +25,7 @@ angular.module('registry').factory('ComponentFilter', function () {
                 }
             }, this);
             return result;
-        }
+        },
     };
 
     return ComponentFilter;
