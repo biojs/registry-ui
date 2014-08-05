@@ -29,14 +29,12 @@ angular.module('registry').factory('ComponentFilter', function () {
             if (this.searchTerm && component.name.indexOf(this.searchTerm) === -1) {
                 return false;
             }
-            var result = true;
-            _(this.tags).forEach(function (tag) {
-                if (!_(component.tags).contains(tag)) {
-                    result = false;
-                    return false;
-                }
-            }, this);
-            return result;
+            if(!this.tagsEmpty()) {
+              return _(this.tags).every(function (tag) {
+                  return _(component.tags).contains(tag);
+              }, this);
+            }
+            return true;
         },
     };
 
