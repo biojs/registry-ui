@@ -4,14 +4,11 @@
         <th>Summary
         <th>Version
         <th>Author
-        <th>
-            <tag name="has:readme" ng-click="filter.togglePresent('has:readme')"></tag>
-        <th>
-            <tag name="has:demos" ng-click="filter.togglePresent('has:demos')"></tag>
-        <th>
-            <tag name="has:jsdocs" ng-click="filter.togglePresent('has:jsdocs')"></tag>
-        <th>
-            <tag name="has:tests" ng-click="filter.togglePresent('has:tests')"></tag>
+        <th><tag name="has:readme" ng-click="filter.togglePresent('has:readme')"></tag>
+        <th><tag name="has:demos" ng-click="filter.togglePresent('has:demos')"></tag>
+        <th><tag name="has:jsdocs" ng-click="filter.togglePresent('has:jsdocs')"></tag>
+        <th><tag name="has:build" ng-click="filter.togglePresent('has:build')"></tag>
+        <th><tag name="has:tests" ng-click="filter.togglePresent('has:tests')"></tag>
         <th>Tags
     </tr>
     <tr ng-repeat="component in components | filter:filterFn">
@@ -19,34 +16,36 @@
         <td>{{ component.summary }}
         <td>{{ component.version }}
         <td>{{ component.author }}
-        <td>
-            <a ng-if="_(component.tags).contains('has:readme')"
-               ng-href="{{component.npm.readmeFilename}}">
-                <img width=32 height=32 src="http://upload.wikimedia.org/wikipedia/commons/0/05/Readme.png">
-            </a>
-            <span ng-if="!_(component.tags).contains('has:readme')">✗</span>
-        </td>
-        <td>
-            <a ng-if="_(component.tags).contains('has:demos')"
-               ng-href="???"> <!--TODO-->
-                <img width=32 height=32 src="http://png-3.findicons.com/files/icons/1588/farm_fresh_web/32/page_code.png">
-            </a>
-            <span ng-if="!_(component.tags).contains('has:demos')">✗</span>
-        </td>
-        <td>
-            <a ng-if="_(component.tags).contains('has:jsdocs')"
-               ng-href="???"> <!--TODO-->
-                <img width=32 height=32 src="http://wiki.jbeam.info/xwiki/bin/download/API/Using+jBEAM-API+as+library/API-icon.png">
-            </a>
-            <span ng-if="!_(component.tags).contains('has:jsdocs')">✗</span>
-        </td>
-        <td>
-            <a ng-if="_(component.tags).contains('has:tests')"
-               ng-href="???"> <!--TODO-->
-                <img width=32 height=32 src="http://iconizer.net/files/Dark_Glass/orig/camera_test.png">
-            </a>
-            <span ng-if="!_(component.tags).contains('has:tests')">✗</span>
-        </td>
+        <td ng-repeat="col in ['readme','demos','jsdocs','build','tests']"
+            ng-bind-html="component.columns[col]"></td>
+        <!--<td>-->
+            <!--<a ng-if="_(component.tags).contains('has:readme')"-->
+               <!--ng-href="{{component.npm.readmeFilename}}">-->
+                <!--<img width=32 height=32 src="http://upload.wikimedia.org/wikipedia/commons/0/05/Readme.png">-->
+            <!--</a>-->
+            <!--<span ng-if="!_(component.tags).contains('has:readme')">✗</span>-->
+        <!--</td>-->
+        <!--<td>-->
+            <!--<a ng-if="_(component.tags).contains('has:demos')"-->
+               <!--ng-href="???"> &lt;!&ndash;TODO&ndash;&gt;-->
+                <!--<img width=32 height=32 src="http://png-3.findicons.com/files/icons/1588/farm_fresh_web/32/page_code.png">-->
+            <!--</a>-->
+            <!--<span ng-if="!_(component.tags).contains('has:demos')">✗</span>-->
+        <!--</td>-->
+        <!--<td>-->
+            <!--<a ng-if="_(component.tags).contains('has:jsdocs')"-->
+               <!--ng-href="???"> &lt;!&ndash;TODO&ndash;&gt;-->
+                <!--<img width=32 height=32 src="http://wiki.jbeam.info/xwiki/bin/download/API/Using+jBEAM-API+as+library/API-icon.png">-->
+            <!--</a>-->
+            <!--<span ng-if="!_(component.tags).contains('has:jsdocs')">✗</span>-->
+        <!--</td>-->
+        <!--<td>-->
+            <!--<a ng-if="_(component.tags).contains('has:tests')"-->
+               <!--ng-href="???"> &lt;!&ndash;TODO&ndash;&gt;-->
+                <!--<img width=32 height=32 src="http://iconizer.net/files/Dark_Glass/orig/camera_test.png">-->
+            <!--</a>-->
+            <!--<span ng-if="!_(component.tags).contains('has:tests')">✗</span>-->
+        <!--</td>-->
         <td>
             <tag-list filter=filter tags="component.tags | filter:notDisplayedInColumn"></tag-list>
     </tr>

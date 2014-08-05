@@ -23,12 +23,14 @@ angular.module('registry').directive('componentTable', function (Component, notD
         'has:readme': { caption: "Readme" },
         'has:demos': { caption: "Demos" },
         'has:jsdocs': { caption: "JsDocs" },
+        'has:build': { caption: "Build" },
         'has:tests': { caption: "Tests" },
     })
     .constant("tagsDisplayedInOwnColumn", {
         'has:readme': true,
         'has:demos': true,
         'has:jsdocs': true,
+        'has:build': true,
         'has:tests': true,
     })
     .factory("notDisplayedInColumn", function (tagsDisplayedInOwnColumn) {

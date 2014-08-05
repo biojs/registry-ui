@@ -1,19 +1,41 @@
-angular.module('registry').factory("Component", function ($http, $window) {
+angular.module('registry').factory("Component", function ($http, $window, $sce) {
 
     function preProcessComponent(component) {
+        component.columns = {
+            build: null, tests: null, readme: null, demos: null, jsdocs: null
+        };
+        _(component.shields).forEach(function (shield) {
+            switch (shield.type) {
+                case 'build': case 'tests': {
+                    component.columns[shield.type] =
+                        $sce.trustAsHtml('<a class="shield" href="'+shield.href+'"><img src="'+shield.img+'"></a>');
+                    component.tags.push("has:"+shield.type);
+                } break;
+            }
+        });
         if (!_(component.npm.readmeFilename).isEmpty() &&
             !component.npm.readme.substring(0, 5) === "ERROR") {
+            component.columns['readme'] =
+                $sce.trustAsHtml('<a href="'+component.npm.readmeFilename+'">README</a>');
             component.tags.push("has:readme");
         }
         if (false) { // TODO
-            component.tags.push("has:readme");
+            component.columns['demos'] =
+                $sce.trustAsHtml('<a href="???">???</a>');
+            component.tags.push("has:demos");
         }
         if (false) { // TODO
+            component.columns['jsdocs'] =
+                $sce.trustAsHtml('<a href="???">???</a>');
             component.tags.push("has:jsdocs");
         }
-        if (component.shields.testing) {
-            component.tags.push("has:tests");
-        }
+
+        //// use a little ✗ for missing columns
+        _(component.columns).forEach(function (colHTML, type) {
+            if (!colHTML) {
+                component.columns[type] = $sce.trustAsHtml('✗');
+            }
+        });
     }
 
     function Component() {}
@@ -28,7 +50,7 @@ angular.module('registry').factory("Component", function ($http, $window) {
                 preProcessComponent(resp[key]);
             });
         };
-        all.$promise = $http.jsonp('https://biojs.github.io/registry/output.jsonp?callback=JSON_CALLBACK');
+        all.$promise = $http.jsonp('https://biojs.github.io/registry/output.jsonp');
         return all;
     };
 
