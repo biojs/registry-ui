@@ -17,12 +17,13 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-brand">
-          <img alt="BioJS logo - a registry of biological visualizations" src=img/logo.png width=64 height=64>
-          <h1>Biojs <span class=reg>registry</small></h1>
+            <img alt="BioJS logo - a registry of biological visualizations" src=img/logo.png width=64 height=64>
+
+            <h1>Biojs <span class=reg>registry</small></h1>
         </div>
         <a class="home" href="http://biojs.net">Home</a>
-      </div>
-    </nav>
+    </div>
+</nav>
 
 <div class="container">
 
@@ -35,10 +36,11 @@
 
         <div class="col-md-6 filter-box" ng-if="!filter.empty()">
             <span class='filter-label glyphicon glyphicon-filter'></span>
+
             <div class="filter-sub-box" style="flex-grow: 1">
                 <span ng-if="filter.searchTerm && filter.searchTerm.length > 0"
                       ng-click="filter.searchTerm = ''"
-                      class="tag-box">
+                      class="tag-box column-tag">
                     search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
                 </span>
                 <tag ng-repeat="tag in filter.tags"
@@ -50,11 +52,11 @@
     </div>
 
     <div ng-if="layout == 'table'">
-      <component-table filter="filter"></component-table>
+        <component-table filter="filter"></component-table>
     </div>
 
     <div ng-if="layout == 'cards'">
-      <component-cards components="displayedComponents"></component-cards>
+        <component-cards components="displayedComponents"></component-cards>
     </div>
 
     <a ng-click="layout = 'table'" class="glyphicon glyphicon-th-list" title="Table"></a>

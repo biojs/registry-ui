@@ -20,6 +20,10 @@ tr {
     margin-right: 2px;
 }
 
+.tag-box.column-tag {
+    font-weight: bold;
+}
+
 .tag-box:hover {
     background: #eaeaea;
 }
