@@ -3,8 +3,11 @@ angular.module('registry').controller('AppController', function ($scope, Compone
     $scope.components = Component.query();
 
     $scope.layout = 'table';
-    $scope.displayedComponents = [];
-    $scope.$watch("filter", function() {
+    $scope.displayedComponents = []; 
+    $scope.$watch("filter", updateDisplayed, true);
+    $scope.$watchCollection("components", updateDisplayed);
+
+    function updateDisplayed() {
       $scope.displayedComponents = $scope.components.filter($scope.filter.match.bind($scope.filter));
-    }, true);
+    }
 });
