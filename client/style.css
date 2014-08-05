@@ -19,6 +19,7 @@ tr {
     background: #ddd;
     margin-right: 2px;
 }
+
 .tag-box:hover {
     background: #eaeaea;
 }
@@ -27,70 +28,92 @@ tr {
     background: #58ac46;
     color: #fff;
 }
+
 .happy:hover {
     color: #fff;
 }
 
 .navbar {
-  border: 0;
-  padding: 1ex 0;
-  border-bottom: 1px solid #eee;
-  background: #fff;
+    border: 0;
+    padding: 1ex 0;
+    border-bottom: 1px solid #eee;
+    background: #fff;
 }
+
 .navbar h1 {
-  display: inline-block;
-  font-size: 4em;
-  margin: 0;
-  line-height: 1em;
-  vertical-align: middle;
-  margin-left: 0.25em;
-  font-weight: 100;
-  text-transform: uppercase;
+    display: inline-block;
+    font-size: 4em;
+    margin: 0;
+    line-height: 1em;
+    vertical-align: middle;
+    margin-left: 0.25em;
+    font-weight: 100;
+    text-transform: uppercase;
 }
+
 .navbar h1 .reg {
-  color: #bbb;
+    color: #bbb;
 }
+
 .navbar-brand {
-  height: auto;
-  padding: 0;
+    height: auto;
+    padding: 0;
 }
 
 @media (min-width: 900px) {
-  .navbar-nav, .navbar-brand {
-    height: auto;
-  }
-  .navbar-nav li a {
-    line-height: 40px;
-  }
+    .navbar-nav, .navbar-brand {
+        height: auto;
+    }
+
+    .navbar-nav li a {
+        line-height: 40px;
+    }
 }
 
 .component-list {
-  margin-top: 3ex;
-}
-.component-list.table tr, .component-list.table td, .component-list.table th {
-  border: 0;
-  border-top: 0;
-  padding-left: 0;
+    margin-top: 3ex;
 }
 
+.component-list.table tr, .component-list.table td, .component-list.table th {
+    border: 0;
+    padding-left: 0;
+}
 
 .component-search input {
-  font-size: 1.5em;
-  width: 100%;
-  padding: 0.2em;
+    font-size: 1.5em;
+    width: 100%;
+    padding: 0.2em;
+}
+
+.filter-box {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 3em;
 }
 
 .filter-label {
-  padding-top: 0.4ex;
-  display: inline-block;
-  border: 1px solid rgba(0,0,0,0);
+    display: block;
+    font-size: 1.5em;
+    margin-right: .5em;
+}
+
+.filter-sub-box {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.filter-sub-box .tag-box {
+    margin-bottom: 2px;
 }
 
 .btn {
-  border-radius: 0;
+    border-radius: 0;
 }
 
 a.home {
-  float: right;
-  line-height: 64px;
+    float: right;
+    line-height: 64px;
 }

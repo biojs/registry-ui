@@ -16,6 +16,15 @@ angular.module('registry').factory('ComponentFilter', function () {
         tagPresent: function tagPresent(tag) {
             return _(this.tags).contains(tag);
         },
+        searchEmpty: function searchEmpty() {
+            return _(this.searchTerm).isEmpty();
+        },
+        tagsEmpty: function tagsEmpty() {
+            return _(this.tags).isEmpty();
+        },
+        empty: function empty() {
+            return this.searchEmpty() && this.tagsEmpty();
+        },
         match: function match(component) {
             if (this.searchTerm && component.name.indexOf(this.searchTerm) === -1) {
                 return false;

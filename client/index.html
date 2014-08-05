@@ -33,17 +33,20 @@
             <component-search filter="filter"></component-search>
         </div>
 
-        <p class="filter-box col-md-6">
-            <span class='filter-label'>
-              Filtering:
-            </span>
-            <span ng-if="filter.searchTerm && filter.searchTerm.length > 0"
-                  ng-click="filter.searchTerm = ''"
-                  class="tag-box">
-                search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
-            </span>
-            <tag-list filter="filter" tags="filter.tags"></tag-list>
-        </p>
+        <div class="col-md-6 filter-box" ng-if="!filter.empty()">
+            <span class='filter-label glyphicon glyphicon-filter'></span>
+            <div class="filter-sub-box" style="flex-grow: 1">
+                <span ng-if="filter.searchTerm && filter.searchTerm.length > 0"
+                      ng-click="filter.searchTerm = ''"
+                      class="tag-box">
+                    search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
+                </span>
+                <tag ng-repeat="tag in filter.tags"
+                     name='{{ tag }}'
+                     active="true"
+                     ng-click="filter.togglePresent(tag)"></tag>
+            </div>
+        </div>
     </div>
 
     <component-table filter="filter"></component-table>
