@@ -66,6 +66,7 @@ tr {
 
 .navbar h1 .reg {
     color: #bbb;
+    display: none;
 }
 
 .navbar-brand {
@@ -74,6 +75,9 @@ tr {
 }
 
 @media (min-width: 900px) {
+    .navbar h1 .reg {
+      display: inline;
+    }
     .navbar-nav, .navbar-brand {
         height: auto;
     }
