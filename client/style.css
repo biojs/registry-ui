@@ -106,7 +106,8 @@ tr {
 }
 
 .filter-sub-box .tag-box {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
+    margin-top: 1px;
 }
 
 .btn {
