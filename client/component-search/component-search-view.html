@@ -1,8 +1,3 @@
-<form class="component-search form-group has-feedback">
-    <label for="search" class="sr-only">Search</label>
-    <input ng-model="filter.searchTerm" id="search" name="search" placeholder="e.g. proteins" class="form-control" autofocus>
-    <span ng-if="!_(filter.searchTerm).isEmpty()"
-          ng-click="filter.searchTerm = ''"
-          style="cursor: pointer; color: gray;"
-          class="glyphicon glyphicon-remove form-control-feedback"></span>
+<form class="component-search">
+  <input ng-model="query" name="search" placeholder="e.g proteins" autofocus>
 </form>
