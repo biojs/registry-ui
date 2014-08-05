@@ -8,24 +8,6 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <script src="lib/es5-shim/es5-shim.min.js"></script>
-    <script src="lib/es6-shim/es6-shim.min.js"></script>
-    <script src="lib/lodash/dist/lodash.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
-
-    <script src="module.js"></script>
-
-    <script src="component-model/component-model.js"></script>
-
-    <script src="app/app-controller.js"></script>
-
-    <script src="tag/tag-directive.js"></script>
-    <script src="tag-list/tag-list-directive.js"></script>
-    <script src="component-filter/component-filter-service.js"></script>
-    <script src="component-search/component-search-directive.js"></script>
-    <script src="component-row/component-row-directive.js"></script>
-    <script src="component-table/component-table-directive.js"></script>
-
 </head>
 
 <body ng-app="registry" ng-controller="AppController">
@@ -36,7 +18,15 @@
           <img src=img/logo.png width=64 height=64>
           <h2>Biojs</h2>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="navbar-right">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/docs">Docs</a>
             <li class="active"><a href="/registry">Registry</a>
@@ -70,4 +60,25 @@
 
     </div>
 
+    
+    <script src="lib/es5-shim/es5-shim.min.js"></script>
+    <script src="lib/es6-shim/es6-shim.min.js"></script>
+    <script src="lib/lodash/dist/lodash.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="module.js"></script>
+
+    <script src="component-model/component-model.js"></script>
+
+    <script src="app/app-controller.js"></script>
+
+    <script src="tag/tag-directive.js"></script>
+    <script src="tag-list/tag-list-directive.js"></script>
+    <script src="component-filter/component-filter-service.js"></script>
+    <script src="component-search/component-search-directive.js"></script>
+    <script src="component-row/component-row-directive.js"></script>
+    <script src="component-table/component-table-directive.js"></script>
 </body>

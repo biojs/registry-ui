@@ -48,7 +48,7 @@ tr {
   padding: 0;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 900px) {
   .navbar-nav, .navbar-brand {
     height: auto;
   }
