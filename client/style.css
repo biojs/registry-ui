@@ -24,7 +24,12 @@ tr {
     font-weight: bold;
 }
 
+.tag-box.active-tag {
+    background-color: #bfc;
+}
+
 .tag-box.active-tag:hover {
+    background-color: #bfc;
     text-decoration: line-through;
 }
 

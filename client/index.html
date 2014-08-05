@@ -40,7 +40,7 @@
             <div class="filter-sub-box" style="flex-grow: 1">
                 <span ng-if="filter.searchTerm && filter.searchTerm.length > 0"
                       ng-click="filter.searchTerm = ''"
-                      class="tag-box column-tag">
+                      class="tag-box column-tag active-tag">
                     search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
                 </span>
                 <tag ng-repeat="tag in filter.tags"
