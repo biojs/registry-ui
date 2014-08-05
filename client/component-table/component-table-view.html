@@ -1,21 +1,34 @@
 <table class="component-list table">
+    <thead>
     <tr>
         <th>Name
-        <!--<th>Summary-->
+            <!--<th>Summary-->
         <th>Version
-        <!--<th>Author-->
-        <th><tag name="has:readme" active="{{ filter.tagPresent('has:readme') }}" ng-click="filter.togglePresent('has:readme')"></tag>
-        <th><tag name="has:demos"  active="{{ filter.tagPresent('has:demos') }}"ng-click="filter.togglePresent('has:demos')"></tag>
-        <th><tag name="has:jsdocs" active="{{ filter.tagPresent('has:jsdocs') }}" ng-click="filter.togglePresent('has:jsdocs')"></tag>
-        <th><tag name="has:build"  active="{{ filter.tagPresent('has:build') }}" ng-click="filter.togglePresent('has:build')"></tag>
-        <th><tag name="has:tests"  active="{{ filter.tagPresent('has:tests') }}" ng-click="filter.togglePresent('has:tests')"></tag>
+            <!--<th>Author-->
+        <th>
+            <tag name="has:readme" active="{{ filter.tagPresent('has:readme') }}"
+                 ng-click="filter.togglePresent('has:readme')"></tag>
+        <th>
+            <tag name="has:demos" active="{{ filter.tagPresent('has:demos') }}"
+                 ng-click="filter.togglePresent('has:demos')"></tag>
+        <th>
+            <tag name="has:jsdocs" active="{{ filter.tagPresent('has:jsdocs') }}"
+                 ng-click="filter.togglePresent('has:jsdocs')"></tag>
+        <th>
+            <tag name="has:build" active="{{ filter.tagPresent('has:build') }}"
+                 ng-click="filter.togglePresent('has:build')"></tag>
+        <th>
+            <tag name="has:tests" active="{{ filter.tagPresent('has:tests') }}"
+                 ng-click="filter.togglePresent('has:tests')"></tag>
         <th>Tags
     </tr>
+    </thead>
+    <tbody>
     <tr ng-repeat="component in components | filter:filterFn">
         <td>{{ component.name }}
-        <!--<td>{{ component.summary }}-->
+            <!--<td>{{ component.summary }}-->
         <td>{{ component.version }}
-        <!--<td>{{ component.author }}-->
+            <!--<td>{{ component.author }}-->
         <td ng-repeat="col in ['readme','demos','jsdocs','build','tests']" ng-bind-html="component.columns[col]"></td>
         <td>
             <tag ng-repeat="tag in component.tags | filter:notDisplayedInColumn"
@@ -23,14 +36,18 @@
                  active="{{ filter.tagPresent(tag) }}"
                  ng-click="filter.togglePresent(tag)"></tag>
     </tr>
+    </tbody>
+    <tfoot>
     <tr ng-show='hiddenCount > 0'>
         <td colspan=9>
             {{ hiddenCount }} components hidden
         </td>
     </tr>
+
     <tr>
-      <td colspan=9 class=add>
-        <a href="https://github.com/biojs/registry/edit/master/index.toml" class="btn happy">Add your component!</a>
-      </td>
+        <td colspan=9 class=add>
+            <a href="https://github.com/biojs/registry/edit/master/index.toml" class="btn happy">Add your component!</a>
+        </td>
     </tr>
+    </tfoot>
 </table>
