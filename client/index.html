@@ -5,8 +5,7 @@
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <link rel="stylesheet" href="lib/flatstrap3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/flatstrap3/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 
     <script src="lib/es5-shim/es5-shim.min.js"></script>
@@ -31,21 +30,41 @@
 
 <body ng-app="registry" ng-controller="AppController">
 
-
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <img src=img/logo.png width=64 height=64>
+          <h2>Biojs</h2>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/docs">Docs</a>
+            <li class="active"><a href="/registry">Registry</a>
+            <li><a href="/github">Github</a>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="container">
 
-      <h1>BioJS registry</h1>
 
-      <component-search query="filter.searchTerm"></component-search>
+      <div class="row">
 
-      <p>
-          Filtering:
-          <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
-              search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
-          </span>
-          <tag-list tags="filter.tags"></tag-list>
-      </p>
+        <div class="col-md-6">
+          <component-search query="filter.searchTerm"></component-search>
+        </div>
+
+        <p class="filter-box col-md-6">
+            <span class='filter-label'>
+              Filtering:
+            </span>
+            <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
+                search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
+            </span>
+            <tag-list tags="filter.tags"></tag-list>
+        </p>
+      </div>
 
       <component-table filter="filter"></component-table>
 

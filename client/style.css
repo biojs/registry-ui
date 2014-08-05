@@ -1,4 +1,4 @@
-ul.tags {
+.tags {
     list-style: none;
     display: inline-flex;
     flex-flow: row wrap;
@@ -20,5 +20,65 @@ tr {
 }
 
 .happy {
-    background: green;
+    background: #58ac46;
+    color: #fff;
+}
+.happy:hover {
+    color: #fff;
+}
+
+.navbar {
+  border: 0;
+  padding: 1ex 0;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+.navbar h2 {
+  display: inline-block;
+  font-size: 4em;
+  margin: 0;
+  line-height: 1em;
+  vertical-align: middle;
+  margin-left: 0.25em;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+.navbar-brand {
+  height: auto;
+  padding: 0;
+}
+
+@media (min-width: 320px) {
+  .navbar-nav, .navbar-brand {
+    height: auto;
+  }
+  .navbar-nav li a {
+    line-height: 40px;
+  }
+}
+
+.component-list {
+  margin-top: 3ex;
+}
+.component-list.table tr, .component-list.table td, .component-list.table th {
+  border: 0;
+  border-top: 0;
+  padding-left: 0;
+}
+
+
+.component-search input {
+  font-size: 1.5em;
+  width: 100%;
+  padding: 0.2em;
+}
+
+.filter-label {
+  padding-top: 0.4ex;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0);
+}
+
+.btn {
+  border-radius: 0;
 }
