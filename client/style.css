@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: baseline;
     margin: 0;
+    padding: 0;
 }
 
 tr {
@@ -13,10 +14,13 @@ tr {
 
 .tag-box {
     display: inline-block;
-    border: dotted 1px black;
     padding: 2px 3px;
-    font-weight: bold;
     cursor: pointer;
+    background: #ddd;
+    margin-right: 2px;
+}
+.tag-box:hover {
+    background: #eaeaea;
 }
 
 .happy {
@@ -33,7 +37,7 @@ tr {
   border-bottom: 1px solid #eee;
   background: #fff;
 }
-.navbar h2 {
+.navbar h1 {
   display: inline-block;
   font-size: 4em;
   margin: 0;
@@ -42,6 +46,9 @@ tr {
   margin-left: 0.25em;
   font-weight: 100;
   text-transform: uppercase;
+}
+.navbar h1 .reg {
+  color: #bbb;
 }
 .navbar-brand {
   height: auto;
@@ -81,4 +88,9 @@ tr {
 
 .btn {
   border-radius: 0;
+}
+
+a.home {
+  float: right;
+  line-height: 64px;
 }
