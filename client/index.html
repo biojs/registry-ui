@@ -59,8 +59,8 @@
         <component-cards components="displayedComponents"></component-cards>
     </div>
 
-    <a ng-click="layout = 'table'" class="glyphicon glyphicon-th-list" title="Table"></a>
-    <a ng-click="layout = 'cards'" class="glyphicon glyphicon-th-large" title="Cards"></a>
+    <a ng-class="{active: layout == 'table'}" ng-click="layout = 'table'" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>
+    <a ng-class="{active: layout == 'cards'}" ng-click="layout = 'cards'" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
 </div>
 
 

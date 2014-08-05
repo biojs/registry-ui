@@ -144,3 +144,21 @@ a.home {
   margin-right: 1em;
   margin-bottom: 1em;
 }
+
+.layout-icon {
+  font-size: 2em;
+  cursor: pointer;
+  margin-right: 0.25em;
+  color: #bbb;
+}
+.layout-icon:hover {
+  text-decoration: none;
+  color: #6bd757;
+}
+.layout-icon.active {
+  cursor: default;
+  color: #42861d;
+}
+.layout-icon.active:hover {
+  color: #42861d;
+}
