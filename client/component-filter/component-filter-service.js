@@ -13,6 +13,9 @@ angular.module('registry').factory('ComponentFilter', function () {
                 _(this.tags).push(tag);
             }
         },
+        tagPresent: function tagPresent(tag) {
+            return _(this.tags).contains(tag);
+        },
         match: function match(component) {
             if (this.searchTerm && component.name.indexOf(this.searchTerm) === -1) {
                 return false;

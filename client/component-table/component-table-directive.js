@@ -1,4 +1,4 @@
-angular.module('registry').directive('componentTable', function (Component) {
+angular.module('registry').directive('componentTable', function (Component, notDisplayedInColumn) {
     return {
         restrict: 'E',
         templateUrl: 'component-table/component-table-view.html',
@@ -9,23 +9,31 @@ angular.module('registry').directive('componentTable', function (Component) {
             $scope.filterFn = $scope.filter.match.bind($scope.filter);
 
             $scope.hiddenCount = 0;
-            $scope.$watch("filter", function() {
+            $scope.$watch("filter", function () {
                 $scope.hiddenCount = _.countBy($scope.components, $scope.filter.match, $scope.filter)[false];
             }, true);
 
             $scope.components = Component.query();
+
+            $scope.notDisplayedInColumn = notDisplayedInColumn;
         }
     };
 })
-.constant("tagsDisplayedInOwnColumn", {
-  readme: 1,
-  demos: 1,
-  jsdocs: 1,
-  tests: 1,
-})
-.factory("notDisplayedInColumn", function(tagsDisplayedInOwnColumn) {
-  return function(tag) {
-    return !(tag in tagsDisplayedInOwnColumn);
-  };
-});
+    .constant("knownTags", {
+        'has:readme': { caption: "Readme" },
+        'has:demos': { caption: "Demos" },
+        'has:jsdocs': { caption: "JsDocs" },
+        'has:tests': { caption: "Tests" },
+    })
+    .constant("tagsDisplayedInOwnColumn", {
+        'has:readme': true,
+        'has:demos': true,
+        'has:jsdocs': true,
+        'has:tests': true,
+    })
+    .factory("notDisplayedInColumn", function (tagsDisplayedInOwnColumn) {
+        return function (tag) {
+            return !(tag in tagsDisplayedInOwnColumn);
+        };
+    });
 

@@ -14,37 +14,38 @@
 
 <body ng-app="registry" ng-controller="AppController">
 
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
         <div class="navbar-brand">
-          <img src=img/logo.png width=64 height=64>
-          <h2>Biojs</h2>
+            <img src=img/logo.png width=64 height=64>
+
+            <h2>Biojs</h2>
         </div>
         <div class="navbar-right">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
         <div class="collapse navbar-collapse" id="menu">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/docs">Docs</a>
-            <li class="active"><a href="/registry">Registry</a>
-            <li><a href="/github">Github</a>
-          </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/docs">Docs</a>
+                <li class="active"><a href="/registry">Registry</a>
+                <li><a href="/github">Github</a>
+            </ul>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="container">
+<div class="container">
 
 
-      <div class="row">
+    <div class="row">
 
         <div class="col-md-6">
-          <component-search query="filter.searchTerm"></component-search>
+            <component-search query="filter.searchTerm"></component-search>
         </div>
 
         <p class="filter-box col-md-6">
@@ -54,33 +55,32 @@
             <span class="tag-box" ng-if="filter.searchTerm && filter.searchTerm.length > 0">
                 search: <span style="font-weight: normal; font-style: italic;">{{filter.searchTerm}}</span>
             </span>
-            <tag-list tags="filter.tags"></tag-list>
+            <tag-list filter="filter" tags="filter.tags"></tag-list>
         </p>
-      </div>
-
-      <component-table filter="filter"></component-table>
-
     </div>
 
-    
-    <script src="lib/es5-shim/es5-shim.min.js"></script>
-    <script src="lib/es6-shim/es6-shim.min.js"></script>
-    <script src="lib/lodash/dist/lodash.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
+    <component-table filter="filter"></component-table>
 
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</div>
 
-    <script src="module.js"></script>
 
-    <script src="component-model/component-model.js"></script>
+<script src="lib/es5-shim/es5-shim.min.js"></script>
+<script src="lib/es6-shim/es6-shim.min.js"></script>
+<script src="lib/lodash/dist/lodash.min.js"></script>
+<script src="lib/angular/angular.js"></script>
 
-    <script src="app/app-controller.js"></script>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script src="tag/tag-directive.js"></script>
-    <script src="tag-list/tag-list-directive.js"></script>
-    <script src="component-filter/component-filter-service.js"></script>
-    <script src="component-search/component-search-directive.js"></script>
-    <script src="component-row/component-row-directive.js"></script>
-    <script src="component-table/component-table-directive.js"></script>
+<script src="module.js"></script>
+
+<script src="component-model/component-model.js"></script>
+
+<script src="app/app-controller.js"></script>
+
+<script src="tag/tag-directive.js"></script>
+<script src="tag-list/tag-list-directive.js"></script>
+<script src="component-filter/component-filter-service.js"></script>
+<script src="component-search/component-search-directive.js"></script>
+<script src="component-table/component-table-directive.js"></script>
 </body>

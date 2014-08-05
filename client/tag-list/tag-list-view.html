@@ -1,3 +1,5 @@
 <ul class="tags">
-  <li ng-repeat="tag in displayedTags"><tag name='{{ tag }}' ng-click="filter.togglePresent(tag)"></tag></li>
+  <li ng-repeat="tag in displayedTags">
+      <tag name='{{ tag }}' active="{{ filter.tagPresent(tag) }}" ng-click="filter.togglePresent(tag)"></tag>
+  </li>
 </ul>

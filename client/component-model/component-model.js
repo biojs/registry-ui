@@ -1,4 +1,20 @@
-angular.module('registry').factory("Component", function ($http) {
+angular.module('registry').factory("Component", function ($http, $window) {
+
+    function preProcessComponent(component) {
+        if (!_(component.npm.readmeFilename).isEmpty() &&
+            !component.npm.readme.substring(0, 5) === "ERROR") {
+            component.tags.push("has:readme");
+        }
+        if (false) { // TODO
+            component.tags.push("has:readme");
+        }
+        if (false) { // TODO
+            component.tags.push("has:jsdocs");
+        }
+        if (component.shields.testing) {
+            component.tags.push("has:tests");
+        }
+    }
 
     function Component() {}
     Component.prototype = {};
@@ -6,13 +22,13 @@ angular.module('registry').factory("Component", function ($http) {
 
     Component.query = function query() {
         var all = [];
-        all.$promise = $http({
-            url: "admin.json"
-        }).then(function (resp) {
-            Object.keys(resp.data.components).forEach(function(key) {
-                all.push(resp.data.components[key]);
+        $window.JSON_CALLBACK = function JSON_CALLBACK(resp) {
+            Object.keys(resp).forEach(function(key) {
+                all.push(resp[key]);
+                preProcessComponent(resp[key]);
             });
-        });
+        };
+        all.$promise = $http.jsonp('https://biojs.github.io/registry/output.jsonp?callback=JSON_CALLBACK');
         return all;
     };
 

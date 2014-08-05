@@ -8,4 +8,7 @@ angular.module("registry", [])
         return function (array, filter) {
 
         }
+    })
+    .run(function ($rootScope) {
+        $rootScope.constructor.prototype._ = _;
     });
