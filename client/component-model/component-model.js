@@ -36,6 +36,9 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
                 component.columns[type] = $sce.trustAsHtml('✗');
             }
         });
+
+        // add the current version
+        component.version = component.npm['dist-tags'].latest;
     }
 
     function Component() {}
