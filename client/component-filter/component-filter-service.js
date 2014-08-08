@@ -26,13 +26,22 @@ angular.module('registry').factory('ComponentFilter', function () {
             return this.searchEmpty() && this.tagsEmpty();
         },
         match: function match(component) {
+
+             // there must be a match for each of the search terms
+             var bResult = true;
+
+             // filter tags
+             if(!this.tagsEmpty()) {
+                bResult =  _(this.tags).every(function (tag) {
+                    return _(component.tags).contains(tag);
+                }, this);
+             }
+
             if(this.searchTerm) {
               // multiple tags are separated by spaces
               var search = this.searchTerm.replace(/\s{2,}/g, ' ').trim();
               search = search.split(" ");
-              
-              // there must be a match for each of the search terms
-              var bResult = true;
+
 
               for( var i in search){
                 // occurs in the name
@@ -65,15 +74,9 @@ angular.module('registry').factory('ComponentFilter', function () {
                 // no match found in [name,tags]
                 bResult = false;
               }
-              // occurs in the tags
-              return bResult;
             }
-            if(!this.tagsEmpty()) {
-              return _(this.tags).every(function (tag) {
-                  return _(component.tags).contains(tag);
-              }, this);
-            }
-            return true;
+
+            return bResult;
         },
     };
 

@@ -52,7 +52,8 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
           component.strCreated = moment(component.created).fromNow();
           component.modified = component.npm.time.modified;
           component.strModified = moment(component.created).fromNow();
-          component.releases = component.npm.time.length;
+          // modified and created are two keys
+          component.releases = Object.keys(component.npm.versions).length;
           component.issueHref = component.npm.bugs.url;
           component.author = component.npm.author;
           component.description = component.npm.description;
@@ -69,7 +70,7 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
           component.avatar = component.github.owner.avatar_url;
           component.src = component.github.html_url;
         }
-        component.downloads = 0;
+ 
         component.issues = 0;
         component.commits = 0;
         component.citeHref = "";
