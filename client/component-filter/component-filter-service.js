@@ -26,8 +26,47 @@ angular.module('registry').factory('ComponentFilter', function () {
             return this.searchEmpty() && this.tagsEmpty();
         },
         match: function match(component) {
-            if (this.searchTerm && component.name.indexOf(this.searchTerm) === -1) {
-                return false;
+            if(this.searchTerm) {
+              // multiple tags are separated by spaces
+              var search = this.searchTerm.replace(/\s{2,}/g, ' ').trim();
+              search = search.split(" ");
+              
+              // there must be a match for each of the search terms
+              var bResult = true;
+
+              for( var i in search){
+                // occurs in the name
+                if(component.name.indexOf(search[i]) >= 0) {
+                  bResult = bResult & true;
+                  continue;
+                }
+
+                // search tags
+                var bTags = false;
+                if(component.tags !== undefined) {
+                 for( var j in component.tags ){
+                    var tag = component.tags[j];
+                    // dirty hack to ignore has flags
+                    if(tag.substring(0,4) === "has:" ){
+                      tag = tag.substring(4);
+                    }
+                    if( tag.indexOf(search[i]) >= 0){
+                      bTags = bTags || true;
+                      break;
+                    }
+                  }
+                }
+
+                // min. one tag found
+                if(bTags){
+                  continue;
+                }
+
+                // no match found in [name,tags]
+                bResult = false;
+              }
+              // occurs in the tags
+              return bResult;
             }
             if(!this.tagsEmpty()) {
               return _(this.tags).every(function (tag) {
