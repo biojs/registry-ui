@@ -13,13 +13,7 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
                 } break;
             }
         });
-        if (!_(component.npm.readmeFilename).isEmpty() &&
-            !component.npm.readme.substring(0, 5) === "ERROR") {
-            component.columns['readme'] =
-                $sce.trustAsHtml('<a href="'+component.npm.readmeFilename+'">README</a>');
-            component.tags.push("has:readme");
-        }
-        if (false) { // TODO
+              if (false) { // TODO
             component.columns['demos'] =
                 $sce.trustAsHtml('<a href="???">???</a>');
             component.tags.push("has:demos");
@@ -37,8 +31,48 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
             }
         });
 
-        // add the current version
-        component.version = component.npm['dist-tags'].latest;
+        // defaults
+        component.avatar = "https://avatars.githubusercontent.com/u/103119?v=2";
+
+        // npm
+        if(component.npm !== undefined ){
+
+          // readme
+          if (!_(component.npm.readmeFilename).isEmpty() &&
+              !component.npm.readme.substring(0, 5) === "ERROR") {
+              component.columns['readme'] =
+                  $sce.trustAsHtml('<a href="'+component.npm.readmeFilename+'">README</a>');
+              component.tags.push("has:readme");
+           }
+
+
+          component.version = component.npm['dist-tags'].latest;
+          component.license = component.npm.license;
+          component.created = component.npm.time.created;
+          component.strCreated = moment(component.created).fromNow();
+          component.modified = component.npm.time.modified;
+          component.strModified = moment(component.created).fromNow();
+          component.releases = component.npm.time.length;
+          component.issueHref = component.npm.bugs.url;
+          component.author = component.npm.author;
+          component.description = component.npm.description;
+        }
+
+        // github
+        if(component.github !== undefined ){
+          component.version = component.npm['dist-tags'].latest;
+          component.stars = component.github.stargazers_count;
+          component.watchers = component.github.subscribers_count;
+          component.forks = component.github.forks_count;
+          component.issues = component.github.open_issues_count;
+          //component.issueHref = component.issues_url;
+          component.avatar = component.github.owner.avatar_url;
+          component.src = component.github.html_url;
+        }
+        component.downloads = 0;
+        component.issues = 0;
+        component.commits = 0;
+        component.citeHref = "";
     }
 
     function Component() {}
@@ -53,7 +87,7 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
                 preProcessComponent(resp[key]);
             });
         };
-        all.$promise = $http.jsonp('https://biojs.github.io/registry/output.jsonp');
+        all.$promise = $http.jsonp('http://worker.biojs.net/output.jsonp');
         return all;
     };
 
