@@ -9,6 +9,10 @@ BioJS registry ui
 ----------------
 
 ```
+grunt watch
+```
+
+```
 protactor  proctactor/conf.js
 ```
 
