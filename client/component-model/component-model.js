@@ -70,7 +70,7 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
           component.avatar = component.github.owner.avatar_url;
           component.src = component.github.html_url;
         }
- 
+
         component.issues = 0;
         component.commits = 0;
         component.citeHref = "";
@@ -82,13 +82,26 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
 
     Component.query = function query() {
         var all = [];
+
+
         $window.JSON_CALLBACK = function JSON_CALLBACK(resp) {
             Object.keys(resp).forEach(function(key) {
                 all.push(resp[key]);
                 preProcessComponent(resp[key]);
             });
         };
-        all.$promise = $http.jsonp('http://worker.biojs.net/output.jsonp');
+
+        var promise;
+        all.$promise = promise = $http.jsonp('http://worker.biojs.net/output.jsonp');
+
+        // ugly workaround to inject code - try GET
+        promise.error(function(){
+            $http.get('http://worker.biojs.net/output.json').success(function(response) {
+                console.log("protractor json injection successful.");
+                $window.JSON_CALLBACK(response);
+            });
+        });
+
         return all;
     };
 
