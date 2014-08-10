@@ -3,6 +3,9 @@ angular.module('registry').controller('AppController', function ($scope, Compone
     $scope.components = Component.query();
 
     $scope.layout = 'table';
+
+    //$scope.layout = 'detail';
+
     $scope.displayedComponents = []; 
     $scope.$watch("filter", updateDisplayed, true);
     $scope.$watchCollection("components", updateDisplayed);

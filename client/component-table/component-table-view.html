@@ -38,7 +38,7 @@
     <tbody>
     <!-- TODO: add orderBy -->
     <tr ng-repeat="component in components | filter:filterFn | orderBy:orderProp:orderReverse ">
-        <td ng-click="layout = 'cards'">{{ component.name }}
+        <td ng-click="showDetails(component.name)">{{ component.name }}
         <td>{{ component.description }}
         <td>{{ component.version }}
 		<td><img ng-src="{{ component.avatar}}" width="32" height="32" />

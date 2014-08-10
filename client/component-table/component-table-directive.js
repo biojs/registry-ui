@@ -21,6 +21,12 @@ angular.module('registry').directive('componentTable', function (Component, notD
                 }
             };
 
+            $scope.showDetails = function(name){
+                   // this seems to be wrong
+                   $scope.$parent.$parent.layout = "detail";
+                   $scope.$parent.$parent.name = name;
+            }
+
             $scope.hiddenCount = 0;
             $scope.$watch("filter", function () {
                 $scope.hiddenCount = _.countBy($scope.components, $scope.filter.match, $scope.filter)[false];
