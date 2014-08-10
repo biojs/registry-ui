@@ -60,8 +60,18 @@
         <component-cards components="displayedComponents"></component-cards>
     </div>
 
+    <div ng-if="layout == 'detail'">
+        <component-detail components="displayedComponents"></component-detail>
+    </div>
+
     <a ng-class="{active: layout == 'table'}" ng-click="layout = 'table'" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>
     <a ng-class="{active: layout == 'cards'}" ng-click="layout = 'cards'" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
+
+
+    <a ng-class="{active: layout == 'detail'}" ng-click="layout = 'detail'" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
+
+
+
 </div>
 
 
@@ -86,4 +96,5 @@
 <script src="component-search/component-search-directive.js"></script>
 <script src="component-table/component-table-directive.js"></script>
 <script src="component-cards/component-cards.js"></script>
+<script src="component-detail/component-detail.js"></script>
 </body>

@@ -98,7 +98,9 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
         promise.error(function(){
             $http.get('http://worker.biojs.net/output.json').success(function(response) {
                 console.log("protractor json injection successful.");
-                $window.JSON_CALLBACK(response);
+                if(all.length === 0){
+                    $window.JSON_CALLBACK(response);
+                }
             });
         });
 

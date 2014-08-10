@@ -1,14 +1,14 @@
 <table class="component-list table">
     <thead>
     <tr>
-        <th>Name
+        <th ng-click="setOrderProp('name')" ng-class="{active: orderProp == 'name'}" > Name
         <th>Summary
-        <th>Version
+        <th ng-click="setOrderProp('version')" ng-class="{active: orderProp == 'version'}">Version
         <th>Avatar
-        <th>Author
-        <th>Stars
-        <th>Downloads
-		<th>Modified
+        <th ng-click="setOrderProp('author')" ng-class="{active: orderProp == 'author'}">Author
+        <th ng-click="setOrderProp('stars')" ng-class="{active: orderProp == 'stars'}">Stars
+        <th ng-click="setOrderProp('downloads')" ng-class="{active: orderProp == 'downloads'}">Downloads
+		<th ng-click="setOrderProp('modified')" ng-class="{active: orderProp == 'modified'}">Modified
         <th>
             <tag name="has:readme" active="{{ filter.tagPresent('has:readme') }}"
                  ng-click="filter.togglePresent('has:readme')"></tag>
@@ -24,7 +24,7 @@
         <th>
             <tag name="has:tests" active="{{ filter.tagPresent('has:tests') }}"
                  ng-click="filter.togglePresent('has:tests')"></tag>
-        <th>Tags
+    <!--    <th>Tags
 		<th>Forks
         <th>Issues
 		<th>Watchers
@@ -32,15 +32,16 @@
 		<th>Created
 		<th>Releases
 		<th>Commits
-		<th>Cite
+		<th>Cite -->
         </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="component in components | filter:filterFn">
-        <td>{{ component.name }}
+    <!-- TODO: add orderBy -->
+    <tr ng-repeat="component in components | filter:filterFn | orderBy:orderProp:orderReverse ">
+        <td ng-click="layout = 'cards'">{{ component.name }}
         <td>{{ component.description }}
         <td>{{ component.version }}
-		<td><img src="{{ component.avatar}}" width="32" height="32" />
+		<td><img ng-src="{{ component.avatar}}" width="32" height="32" />
 		<td>{{ component.author.name }} 
 		<td>{{ component.stars }}
 		<td>{{ component.downloads }}
@@ -51,14 +52,14 @@
                  name='{{ tag }}'
                  active="{{ filter.tagPresent(tag) }}"
                  ng-click="filter.togglePresent(tag)"></tag>
-		<td>{{ component.forks }}
+	<!--	<td>{{ component.forks }}
 		<td>{{ component.issues }}
 		<td>{{ component.watchers }}
 		<td>{{ component.license }}
 		<td>{{ component.strCreated }}
 		<td>{{ component.releases }}
 		<td>{{ component.commits}}
-		<td>{{ component.citeHref}}
+		<td>{{ component.citeHref}} -->
 
 
     </tr>
