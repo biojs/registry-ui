@@ -21,6 +21,8 @@
     "angular": "~1.2.21",
     "lodash": "~2.4.1",
     "moment": "~2.8.1",
-    "angular-mocks": "~1.2.21"
+    "angular-mocks": "~1.2.21",
+    "angular-route": "~1.2.21",
+    "marked": "~0.3.2"
   }
 }
