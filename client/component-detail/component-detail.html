@@ -1,4 +1,69 @@
-<ul class=component-detail>
- oo
-</ul>
-oo
+<div class=component-detail>
+
+<h2> {{ c.name }} </h2>
+
+<table class="component-list detail">
+	<tbody>
+		<tr>
+			<td>Name </td>
+			<td>{{ c.name }} </td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>{{ c.description }} </td>
+		</tr>
+		<tr>
+			<td>Version</td>
+			<td>{{ c.version }} </td>
+		</tr><tr>
+			<td>Avatar</td>
+			<td><img ng-src="{{ c.avatar}}" width="48" height="48" /></td>
+		</tr><tr>
+			<td>Author </td>
+			<td>{{ c.author.name }}</td>
+		</tr><tr>
+			<td>Stars</td>
+			<td>{{ c.stars }}</td>
+		</tr><tr>
+			<td>Downloads</td>
+			<td>{{ c.downloads }}</td>
+		</tr><tr>
+			<td>Modified</td>
+			<td>{{ c.strModified }}</td>
+		</tr>
+		<tr ng-repeat="col in ['readme','demos','jsdocs','build','tests']" >
+			<td>{{ col }} </td>
+			<td ng-bind-html="c.columns[col]"> </td>
+		</tr><tr>
+			<td>Tags </td>
+			<td>
+				<span ng-repeat="tag in c.tags" >{{ tag }},</span></td>
+		</tr><tr>
+			<td>Forks </td>
+			<td>{{ c.forks }}</td>
+		</tr><tr>
+			<td>Open issues </td>
+			<td>{{ c.issues }}</td>
+		</tr><tr>
+			<td>Watchers </td>
+			<td>{{ c.watchers }}</td>
+		</tr><tr>
+			<td>License</td>
+			<td>{{ c.license }}</td>
+		</tr><tr>
+			<td>First published</td>
+			<td>{{ c.strCreated }}</td>
+		</tr><tr>
+			<td>Releases</td>
+			<td>{{ c.releases }}</td>
+		</tr><tr>
+			<td>Commits</td>
+			<td>{{ c.commits}}</td>
+		</tr><tr>
+			<td>Cite</td>
+			<td>{{ c.citeHref}}</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
