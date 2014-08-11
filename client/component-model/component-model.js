@@ -78,6 +78,11 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
         }
 
+        // copy to lowercase (for searching)
+        component.lName = component.name.toLowerCase();
+        component.lDescription = component.description.toLowerCase();
+
+
         component.issues = 0;
         component.commits = 0;
         component.citeHref = "";

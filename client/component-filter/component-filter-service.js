@@ -36,6 +36,7 @@ angular.module('registry')
              var bResult = true;
 
              // filter tags
+             // TODO: caseinsensitive
              if(!this.tagsEmpty()) {
                 bResult =  _(this.tags).every(function (tag) {
                     return _(component.tags).contains(tag);
@@ -43,19 +44,25 @@ angular.module('registry')
              }
 
             if(this.searchTerm) {
+
+              var lSearchTerm  = this.searchTerm.toLowerCase();
+
               // multiple tags are separated by spaces
-              var search = this.searchTerm.replace(/\s{2,}/g, ' ').trim();
+              var search = lSearchTerm.replace(/\s{2,}/g, ' ').trim();
               search = search.split(" ");
 
 
               for( var i in search){
-                // occurs in the name
-                if(component.name.indexOf(search[i]) >= 0) {
+                // occurs in the name or description
+           
+                if(component.lName.indexOf(search[i]) >= 0 ||
+                    component.lDescription.indexOf(search[i]) >= 0) {
                   bResult = bResult & true;
                   continue;
                 }
 
                 // search tags
+                // TODO: caseinsensitive
                 var bTags = false;
                 if(component.tags !== undefined) {
                  for( var j in component.tags ){
