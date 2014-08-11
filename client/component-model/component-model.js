@@ -51,7 +51,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           component.created = component.npm.time.created;
           component.strCreated = moment(component.created).fromNow();
           component.modified = component.npm.time.modified;
-          component.strModified = moment(component.created).fromNow();
+          component.strModified = moment(component.modified).fromNow();
           // modified and created are two keys
           component.releases = Object.keys(component.npm.versions).length;
           component.issueHref = component.npm.bugs.url;
