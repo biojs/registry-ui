@@ -108,6 +108,10 @@ tr {
     padding-left: 0;
 }
 
+.component-list.table .listview-name, .component-list.table .listview-pointer{
+    cursor: pointer;
+}
+
 .component-search input {
     font-size: 1.5em;
     width: 100%;
@@ -177,4 +181,18 @@ a.home {
 }
 .layout-icon.active:hover {
   color: #42861d;
+}
+
+.component-detail .glyphicon {
+    font-size: 3em;
+}
+.component-detail .col-md-2 .glyphicon, .component-detail .col-xs-2 .glyphicon {
+    display: block;
+} 
+.component-detail .col-md-2, .component-detail .col-xs-2 {
+    text-align: center;
+}
+
+.detail-first-row {
+    margin-top: 20px;
 }

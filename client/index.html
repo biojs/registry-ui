@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <script src="lib/angular/angular.js"></script>
 
 </head>
 
@@ -26,7 +27,6 @@
 </nav>
 
 <div class="container">
-
 
     <div class="row">
 
@@ -51,26 +51,23 @@
         </div>
     </div>
 
-    <div ng-if="layout == 'table'">
-        <component-table filter="filter"></component-table>
-    </div>
+	<!-- components -->
+	<div ng-view></div>
 
-    <div ng-if="layout == 'cards'">
-        <component-cards components="displayedComponents"></component-cards>
-    </div>
 
-    <a ng-class="{active: layout == 'table'}" ng-click="layout = 'table'" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>
-    <a ng-class="{active: layout == 'cards'}" ng-click="layout = 'cards'" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
+
 </div>
 
 
 <script src="lib/es5-shim/es5-shim.min.js"></script>
 <script src="lib/es6-shim/es6-shim.min.js"></script>
 <script src="lib/lodash/dist/lodash.min.js"></script>
-<script src="lib/angular/angular.js"></script>
+<script src="./lib/angular-mocks/angular-mocks.js"></script>
+<script src="./lib/angular-route/angular-route.min.js"></script>
 
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./lib/moment/min/moment.min.js"></script>
 
 <script src="module.js"></script>
 
@@ -84,4 +81,8 @@
 <script src="component-search/component-search-directive.js"></script>
 <script src="component-table/component-table-directive.js"></script>
 <script src="component-cards/component-cards.js"></script>
+<script src="component-detail/component-detail.js"></script>
+<script src="component-list/component-list.js"></script>
+
+<script src="./lib/marked/lib/marked.js"></script>
 </body>
