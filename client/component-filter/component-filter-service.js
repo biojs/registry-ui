@@ -1,4 +1,6 @@
-angular.module('registry').factory('ComponentFilter', function () {
+angular.module('registry')
+
+.factory('ComponentFilter', function (tagsDisplayedInOwnColumn) {
 
     function ComponentFilter() {
         this.tags = [];
@@ -24,6 +26,9 @@ angular.module('registry').factory('ComponentFilter', function () {
         },
         empty: function empty() {
             return this.searchEmpty() && this.tagsEmpty();
+        },
+        notDisplayedInColumn: function (tag) {
+            return !(tag in tagsDisplayedInOwnColumn);
         },
         match: function match(component) {
 
@@ -82,4 +87,12 @@ angular.module('registry').factory('ComponentFilter', function () {
 
     return ComponentFilter;
 
-});
+})
+
+    .constant("tagsDisplayedInOwnColumn", {
+        'has:readme': true,
+        'has:demos': true,
+        'has:jsdocs': true,
+        'has:build': true,
+        'has:tests': true,
+    })

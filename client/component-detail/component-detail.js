@@ -4,6 +4,8 @@ angular.module('registry')
   $scope.$route = $route;
   $scope.$location = $location;
   $scope.$routeParams = $routeParams;
+  
+  $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
   // get package name from the URL
   var name = $route.current.params.name;
@@ -25,7 +27,8 @@ angular.module('registry')
         console.log("Package " +name+  " not found.");
     }
 
-   console.log(scope.c.readmeSrc);
+
+   console.log("received readme:" +scope.c.readmeSrc);
    $http.get(scope.c.readmeSrc)
       .success(function(response) {
 

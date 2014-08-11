@@ -1,4 +1,4 @@
-angular.module('registry').directive('componentTable', function (Component, notDisplayedInColumn) {
+angular.module('registry').directive('componentTable', function (Component) {
     return {
         restrict: 'E',
         templateUrl: 'component-table/component-table-view.html',
@@ -9,9 +9,6 @@ angular.module('registry').directive('componentTable', function (Component, notD
             $scope.filterFn = $scope.filter.match.bind($scope.filter);
 
             //$scope.components = Component.list;
-
-            //console.log($scope);
-
 
             $scope.switchView = $scope.$parent.$parent.switchView;
 
@@ -27,15 +24,13 @@ angular.module('registry').directive('componentTable', function (Component, notD
                 }
             };
 
-
-
             $scope.hiddenCount = 0;
             $scope.$watch("filter", function () {
                 $scope.hiddenCount = _.countBy($scope.components, $scope.filter.match, $scope.filter)[false];
             }, true);
 
 
-            $scope.notDisplayedInColumn = notDisplayedInColumn;
+            $scope.notDisplayedInColumn = $scope.filter.notDisplayedInColumn;
         }
     };
 })
@@ -46,16 +41,6 @@ angular.module('registry').directive('componentTable', function (Component, notD
         'has:build': { caption: "Build" },
         'has:tests': { caption: "Tests" },
     })
-    .constant("tagsDisplayedInOwnColumn", {
-        'has:readme': true,
-        'has:demos': true,
-        'has:jsdocs': true,
-        'has:build': true,
-        'has:tests': true,
-    })
-    .factory("notDisplayedInColumn", function (tagsDisplayedInOwnColumn) {
-        return function (tag) {
-            return !(tag in tagsDisplayedInOwnColumn);
-        };
-    });
+
+
 
