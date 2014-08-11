@@ -1,15 +1,19 @@
 <div class="component-detail" style="margin-top: 20px;">
 
 	<div class="row">
-		<div class="col-xs-6">
-			<div style="float: left; margin-right: 10px;" title="by {{ c.author.name }}">
-				<img ng-src="{{ c.avatar }}" width="64" height="64" />
+		<div class="col-xs-8">
+			<div style="float: left; display: inline-block; border: solid 1px lightgray; padding: 5px 10px 5px 85px; margin-right: 10px">
+				<img ng-src="{{ c.avatar }}" style="float: left; margin-left: -80px; margin-right: 5px;" title="by {{ c.author.name }}" width="64" height="64" />
+				<h2 style="margin-top: 0; white-space: nowrap;">{{ c.name }}</h2>
+				<i>{{ c.description }}</i>
 			</div>
-			<h2 style="margin-top: 0">{{ c.name }}</h2>
-			<i>{{ c.description }}</i>
+			<div style="margin-top: 1px;">
+				<tag ng-repeat="tag in c.tags | filter:notDisplayedInColumn"
+				     name='{{ tag }}'
+				     active="{{ filter.tagPresent(tag) }}"
+				     ng-click="filter.togglePresent(tag)"></tag>
+			</div>
 		</div>
-
-		<div class="col-xs-2"></div>
 
 		<div class="col-xs-2">
 			<value-display value="View Code" glyph="search"></value-display>
@@ -21,13 +25,6 @@
 			<!--<div class="glyphicon glyphicon-share-alt"></div>-->
 			<!--<div style="text-align: center;">Share</div>-->
 		</div>
-	</div>
-
-	<div style="margin-top: 20px">
-		<tag ng-repeat="tag in c.tags | filter:notDisplayedInColumn"
-		     name='{{ tag }}'
-		     active="{{ filter.tagPresent(tag) }}"
-		     ng-click="filter.togglePresent(tag)"></tag>
 	</div>
 
 	<pre style="margin-top: 20px">npm install {{c.name}}</pre>
