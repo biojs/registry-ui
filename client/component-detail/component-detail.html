@@ -1,17 +1,17 @@
 <div class="component-detail">
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-xs-5 col-md-3">
 		<h2> {{ c.name }} </h2>
 		by {{ c.author.name }}
 		<br />
 	</div>
 
-	<div class="col-md-2 detail-first-row">
+	<div class="col-xs-3 col-md-2 detail-first-row">
 		<img ng-src="{{ c.avatar}}" width="80" height="80" />
 	</div>
 
-	<div class="col-md-2 detail-first-row">
+	<div class="col-md-2 col-xs-2 detail-first-row">
 		<a href="">
 			<div class="glyphicon glyphicon-search"></div>
 		</a>
@@ -33,27 +33,27 @@ npm install {{c.name}}
 
 <h3>Social</h3>
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-star"></div>
 		{{ c.stars }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-download-alt"></div>
 		{{ c.downloads }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-eye-open"></div>
 		{{ c.watchers }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-flash"></div>
 		{{ c.commits }} commits
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-random"></div>
 		{{ c.forks }} forks
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 	</div>
 </div>
 
@@ -62,51 +62,51 @@ npm install {{c.name}}
 
 <h3>Time & stats</h3>
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-barcode"></div>
 		{{ c.version }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-time"></div>
 		Modified {{ c.strModified }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-time"></div>
 		Created {{ c.strCreated }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-flag"></div>
 		{{ c.releases }} releases
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-comment"></div>
 		{{ c.issues }} open issues 
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 	</div>
 </div>
 
 <h3>Legal</h3>
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-usd"></div>
 		{{ c.license }}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 		<div class="glyphicon glyphicon-book"></div>
 		Cite {{ c.citeHref}}
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 	</div>
-	<div class="col-md-2">
+	<div class="col-xs-2">
 	</div>
 </div>
 
 <h3>Tests & Gold standard </h3>
 <div class="row">
-	<div ng-repeat="col in ['readme','demos','jsdocs','build','tests']" class="col-md-2">
+	<div ng-repeat="col in ['readme','demos','jsdocs','build','tests']" class="col-xs-2">
 		<span ng-bind-html="c.columns[col]"> </span>
 		{{ col }} 
 	</div>

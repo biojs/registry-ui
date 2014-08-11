@@ -186,10 +186,10 @@ a.home {
 .component-detail .glyphicon {
     font-size: 3em;
 }
-.component-detail .col-md-2 .glyphicon {
+.component-detail .col-md-2 .glyphicon, .component-detail .col-xs-2 .glyphicon {
     display: block;
 } 
-.component-detail .col-md-2 {
+.component-detail .col-md-2, .component-detail .col-xs-2 {
     text-align: center;
 }
 
