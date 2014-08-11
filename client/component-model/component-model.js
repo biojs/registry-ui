@@ -69,6 +69,12 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           //component.issueHref = component.issues_url;
           component.avatar = component.github.owner.avatar_url;
           component.src = component.github.html_url;
+          component.commits = component.github.commits;
+          if(component.github.contribs !== undefined){
+            component.contributors = Object.keys(component.github.contribs).length;
+          }else{
+            component.contributors = 0;
+          }
 
           // README
           if(component.npm !== undefined ){
@@ -84,7 +90,6 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
 
         component.issues = 0;
-        component.commits = 0;
         component.citeHref = "";
         component.readme = "";
     }

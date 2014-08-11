@@ -36,7 +36,8 @@
 			{  name: 'downloads',  glyph: 'download-alt'  },
 			{  name: 'watchers',   glyph: 'eye-open'      },
 			{  name: 'commits',    glyph: 'flash'         },
-			{  name: 'forks',      glyph: 'random'        }
+			{  name: 'forks',      glyph: 'random'        },
+			{  name: 'contributors', glyph: 'user' }
 		]">
 			<div class="col-xs-2" ng-repeat="v in socialValues">
 				<value-display name="{{ v.name }}"
@@ -64,6 +65,18 @@
 			</div>
 		</div>
 	</div>
+
+    <div class="panel panel-default" style="margin-top: 20px">
+        <div class="panel-heading"><h3 style="margin: 0">Contributors</h3></div>
+        <div class="panel-body row">
+            <table class="table">
+            <tr ng-repeat="(author,stats) in c.github.contribs | orderBy: 'totals'">
+                <td>{{ author }}</td>
+                <td>{{ stats.totals }} </td>
+            </tr>
+        </table>
+        </div>
+    </div>
 
 	<div class="panel panel-default" style="margin-top: 20px">
 		<div class="panel-heading"><h3 style="margin: 0">Legal</h3></div>
