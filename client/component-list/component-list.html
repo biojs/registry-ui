@@ -1,0 +1,11 @@
+<div ng-if="layout == 'table'">
+    <component-table filter="filter"></component-table>
+</div>
+
+<div ng-if="layout == 'cards'">
+    <component-cards components="displayedComponents"></component-cards>
+</div>
+
+<a ng-class="{active: layout == 'table'}" ng-click="layout = 'table'" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>
+<a ng-class="{active: layout == 'cards'}" ng-click="layout = 'cards'" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
+

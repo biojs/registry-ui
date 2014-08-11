@@ -1,4 +1,4 @@
-angular.module('registry').factory("Component", function ($http, $window, $sce) {
+angular.module('registry').service("Component", function ($http, $window, $sce) {
 
     function preProcessComponent(component) {
         component.columns = {
@@ -69,16 +69,26 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
           //component.issueHref = component.issues_url;
           component.avatar = component.github.owner.avatar_url;
           component.src = component.github.html_url;
+
+          // README
+          if(component.npm !== undefined ){
+            // github readme
+            component.readmeSrc = "http://github-raw-cors-proxy.herokuapp.com/"+component.github.full_name+ "/blob/"+component.github.default_branch+"/" + component.npm.readmeFilename;
+          }
+
         }
 
         component.issues = 0;
         component.commits = 0;
         component.citeHref = "";
+        component.readme = "";
     }
 
     function Component() {}
     Component.prototype = {};
     Component.constructor = Component;
+
+    Component.list = [];
 
     Component.query = function query() {
         var all = [];
@@ -103,6 +113,8 @@ angular.module('registry').factory("Component", function ($http, $window, $sce) 
                 }
             });
         });
+
+        Component.list = all;
 
         return all;
     };

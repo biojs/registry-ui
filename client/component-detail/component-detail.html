@@ -1,69 +1,120 @@
-<div class=component-detail>
+<div class="component-detail">
 
-<h2> {{ c.name }} </h2>
+<div class="row">
+	<div class="col-md-3">
+		<h2> {{ c.name }} </h2>
+		by {{ c.author.name }}
+		<br />
+	</div>
 
-<table class="component-list detail">
-	<tbody>
-		<tr>
-			<td>Name </td>
-			<td>{{ c.name }} </td>
-		</tr>
-		<tr>
-			<td>Description</td>
-			<td>{{ c.description }} </td>
-		</tr>
-		<tr>
-			<td>Version</td>
-			<td>{{ c.version }} </td>
-		</tr><tr>
-			<td>Avatar</td>
-			<td><img ng-src="{{ c.avatar}}" width="48" height="48" /></td>
-		</tr><tr>
-			<td>Author </td>
-			<td>{{ c.author.name }}</td>
-		</tr><tr>
-			<td>Stars</td>
-			<td>{{ c.stars }}</td>
-		</tr><tr>
-			<td>Downloads</td>
-			<td>{{ c.downloads }}</td>
-		</tr><tr>
-			<td>Modified</td>
-			<td>{{ c.strModified }}</td>
-		</tr>
-		<tr ng-repeat="col in ['readme','demos','jsdocs','build','tests']" >
-			<td>{{ col }} </td>
-			<td ng-bind-html="c.columns[col]"> </td>
-		</tr><tr>
-			<td>Tags </td>
-			<td>
-				<span ng-repeat="tag in c.tags" >{{ tag }},</span></td>
-		</tr><tr>
-			<td>Forks </td>
-			<td>{{ c.forks }}</td>
-		</tr><tr>
-			<td>Open issues </td>
-			<td>{{ c.issues }}</td>
-		</tr><tr>
-			<td>Watchers </td>
-			<td>{{ c.watchers }}</td>
-		</tr><tr>
-			<td>License</td>
-			<td>{{ c.license }}</td>
-		</tr><tr>
-			<td>First published</td>
-			<td>{{ c.strCreated }}</td>
-		</tr><tr>
-			<td>Releases</td>
-			<td>{{ c.releases }}</td>
-		</tr><tr>
-			<td>Commits</td>
-			<td>{{ c.commits}}</td>
-		</tr><tr>
-			<td>Cite</td>
-			<td>{{ c.citeHref}}</td>
-		</tr>
-	</tbody>
-</table>
+	<div class="col-md-2 detail-first-row">
+		<img ng-src="{{ c.avatar}}" width="80" height="80" />
+	</div>
+
+	<div class="col-md-2 detail-first-row">
+		<a href="">
+			<div class="glyphicon glyphicon-search"></div>
+		</a>
+		View code
+	</div>
+	<div class="col-md-2 detail-first-row">
+		<div class="glyphicon glyphicon-share-alt"></div>
+		Share	
+	</div>
+</div>
+
+<i>{{ c.description }} </i>
+<br />
+<br />
+
+<pre>
+npm install {{c.name}}
+</pre>
+
+<h3>Social</h3>
+<div class="row">
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-star"></div>
+		{{ c.stars }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-download-alt"></div>
+		{{ c.downloads }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-eye-open"></div>
+		{{ c.watchers }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-flash"></div>
+		{{ c.commits }} commits
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-random"></div>
+		{{ c.forks }} forks
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+
+<h3>Tags</h3>
+<span ng-repeat="tag in c.tags" >{{ tag }},</span></td>
+
+<h3>Time & stats</h3>
+<div class="row">
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-barcode"></div>
+		{{ c.version }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-time"></div>
+		Modified {{ c.strModified }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-time"></div>
+		Created {{ c.strCreated }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-flag"></div>
+		{{ c.releases }} releases
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-comment"></div>
+		{{ c.issues }} open issues 
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+
+<h3>Legal</h3>
+<div class="row">
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-usd"></div>
+		{{ c.license }}
+	</div>
+	<div class="col-md-2">
+		<div class="glyphicon glyphicon-book"></div>
+		Cite {{ c.citeHref}}
+	</div>
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+
+<h3>Tests & Gold standard </h3>
+<div class="row">
+	<div ng-repeat="col in ['readme','demos','jsdocs','build','tests']" class="col-md-2">
+		<span ng-bind-html="c.columns[col]"> </span>
+		{{ col }} 
+	</div>
+</div>
+
+<h3>ReadMe</h3>
+
+<div id=readme" ng-bind-html="c.readme" >
+</div>
 
 </div>

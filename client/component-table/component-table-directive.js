@@ -8,6 +8,12 @@ angular.module('registry').directive('componentTable', function (Component, notD
             $scope.filter = $scope.$parent.$eval(iAttrs.filter);
             $scope.filterFn = $scope.filter.match.bind($scope.filter);
 
+            //$scope.components = Component.list;
+
+            //console.log($scope);
+
+
+            $scope.switchView = $scope.$parent.$parent.switchView;
 
             // simple ordering
             $scope.orderProp = "downloads";
@@ -21,11 +27,7 @@ angular.module('registry').directive('componentTable', function (Component, notD
                 }
             };
 
-            $scope.showDetails = function(name){
-                   // this seems to be wrong
-                   $scope.$parent.$parent.layout = "detail";
-                   $scope.$parent.$parent.name = name;
-            }
+
 
             $scope.hiddenCount = 0;
             $scope.$watch("filter", function () {
