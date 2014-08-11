@@ -1,30 +1,24 @@
-angular.module('registry')
+angular.module('registry').controller('AppController', function ($scope, $route, $routeParams, $location, Component, ComponentFilter) {
 
+	$scope.filter = new ComponentFilter();
+	$scope.components = Component.query();
 
-.controller('AppController', function ($scope, $route, $routeParams, $location, Component, ComponentFilter) {
+	$scope.layout = 'table';
 
-    $scope.filter = new ComponentFilter();
-    $scope.components = Component.query();
+	$scope.displayedComponents = [];
+	$scope.$watch("filter", updateDisplayed, true);
+	$scope.$watchCollection("components", updateDisplayed);
 
-    $scope.layout = 'table';
+	$scope.switchView = function (name) {
+		$location.path("detail/" + name);
+	};
 
-    $scope.displayedComponents = []; 
-    $scope.$watch("filter", updateDisplayed, true);
-    $scope.$watchCollection("components", updateDisplayed);
+	function updateDisplayed() {
+		$scope.displayedComponents = $scope.components.filter($scope.filter.match.bind($scope.filter));
+		var path = $location.path();
+		if (path.indexOf("/detail") >= 0) {
+			$location.path("/");
+		}
+	}
 
-    $scope.switchView = function(name){
-        $location.path( "detail/" + name );
-    }
-
-    function updateDisplayed() {
-      $scope.displayedComponents = $scope.components.filter($scope.filter.match.bind($scope.filter));
-      if($scope.filter.searchTerm !== null && $scope.filter.searchTerm !== ""){
-          var path = $location.path();
-          if(path.indexOf("/detail") >= 0){
-            $location.path("/");
-          }
-          console.log($location.url());
-          console.log($location);
-      }
-    }
-})
+});
