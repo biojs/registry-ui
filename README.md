@@ -2,7 +2,7 @@ BioJS registry ui
 -----------------
 
 
-[Live version](http://biojs.net/registry-ui/client/)
+[`registry.biojs.net`](http://registry.biojs.net)
 
 
 1. Run the tests
