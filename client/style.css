@@ -74,17 +74,31 @@ tr {
     padding: 0;
 }
 
-@media (min-width: 900px) {
-    .navbar h1 .reg {
-      display: inline;
-    }
-    .navbar-nav, .navbar-brand {
-        height: auto;
+ul.nav.navbar-nav {
+    display: none;
+    margin-left: 50px
+}
+
+@media (min-width: 400px) {
+    ul.nav.navbar-nav {
+        display: inline;
     }
 
     .navbar-nav li a {
         line-height: 40px;
     }
+
+    .navbar-nav, .navbar-brand {
+        height: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    
+    .navbar h1 .reg {
+      display: inline;
+    }
+
 }
 
 .navbar-brand img {
