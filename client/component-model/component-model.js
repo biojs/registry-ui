@@ -32,7 +32,11 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         });
 
         // defaults
-        component.avatar = "https://avatars.githubusercontent.com/u/103119?v=2";
+        component.avatar = "https://sigil.cupcake.io/" + component.name;
+        if(component.downloads === undefined ){
+          component.downloads = 0; 
+        }
+        component.description = "error: not on npm";
 
         // npm
         if(component.npm !== undefined ){
@@ -56,6 +60,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           component.releases = component.npm.versions;
           component.issueHref = component.npm.bugs.url;
           component.author = component.npm.author;
+          component.avatar = "https://sigil.cupcake.io/" + component.author.name;
           component.description = component.npm.description;
         }
 
@@ -86,7 +91,9 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
         // copy to lowercase (for searching)
         component.lName = component.name.toLowerCase();
-        component.lDescription = component.description.toLowerCase();
+        if( component.description !== undefined ){
+          component.lDescription = component.description.toLowerCase();
+        }
 
 
         component.issues = 0;

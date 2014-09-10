@@ -207,6 +207,12 @@ a.home {
     text-align: center;
 }
 
+.component-detail .valueBtn a {
+    color: black;
+}
+.component-detail .valueBtn a:hover {
+    text-decoration: none;
+}
 .detail-first-row {
     margin-top: 20px;
 }
