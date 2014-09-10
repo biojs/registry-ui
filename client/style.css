@@ -87,6 +87,10 @@ ul.nav.navbar-nav {
     .navbar-nav li a {
         line-height: 40px;
     }
+    
+    .navbar-nav li input {
+        line-height: 40px;
+    }
 
     .navbar-nav, .navbar-brand {
         height: auto;
