@@ -1,4 +1,4 @@
 <div class="value-display value-display-{{ name }}" title="{{ (prefix) + value + (_.isEmpty(postfix) ? ' ' + name : postfix) }}">
-	<div class="glyphicon glyphicon-{{ glyph }}" style="margin-bottom: 4px"></div>
+<div class=" {{ (_.isEmpty(glyph) ? 'octicon octicon-' + octicon: 'glyphicon glyphicon-' + glyph) }}" style="margin-bottom: 4px"></div>
 	{{ (prefix) + value + (_.isEmpty(postfix) ? ' ' + name : postfix) }}
 </div>

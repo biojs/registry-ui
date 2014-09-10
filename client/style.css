@@ -197,8 +197,11 @@ a.home {
   color: #42861d;
 }
 
-.component-detail .glyphicon {
+.component-detail .glyphicon, .component-detail .octicon {
     font-size: 3em;
+}
+.component-detail .octicon {
+    display: block;
 }
 .component-detail .col-md-2 .glyphicon, .component-detail .col-xs-2 .glyphicon {
     display: block;

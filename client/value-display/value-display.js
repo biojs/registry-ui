@@ -6,6 +6,7 @@ angular.module('registry')
 	    scope: {
 		    value:   '@',
 		    glyph:   '@',
+		    octicon: '@',
 		    name:    '@',
 		    prefix:  '@',
 		    postfix: '@'
