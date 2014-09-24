@@ -55,7 +55,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         component.tags = component.keywords;
 
         // github
-        if(component.github !== undefined ){
+        if(component.github !== null){
           component.stars = component.github.stargazers_count;
           component.watchers = component.github.subscribers_count;
           component.forks = component.github.forks_count;
