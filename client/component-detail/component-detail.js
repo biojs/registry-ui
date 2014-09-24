@@ -21,7 +21,6 @@ angular.module('registry')
         console.log(scope.c);
         break;
       }
-      console.log(components[index].name);
     }
     if(scope.c === undefined){
         console.log("Package " +name+  " not found.");
@@ -44,9 +43,6 @@ angular.module('registry')
        .error(function(response){
            console.log("error");
        });
-
-
-
   }
 
   $scope.$parent.components.$promise.finally(function(){
