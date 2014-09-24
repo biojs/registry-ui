@@ -106,7 +106,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         //all.$promise = promise = $http.jsonp('http://localhost:3000/all');
 
         // ugly workaround to inject code - try GET
-        all.$promise = promise = $http.get('http://localhost:3000/all').success(function(response) {
+        all.$promise = promise = $http.get('http://workmen.biojs.net/all').success(function(response) {
             console.log("protractor json injection successful.");
             if(all.length === 0){
                 $window.JSON_CALLBACK(response);
