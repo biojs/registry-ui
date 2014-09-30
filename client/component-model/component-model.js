@@ -4,12 +4,13 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         component.columns = {
             build: null, tests: null, readme: null, demos: null, jsdocs: null
         };
-        _(component.shields).forEach(function (shield) {
-            switch (shield.type) {
+        component.tags = [];
+        _(component.latest.shields).forEach(function (shield, key) {
+            switch (key) {
                 case 'build': case 'tests': {
-                    component.columns[shield.type] =
+                    component.columns[key] =
                         $sce.trustAsHtml('<a class="shield" href="'+shield.href+'"><img src="'+shield.img+'"></a>');
-                    component.tags.push("has:"+shield.type);
+                    component.tags.push("has:"+key);
                 } break;
             }
         });
@@ -33,40 +34,28 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
         // defaults
         component.avatar = "https://sigil.cupcake.io/" + component.name;
-        if(component.downloads === undefined ){
-          component.downloads = 0; 
-        }
-        component.description = "error: not on npm";
-
-        // npm
-        if(component.npm !== undefined ){
-
-          // readme
-          if (!_(component.npm.readmeFilename).isEmpty() &&
-              !component.npm.readme.substring(0, 5) === "ERROR") {
-              component.columns['readme'] =
-                  $sce.trustAsHtml('<a href="'+component.npm.readmeFilename+'">README</a>');
-              component.tags.push("has:readme");
-           }
 
 
-          component.version = component.npm['dist-tags'].latest;
-          component.license = component.npm.license;
-          component.created = component.npm.time.created;
-          component.strCreated = moment(component.created).fromNow();
-          component.modified = component.npm.time.modified;
-          component.strModified = moment(component.modified).fromNow();
-          // modified and created are two keys
-          component.releases = component.npm.versions;
-          component.issueHref = component.npm.bugs.url;
-          component.author = component.npm.author;
-          component.avatar = "https://sigil.cupcake.io/" + component.author.name;
-          component.description = component.npm.description;
-        }
+        // readme
+        if (!_(component.readmeFilename).isEmpty() &&
+            !component.readme.substring(0, 5) === "ERROR") {
+            component.columns['readme'] =
+                $sce.trustAsHtml('<a href="'+component.readmeFilename+'">README</a>');
+            component.tags.push("has:readme");
+         }
+
+
+        component.strCreated = moment(component.created).fromNow();
+        component.strModified = moment(component.modified).fromNow();
+        // modified and created are two keys
+        component.releases = component.versions;
+        component.issueHref = component.bugs.url;
+        component.avatar = "https://sigil.cupcake.io/" + component.author.name;
+        component.downloads = component.npmDownloads;
+        component.tags = component.keywords;
 
         // github
-        if(component.github !== undefined ){
-          component.version = component.npm['dist-tags'].latest;
+        if(component.github !== null){
           component.stars = component.github.stargazers_count;
           component.watchers = component.github.subscribers_count;
           component.forks = component.github.forks_count;
@@ -80,12 +69,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           }else{
             component.contributors = 0;
           }
-
-          // README
-          if(component.npm !== undefined ){
-            // github readme
-            component.readmeSrc = "http://github-raw-cors-proxy.herokuapp.com/"+component.github.full_name+ "/blob/"+component.github.default_branch+"/" + component.npm.readmeFilename;
-          }
+          component.readmeSrc = "http://github-raw-cors-proxy.herokuapp.com/"+component.github.full_name+ "/blob/"+component.github.default_branch+"/" + component.readmeFilename;
 
         }
 
@@ -119,16 +103,14 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         };
 
         var promise;
-        all.$promise = promise = $http.jsonp('http://worker.biojs.net/output.jsonp');
+        //all.$promise = promise = $http.jsonp('http://localhost:3000/all');
 
         // ugly workaround to inject code - try GET
-        promise.error(function(){
-            $http.get('http://worker.biojs.net/output.json').success(function(response) {
-                console.log("protractor json injection successful.");
-                if(all.length === 0){
-                    $window.JSON_CALLBACK(response);
-                }
-            });
+        all.$promise = promise = $http.get('http://workmen.biojs.net/all').success(function(response) {
+            console.log("protractor json injection successful.");
+            if(all.length === 0){
+                $window.JSON_CALLBACK(response);
+            }
         });
 
         Component.list = all;
