@@ -54,6 +54,15 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         component.downloads = component.npmDownloads;
         component.tags = component.keywords;
 
+        // snippets
+        if(component.latest.sniper !== undefined){
+          var baseURL = "http://workmen.biojs.net/demo/" + component.name ;
+          var jsBinURL = "http://workmen.biojs.net/jsbin/" + component.name ;
+          component.snipURL = $sce.trustAsResourceUrl(baseURL);
+          component.firstSnipURL = $sce.trustAsResourceUrl(baseURL + "/" + component.latest.sniper.first);
+          component.firstSnipBinURL = $sce.trustAsResourceUrl(jsBinURL + "/" + component.latest.sniper.first);
+        }
+
         // github
         if(component.github !== null){
           component.stars = component.github.stargazers_count;
