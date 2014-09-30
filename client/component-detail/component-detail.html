@@ -19,17 +19,40 @@
 			<a href=" {{ c.src }}"> 
 				<value-display value="View Code" octicon="mark-github"></value-display>
 			</a>
-			<!--<div class="glyphicon glyphicon-search"></div>-->
-			<!--<div style="text-align: center;">Code</div>-->
 		</div>
 		<div class="col-xs-2">
 			<value-display value="Share" glyph="share-alt"></value-display>
-			<!--<div class="glyphicon glyphicon-share-alt"></div>-->
-			<!--<div style="text-align: center;">Share</div>-->
 		</div>
 	</div>
 
 	<pre style="margin-top: 20px">npm install {{c.name}}</pre>
+
+
+	<div id="first-snippet" ng-if="c.snipURL">
+
+	  <div class="row">
+	  	<div class="col-xs-6">
+	  	</div>
+	  	<div class="col-xs-2 valueBtn">
+	  		<a ng-href=" {{ c.firstSnipURL }}" target="_blank"> 
+	  			<value-display value="New window" glyph="fullscreen"></value-display>
+	  		</a>
+	  	</div>
+	  	<div class="col-xs-2 valueBtn">
+	  		<a ng-href=" {{ c.firstSnipBinURL }}"> 
+	  			<value-display value="Edit" glyph="edit"></value-display>
+	  		</a>
+	  	</div>
+	      <div class="col-xs-2 valueBtn">
+	  		<a ng-href=" {{ c.snipURL }}"> 
+	  			<value-display value="All {{Object.keys(c.sniper.latest.srcs).length}}" glyph="align-justify"></value-display>
+	  		</a>
+	      </div>
+	  </div>
+
+	  <iframe ng-src="{{c.firstSnipURL }}" width="100%" height="400px">
+	  </iframe>
+	</div>
 
 	<div class="panel panel-default" style="margin-top: 20px">
 		<div class="panel-heading"><h3 style="margin: 0">Social</h3></div>
