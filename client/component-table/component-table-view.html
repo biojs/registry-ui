@@ -8,15 +8,15 @@
         <th ng-click="setOrderProp('stars')" ng-class="[{active: orderProp == 'stars'},'listview-pointer']">Stars
         <th ng-click="setOrderProp('downloads')" ng-class="[{active: orderProp == 'downloads'},'listview-pointer']">Downloads
 		<th ng-click="setOrderProp('modified')" ng-class="[{active: orderProp == 'modified'},'listview-pointer']">Modified
-        <th>
+       <!-- <th>
             <tag name="has:readme" active="{{ filter.tagPresent('has:readme') }}"
-                 ng-click="filter.togglePresent('has:readme')"></tag>
+			ng-click="filter.togglePresent('has:readme')"></tag> -->
         <th>
             <tag name="has:demos" active="{{ filter.tagPresent('has:demos') }}"
                  ng-click="filter.togglePresent('has:demos')"></tag>
-        <th>
+        <!-- <th>
             <tag name="has:jsdocs" active="{{ filter.tagPresent('has:jsdocs') }}"
-                 ng-click="filter.togglePresent('has:jsdocs')"></tag>
+			ng-click="filter.togglePresent('has:jsdocs')"></tag> -->
         <th>
             <tag name="has:build" active="{{ filter.tagPresent('has:build') }}"
                  ng-click="filter.togglePresent('has:build')"></tag>
@@ -45,7 +45,7 @@
 		<td>{{ component.stars }}
 		<td>{{ component.downloads }}
 		<td>{{ component.strModified }}
-	    <td ng-repeat="col in ['readme','demos','jsdocs','build','tests']" ng-bind-html="component.columns[col]"></td>
+	    <td ng-repeat="col in ['demos','build','tests']" ng-bind-html="component.columns[col]"></td>
         <td><tag ng-repeat="tag in component.tags | filter:notDisplayedInColumn"
                  name='{{ tag }}'
                  active="{{ filter.tagPresent(tag) }}"

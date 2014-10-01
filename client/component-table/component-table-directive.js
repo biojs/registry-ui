@@ -35,9 +35,7 @@ angular.module('registry').directive('componentTable', function (Component) {
     };
 })
     .constant("knownTags", {
-        'has:readme': { caption: "Readme" },
         'has:demos': { caption: "Demos" },
-        'has:jsdocs': { caption: "JsDocs" },
         'has:build': { caption: "Build" },
         'has:tests': { caption: "Tests" },
     })
