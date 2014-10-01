@@ -1,4 +1,4 @@
-<table class="component-list table">
+<table class="component-list table center-block">
     <thead>
     <tr>
         <th ng-click="setOrderProp('name')" ng-class="[{active: orderProp == 'name'},'listview-pointer']" > Name
@@ -39,7 +39,7 @@
     <!-- TODO: add orderBy -->
     <tr ng-repeat="component in components | filter:filterFn | orderBy:orderProp:orderReverse ">
         <td class="listview-name" ng-click="switchView(component.name)">{{ component.name }}
-        <td>{{ component.description }}
+		<td>{{ component.description | limitTo: 50 }}{{ component.description.length > 50 ? '...' : '' }}</i>
         <td>{{ component.version }}
 		<td><img ng-src="{{ component.avatar}}" width="32" height="32" />
 		<td>{{ component.stars }}

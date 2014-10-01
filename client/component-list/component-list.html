@@ -1,4 +1,4 @@
-<div ng-if="layout == 'table'">
+<div ng-if="layout == 'table'" class="container center-block">
     <component-table filter="filter"></component-table>
 </div>
 
@@ -6,6 +6,8 @@
     <component-cards components="displayedComponents" filter="filter"></component-cards>
 </div>
 
-<a ng-class="{active: layout == 'table'}" ng-click="layout = 'table'" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>
-<a ng-class="{active: layout == 'cards'}" ng-click="layout = 'cards'" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
+<div class="container center-block">
+<a ng-class="{active: layout == 'table'}" ng-click="setLayout('table')" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>
+<a ng-class="{active: layout == 'cards'}" ng-click="setLayout('cards')" class="glyphicon glyphicon-th-large layout-icon" title="Display as cards"></a>
+</div>
 
