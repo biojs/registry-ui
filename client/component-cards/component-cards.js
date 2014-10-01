@@ -15,6 +15,19 @@ angular.module('registry')
             }, true);
 
             $scope.notDisplayedInColumn = $scope.filter.notDisplayedInColumn;
+
+            // TODO: move me to a global place
+            // simple ordering
+            $scope.orderProp = "modified";
+            $scope.orderReverse = true;
+
+            $scope.setOrderProp = function(name){
+                if($scope.orderProp = name){
+                    $scope.orderReverse = ! $scope.orderReverse;
+                }else{
+                    $scope.orderProp = name;
+                }
+            };
         }
     };
 });

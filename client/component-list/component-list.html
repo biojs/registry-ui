@@ -3,7 +3,7 @@
 </div>
 
 <div ng-if="layout == 'cards'">
-    <component-cards components="displayedComponents"></component-cards>
+    <component-cards components="displayedComponents" filter="filter"></component-cards>
 </div>
 
 <a ng-class="{active: layout == 'table'}" ng-click="layout = 'table'" class="glyphicon glyphicon-th-list layout-icon" title="Display as table"></a>

@@ -1,48 +1,23 @@
-<ul class=component-cards> 
-    <li class="component-card" ng-repeat="component in components | filter:filterFn" ng-click="switchView(component.name)">
-        <table>
-            <tbody>
-                <tr>
-                <table id="components-stats">
-                    <tbody>
-                        <tr style="height: 33.33%">
-                            <td style="padding: 5px; width: 25%; white-space: nowrap;">
-                                <h6 ng-show="component.stars" class="octicon octicon-star" style="position: static;"> {{ component.stars }} </h6>
-                                <h6 ng-show="!component.stars" class="octicon octicon-star" style="position: static;"> - </h6>
-                            </td>
-                            <td style="padding: 5px; width: 25%; white-space: nowrap;">
-                                <h6 ng-show="component.download" class="octicon octicon-cloud-download" style="position: static"> {{ component.downloads }} </h6>
-                                <h6 ng-show="!component.download" class="octicon octicon-cloud-download" style="position: static"> - </h6>
-                            </td>
-                            <td style="padding: 5px; width: 25%;  white-space: nowrap;">
-                                <h6 ng-show="component.forks" class="octicon octicon-repo-forked" style="position: static"> {{ component.forks }} </h6>
-                                <h6 ng-show="!component.forks" class="octicon octicon-repo-forked" style="position: static"> - </h6>
-                            </td>
-                            <td style="padding: 5px; width: 25%; twhite-space: nowrap;">
-                                <h6 ng-show="component.version" class="glyphicon glyphicon-barcode" style="position: static"> {{ component.version }} </h6>
-                                <h6 ng-show="!component.version" class="glyphicon glyphicon-barcode" style="position: static"> - </h6>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </tr>
-                <tr>
-                    <table id="components-about">
-                        <tbody>
-                        <tr style="height: 33.33%">
-                            <td style="padding: 5px; white-space: nowrap;">
-                                <h4>{{ component.name }}</h4>
-                            </td>
-                        </tr>
-                        <tr style="height: 33.33%">
-                            <td style="padding: 5px;">
-                                <i>{{ component.description | limitTo: 50 }}{{ component.description.length > 50 ? '...' : '' }}</i>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </tr>
-            </tbody>
-        </table>
-    </li>
-</ul>
+<div class="component-cards row">
+	<div class="col-xs-6 col-md-4 col-lg-3 component-card" ng-repeat="c in components | filter:filterFn | orderBy:orderProp:orderReverse" ng-click="switchView(component.name)">
+		<div class="component-card-inner">
+
+			<div class="panel-body row" ng-init="socialValues = [
+			{  name: 'stars',      octicon: 'star'          },
+			{  name: 'downloads',  octicon: 'cloud-download'  },
+			{  name: 'forks',      octicon: 'repo-forked'        },
+			]">
+				<div class="col-xs-4 pull-right" ng-repeat="v in socialValues">
+					<value-display name=""
+					value="{{ c[v.name] }}"
+	 octicon="{{ v.octicon }}"></value-display>
+				</div>
+			</div>
+
+
+		<h2 style="margin-top: 0; white-space: nowrap;">{{ c.name }}</h2>
+		<i>{{ c.description | limitTo: 50 }}{{ c.description.length > 50 ? '...' : '' }}</i>
+
+		</div>
+	</div>
+</div>
