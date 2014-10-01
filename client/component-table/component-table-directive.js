@@ -13,7 +13,7 @@ angular.module('registry').directive('componentTable', function (Component) {
             $scope.switchView = $scope.$parent.$parent.switchView;
 
             // simple ordering
-            $scope.orderProp = "downloads";
+            $scope.orderProp = "modified";
             $scope.orderReverse = true;
 
             $scope.setOrderProp = function(name){
