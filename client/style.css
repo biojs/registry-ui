@@ -177,6 +177,20 @@ a.home {
   float: left;
   margin-right: 1em;
   margin-bottom: 1em;
+  border: 1px solid #bbbbbb;
+  width: 250px;
+  height: 150px;
+}
+
+.component-card > #components-stats {
+ width: 100%;
+ height: 33.33%;
+ border-collapse: separate;
+}
+
+.component-card > #components-about {
+    width: 100%;
+    border-collapse: separate;
 }
 
 .layout-icon {
