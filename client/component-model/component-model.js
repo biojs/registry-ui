@@ -2,8 +2,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
     function preProcessComponent(component) {
         component.columns = {
-            build: null, tests: null, readme: null, demos: null, jsdocs: null
-        };
+            build: null, tests: null, readme: null, demos: null,         };
         component.tags = [];
         _(component.latest.shields).forEach(function (shield, key) {
             switch (key) {
@@ -14,11 +13,6 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
                 } break;
             }
         });
-              if (false) { // TODO
-            component.columns['demos'] =
-                $sce.trustAsHtml('<a href="???">???</a>');
-            component.tags.push("has:demos");
-        }
         if (false) { // TODO
             component.columns['jsdocs'] =
                 $sce.trustAsHtml('<a href="???">???</a>');
@@ -61,6 +55,11 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           component.snipURL = $sce.trustAsResourceUrl(baseURL);
           component.firstSnipURL = $sce.trustAsResourceUrl(baseURL + "/" + component.latest.sniper.first);
           component.firstSnipBinURL = $sce.trustAsResourceUrl(jsBinURL + "/" + component.latest.sniper.first);
+          component.tags.push("has:demos");
+
+          component.snipNum = Object.keys(component.latest.sniper.srcs).length;
+          component.columns['demos'] =
+              $sce.trustAsHtml('<img src="http://img.shields.io/badge/%23-'+component.snipNum+'-blue.svg">');
         }
 
         // github
@@ -80,6 +79,8 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           }
           component.readmeSrc = "http://github-raw-cors-proxy.herokuapp.com/"+component.github.full_name+ "/blob/"+component.github.default_branch+"/" + component.readmeFilename;
 
+        }else{
+          component.stars = 0;
         }
 
         // copy to lowercase (for searching)

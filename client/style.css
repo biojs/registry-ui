@@ -98,9 +98,9 @@ ul.nav.navbar-nav {
 }
 
 @media (min-width: 1200px) {
-    
+
     .navbar h1 .reg {
-      display: inline;
+        display: inline;
     }
 
 }
@@ -171,34 +171,50 @@ a.home {
 }
 
 .component-cards {
-  list-style-type: none;
-  overflow: auto;
-  margin: 0;
-  margin-top: 2em;
-  padding: 0;
+    margin: 0;
+    margin-top: 2em;
+    padding: 0;
 }
 .component-card {
-  float: left;
-  margin-right: 1em;
-  margin-bottom: 1em;
+    height: 140px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.component-card-inner {
+    border: 1px solid #bbbbbb;
+    margin-right: 1em;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 0.8em;
+}
+
+
+.component-cards > *:nth-child(even) .component-card-inner{
+    background-color: rgba(222,222,222, 0.5);
+}
+
+.component-cards .component-card-inner:hover{
+    background: rgba(200, 54, 54, 0.5); 
 }
 
 .layout-icon {
-  font-size: 2em;
-  cursor: pointer;
-  margin-right: 0.25em;
-  color: #bbb;
+    font-size: 2em;
+    cursor: pointer;
+    margin-right: 0.25em;
+    color: #bbb;
 }
 .layout-icon:hover {
-  text-decoration: none;
-  color: #6bd757;
+    text-decoration: none;
+    color: #6bd757;
 }
 .layout-icon.active {
-  cursor: default;
-  color: #42861d;
+    cursor: default;
+    color: #42861d;
 }
 .layout-icon.active:hover {
-  color: #42861d;
+    color: #42861d;
 }
 
 .component-detail .glyphicon, .component-detail .octicon {

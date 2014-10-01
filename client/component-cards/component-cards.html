@@ -1,6 +1,23 @@
-<ul class=component-cards> 
-  <li class="component-card" ng-repeat="component in displayedComponents">
-    <img src="{{ component.imageUrl }}" width=200 height=100>
-    <h4>{{ component.name }}</h4>
-  </li>
-</ul>
+<div class="component-cards row">
+	<div class="col-xs-6 col-md-4 col-lg-3 component-card" ng-repeat="c in components | filter:filterFn | orderBy:orderProp:orderReverse" ng-click="switchView(c.name)">
+		<div class="component-card-inner">
+
+			<div class="panel-body row" ng-init="socialValues = [
+			{  name: 'stars',      octicon: 'star'          },
+			{  name: 'downloads',  octicon: 'cloud-download'  },
+			{  name: 'forks',      octicon: 'repo-forked'        },
+			]">
+				<div class="col-xs-4 pull-right" ng-repeat="v in socialValues">
+					<value-display name=""
+					value="{{ c[v.name] }}"
+	 octicon="{{ v.octicon }}"></value-display>
+				</div>
+			</div>
+
+
+		<h2 style="margin-top: 0; white-space: nowrap;">{{ c.name }}</h2>
+		<i>{{ c.description | limitTo: 50 }}{{ c.description.length > 50 ? '...' : '' }}</i>
+
+		</div>
+	</div>
+</div>

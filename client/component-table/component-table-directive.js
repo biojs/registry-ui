@@ -13,7 +13,7 @@ angular.module('registry').directive('componentTable', function (Component) {
             $scope.switchView = $scope.$parent.$parent.switchView;
 
             // simple ordering
-            $scope.orderProp = "downloads";
+            $scope.orderProp = "modified";
             $scope.orderReverse = true;
 
             $scope.setOrderProp = function(name){
@@ -35,9 +35,7 @@ angular.module('registry').directive('componentTable', function (Component) {
     };
 })
     .constant("knownTags", {
-        'has:readme': { caption: "Readme" },
         'has:demos': { caption: "Demos" },
-        'has:jsdocs': { caption: "JsDocs" },
         'has:build': { caption: "Build" },
         'has:tests': { caption: "Tests" },
     })
