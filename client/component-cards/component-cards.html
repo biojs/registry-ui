@@ -1,6 +1,48 @@
 <ul class=component-cards> 
-  <li class="component-card" ng-repeat="component in displayedComponents">
-    <img src="{{ component.imageUrl }}" width=200 height=100>
-    <h4>{{ component.name }}</h4>
-  </li>
+    <li class="component-card" ng-repeat="component in components | filter:filterFn" ng-click="switchView(component.name)">
+        <table>
+            <tbody>
+                <tr>
+                <table id="components-stats">
+                    <tbody>
+                        <tr style="height: 33.33%">
+                            <td style="padding: 5px; width: 25%; white-space: nowrap;">
+                                <h6 ng-show="component.stars" class="octicon octicon-star" style="position: static;"> {{ component.stars }} </h6>
+                                <h6 ng-show="!component.stars" class="octicon octicon-star" style="position: static;"> - </h6>
+                            </td>
+                            <td style="padding: 5px; width: 25%; white-space: nowrap;">
+                                <h6 ng-show="component.download" class="octicon octicon-cloud-download" style="position: static"> {{ component.downloads }} </h6>
+                                <h6 ng-show="!component.download" class="octicon octicon-cloud-download" style="position: static"> - </h6>
+                            </td>
+                            <td style="padding: 5px; width: 25%;  white-space: nowrap;">
+                                <h6 ng-show="component.forks" class="octicon octicon-repo-forked" style="position: static"> {{ component.forks }} </h6>
+                                <h6 ng-show="!component.forks" class="octicon octicon-repo-forked" style="position: static"> - </h6>
+                            </td>
+                            <td style="padding: 5px; width: 25%; twhite-space: nowrap;">
+                                <h6 ng-show="component.version" class="glyphicon glyphicon-barcode" style="position: static"> {{ component.version }} </h6>
+                                <h6 ng-show="!component.version" class="glyphicon glyphicon-barcode" style="position: static"> - </h6>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </tr>
+                <tr>
+                    <table id="components-about">
+                        <tbody>
+                        <tr style="height: 33.33%">
+                            <td style="padding: 5px; white-space: nowrap;">
+                                <h4>{{ component.name }}</h4>
+                            </td>
+                        </tr>
+                        <tr style="height: 33.33%">
+                            <td style="padding: 5px;">
+                                <i>{{ component.description | limitTo: 50 }}{{ component.description.length > 50 ? '...' : '' }}</i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </tr>
+            </tbody>
+        </table>
+    </li>
 </ul>
