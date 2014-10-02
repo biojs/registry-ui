@@ -52,9 +52,13 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         if(component.latest.sniper !== undefined){
           var baseURL = "http://workmen.biojs.net/demo/" + component.name ;
           var jsBinURL = "http://workmen.biojs.net/jsbin/" + component.name ;
+          var codePenURL = "http://workmen.biojs.net/codepen/" + component.name ;
+
           component.snipURL = $sce.trustAsResourceUrl(baseURL);
           component.firstSnipURL = $sce.trustAsResourceUrl(baseURL + "/" + component.latest.sniper.first);
           component.firstSnipBinURL = $sce.trustAsResourceUrl(jsBinURL + "/" + component.latest.sniper.first);
+          component.firstSnipCodePenURL = $sce.trustAsResourceUrl(codePenURL + "/" + component.latest.sniper.first);
+
           component.tags.push("has:demos");
 
           component.snipNum = Object.keys(component.latest.sniper.srcs).length;
