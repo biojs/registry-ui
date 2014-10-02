@@ -31,7 +31,7 @@
 	<div id="first-snippet" ng-if="c.snipURL">
 
 	  <div class="row">
-	  	<div class="col-xs-6">
+	  	<div class="col-xs-4">
 	  	</div>
 	  	<div class="col-xs-2 valueBtn">
 	  		<a ng-href=" {{ c.firstSnipURL }}" target="_blank"> 
@@ -43,6 +43,13 @@
 	  			<value-display value="Edit" glyph="edit"></value-display>
 	  		</a>
 	  	</div>
+
+		<div class="col-xs-2 valueBtn">
+			<a ng-href=" {{ c.firstSnipCodePenURL }}" target="_blank"> 
+				<value-display value="Edit (CP)" glyph="edit"></value-display>
+			</a>
+		</div>
+
 	      <div class="col-xs-2 valueBtn">
 	  		<a ng-href=" {{ c.snipURL }}" target="_blank"> 
 				<value-display value="All {{ c.snipNum }}" glyph="align-justify"></value-display>
