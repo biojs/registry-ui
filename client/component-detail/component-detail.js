@@ -7,6 +7,11 @@ angular.module('registry')
   
   $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
+  $scope.uploadDone = function(id){
+    var demoFrame = document.getElementById(id); 
+    demoFrame.height = window.innerHeight * 0.8;
+  }
+
   // get package name from the URL
   var name = $route.current.params.name;
   name = name.trim().toLowerCase();
@@ -49,3 +54,17 @@ angular.module('registry')
     getPackage(name,$scope, $sce);
   });
 });
+
+// callback for frames
+angular.module('registry')
+.directive('iframeOnload', [function(){
+return {
+    scope: {
+        callBack: '&iframeOnload'
+    },
+    link: function(scope, element, attrs){
+        element.on('load', function(){
+            return scope.callBack(element);
+        })
+    }
+}}])
