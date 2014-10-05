@@ -238,6 +238,8 @@ a.home {
 
 .row-centered {
     text-align:right;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 .col-centered {
     display:inline-block;
