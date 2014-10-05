@@ -30,34 +30,38 @@
 
 	<div id="first-snippet" ng-if="c.snipURL">
 
-	  <div class="row">
-	  	<div class="col-xs-4">
-	  	</div>
-	  	<div class="col-xs-2 valueBtn">
+	  <div class="row row-centered">
+	  	<div class="col-xs-2 valueBtn col-centered">
 	  		<a ng-href=" {{ c.firstSnipURL }}" target="_blank"> 
 	  			<value-display value="New window" glyph="fullscreen"></value-display>
 	  		</a>
 	  	</div>
-	  	<div class="col-xs-2 valueBtn">
+	  	<div class="col-xs-2 valueBtn col-centered">
 	  		<a ng-href=" {{ c.firstSnipBinURL }}" target="_blank"> 
 	  			<value-display value="Edit" glyph="edit"></value-display>
 	  		</a>
 	  	</div>
 
-		<div class="col-xs-2 valueBtn">
+		<div class="col-xs-2 valueBtn col-centered">
 			<a ng-href=" {{ c.firstSnipCodePenURL }}" target="_blank"> 
 				<value-display value="Edit (CP)" glyph="edit"></value-display>
 			</a>
 		</div>
 
-	      <div class="col-xs-2 valueBtn">
+	      <div class="col-xs-2 valueBtn col-centered">
 	  		<a ng-href=" {{ c.snipURL }}" target="_blank"> 
-				<value-display value="All {{ c.snipNum }}" glyph="align-justify"></value-display>
+				<value-display value="All ({{ c.snipNum }})" glyph="align-justify"></value-display>
 	  		</a>
 	      </div>
+  		  <div class="col-xs-2 valueBtn col-centered" ng-if="c.events">
+	  		<a ng-href=" {{ c.src  + '/blob/' + c.github.default_branch + '/events.json' }}" target="_blank"> 
+				<value-display value="{{ _.size(c.events) }} events" octicon="radio-tower"></value-display>
+	  		</a>
+	      </div>
+
 	  </div>
 
-	  <iframe ng-src="{{c.firstSnipURL }}" width="100%" height="400px">
+	  <iframe ng-src="{{c.firstSnipURL }}" id='demo-frame' width="100%" height="auto" iframe-onload="uploadDone('demo-frame')">
 	  </iframe>
 	</div>
 

@@ -239,3 +239,17 @@ a.home {
 .detail-first-row {
     margin-top: 20px;
 }
+
+.row-centered {
+    text-align:right;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
