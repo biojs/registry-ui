@@ -7,9 +7,43 @@ angular.module('registry')
   
   $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
-  $scope.uploadDone = function(id){
+  $scope.frameLoaded = function(id){
     var demoFrame = document.getElementById(id); 
-    demoFrame.height = window.innerHeight * 0.8;
+  }
+
+  // TODO: remove listener when the view gets destroyed
+  window.addEventListener("message", receiveMessage, false);
+  function log(logger,eventName,data){
+    if(data !== undefined){
+      text = eventName  + " triggered with " + removeCircularRefs(data);
+    }
+    message = document.createElement("div");
+    message.textContent = text;
+  
+    // insert the div always at the top
+    if(logger.childNodes.length > 0){
+      logger.insertBefore(message,logger.firstChild);
+    }else{
+      logger.appendChild(message);
+    }
+  
+    // cleanup
+    if(logger.childNodes.length > 10){
+      logger.removeChild(logger.lastChild);
+    }
+  }
+
+  function removeCircularRefs(obj){
+    return JSON.stringify(obj, function( key, value) {
+      if( key == 'parent') { return value.id;}
+      else {return value;}
+    })
+  }
+
+  function receiveMessage(event)
+  {
+    console.log("cors", event.data);
+    log(document.getElementById("evt-console"), event.data.name, event.data.data);
   }
 
   // get package name from the URL
@@ -64,7 +98,7 @@ return {
     },
     link: function(scope, element, attrs){
         element.on('load', function(){
-            return scope.callBack(element);
+            return scope.callBack();
         })
     }
 }}])
