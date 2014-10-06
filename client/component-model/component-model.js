@@ -61,9 +61,12 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
           component.tags.push("has:demos");
 
-          component.snipNum = Object.keys(component.latest.sniper.srcs).length;
-          component.columns['demos'] =
+          // maybe the github repo might be wrong
+          if(component.latest.sniper.srcs != undefined){
+            component.snipNum = Object.keys(component.latest.sniper.srcs).length;
+            component.columns['demos'] =
               $sce.trustAsHtml('<img src="http://img.shields.io/badge/%23-'+component.snipNum+'-blue.svg">');
+          }
         }
 
         // github
