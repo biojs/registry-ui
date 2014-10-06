@@ -64,8 +64,9 @@
 	  <iframe ng-src="{{ c.firstSnipURL }}" id='demo-frame' width="100%" height="400px" iframe-onload="frameLoaded('demo-frame')">
 	  </iframe>
 
-	  	Event console:
-		<div id="evt-console" height=100px ng-if="c.events">
+	<div class="panel panel-default" style="margin-top: 20px">
+		<div class="panel-heading"><h3 style="margin: 0">Event console</h3></div>
+		<div id="evt-console" height=100px ng-if="c.events" class="panel-body">
 
 		</div>
 	</div>
