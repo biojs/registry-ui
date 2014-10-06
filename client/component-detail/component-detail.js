@@ -7,12 +7,11 @@ angular.module('registry')
   
   $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
-  $scope.uploadDone = function(id){
+  $scope.frameLoaded = function(id){
     var demoFrame = document.getElementById(id); 
-    demoFrame.height = window.innerHeight * 0.8;
-    console.log(demoFrame.eventbus);
   }
 
+  // TODO: remove listener when the view gets destroyed
   window.addEventListener("message", receiveMessage, false);
   function log(logger,eventName,data){
     if(data !== undefined){
@@ -99,7 +98,7 @@ return {
     },
     link: function(scope, element, attrs){
         element.on('load', function(){
-            return scope.callBack(element);
+            return scope.callBack();
         })
     }
 }}])
