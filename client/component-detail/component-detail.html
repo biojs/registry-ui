@@ -110,9 +110,9 @@
 
     <div class="panel panel-default" style="margin-top: 20px">
         <div class="panel-heading"><h3 style="margin: 0">Contributors</h3></div>
-        <div class="panel-body">
-            <div ng-repeat="author in c.github.contribs | orderBy: 'contributions'" class="row">
-				<div class="col-xs-3">
+        <div class="panel-body container-fluid">
+			<div clas="row">
+            	<div ng-repeat="author in c.github.contribs | orderBy:'contributions':true" class="col-xs-2 col-lg-1">
 					<a ng-href='https://github.com/{{ author.login }}'><img ng-src='{{ author.avatar_url}}&s=50' /> </a>
                 	<div>{{ author.login }}</div>
                 	<div>{{ author.contributions}}</div>
