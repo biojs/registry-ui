@@ -97,7 +97,6 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         }
 
 
-        component.issues = 0;
         component.citeHref = "";
         component.readme = "";
     }
