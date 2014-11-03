@@ -86,9 +86,7 @@
 				<value-display name="{{ v.name }}"
 				               value="{{ c[v.name] }}"
 				   octicon="{{ v.octicon }}"></value-display>
-			</div>
-		</div>
-	</div>
+			</div> </div> </div>
 
 	<div class="panel panel-default" style="margin-top: 20px">
 		<div class="panel-heading"><h3 style="margin: 0">Time & Stats</h3></div>
@@ -112,13 +110,14 @@
 
     <div class="panel panel-default" style="margin-top: 20px">
         <div class="panel-heading"><h3 style="margin: 0">Contributors</h3></div>
-        <div class="panel-body row">
-            <table class="table">
-            <tr ng-repeat="(author,stats) in c.github.contribs | orderBy: 'totals'">
-                <td>{{ author }}</td>
-                <td>{{ stats.totals }} </td>
-            </tr>
-        </table>
+        <div class="panel-body">
+            <div ng-repeat="author in c.github.contribs | orderBy: 'contributions'" class="row">
+				<div class="col-xs-3">
+					<a ng-href='https://github.com/{{ author.login }}'><img ng-src='{{ author.avatar_url}}&s=50' /> </a>
+                	<div>{{ author.login }}</div>
+                	<div>{{ author.contributions}}</div>
+                </div>
+            </div>
         </div>
     </div>
 
