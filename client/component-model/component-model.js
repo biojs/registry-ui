@@ -44,7 +44,11 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         // modified and created are two keys
         component.releases = component.versions;
         component.issueHref = component.bugs.url;
-        component.avatar = "https://sigil.cupcake.io/" + component.author.name;
+
+        if(component.author != undefined){
+          component.avatar = "https://sigil.cupcake.io/" + component.author.name;
+        }
+
         component.downloads = component.npmDownloads;
         component.tags = component.keywords;
 
