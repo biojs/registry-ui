@@ -75,6 +75,9 @@ angular.module('registry')
         // workaround to translated escaped new lines
         response = response.split("\\n").join("\n");
 
+        response = response.replace(/\\'/g, "'");
+        response = response.replace(/\\"/g, '"');
+
         var html = marked( response );
 
        scope.c.readme = sce.trustAsHtml(html);
