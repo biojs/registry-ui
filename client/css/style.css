@@ -42,15 +42,23 @@ tr {
     color: #fff;
 }
 
-.happy:hover {
+.happy:hover 
     color: #fff;
+}
+
+tr:hover {
+    background: #ddd;
+}
+
+.link:hover {
+    opacity: 0.5;
 }
 
 .navbar {
     border: 0;
     padding: 1ex 0;
     border-bottom: 1px solid #eee;
-    background: #fff;
+    background: rgba(0,0,0,.05);
 }
 
 .navbar h1 {
@@ -76,7 +84,7 @@ tr {
 
 ul.nav.navbar-nav {
     display: none;
-    margin-left: 50px
+    margin-left: 30%
 }
 
 @media (min-width: 400px) {
@@ -85,11 +93,11 @@ ul.nav.navbar-nav {
     }
 
     .navbar-nav li a {
-        line-height: 40px;
+        line-height: 20px;
     }
     
     .navbar-nav li input {
-        line-height: 40px;
+        line-height: 20px;
     }
 
     .navbar-nav, .navbar-brand {
@@ -98,9 +106,9 @@ ul.nav.navbar-nav {
 }
 
 @media (min-width: 1200px) {
-
+    
     .navbar h1 .reg {
-        display: inline;
+      display: inline;
     }
 
 }
@@ -131,6 +139,7 @@ ul.nav.navbar-nav {
 }
 
 .component-search input {
+    
     font-size: 1.5em;
     width: 100%;
     padding: 0.2em;
@@ -171,50 +180,34 @@ a.home {
 }
 
 .component-cards {
-    margin: 0;
-    margin-top: 2em;
-    padding: 0;
+  list-style-type: none;
+  overflow: auto;
+  margin: 0;
+  margin-top: 2em;
+  padding: 0;
 }
 .component-card {
-    height: 140px;
-    padding: 0;
-    cursor: pointer;
-}
-
-.component-card-inner {
-    border: 1px solid #bbbbbb;
-    margin-right: 1em;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-bottom: 5px;
-    margin-bottom: 0.8em;
-}
-
-
-.component-cards > *:nth-child(even) .component-card-inner{
-    background-color: rgba(222,222,222, 0.5);
-}
-
-.component-cards .component-card-inner:hover{
-    background: rgba(200, 54, 54, 0.5); 
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 .layout-icon {
-    font-size: 2em;
-    cursor: pointer;
-    margin-right: 0.25em;
-    color: #bbb;
+  font-size: 2em;
+  cursor: pointer;
+  margin-right: 0.25em;
+  color: #bbb;
 }
 .layout-icon:hover {
-    text-decoration: none;
-    color: #6bd757;
+  text-decoration: none;
+  color: #6bd757;
 }
 .layout-icon.active {
-    cursor: default;
-    color: #42861d;
+  cursor: default;
+  color: #42861d;
 }
 .layout-icon.active:hover {
-    color: #42861d;
+  color: #42861d;
 }
 
 .component-detail .glyphicon, .component-detail .octicon {
@@ -238,18 +231,4 @@ a.home {
 }
 .detail-first-row {
     margin-top: 20px;
-}
-
-.row-centered {
-    text-align:right;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-.col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
 }
