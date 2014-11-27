@@ -43,7 +43,8 @@
              <td><img ng-src="{{ component.avatar}}" width="42" height="42" />
         <td class="listview-name">
             <div style="float: left; display: inline-block; margin-right: 10px">
-                <h2 class="link" ng-click="switchView(component.name)" style="margin-top: 0; white-space: nowrap; font-size:18px" class="ng-binding"> {{ component.name }} <span style="font-size:10px">{{component.version}} </span> <br> <span style="font-size:14px;color:steelblue">{{ component.author.name }}</span></h2> 
+				<h2 class="link" ng-click="switchView(component.name)" style="margin-top: 0; white-space: nowrap; font-size:18px" class="ng-binding"> {{ component.name }} <span style="font-size:10px">{{component.version}} </span> <br></h2>
+				<div style="font-size:14px; margin-top: -7px;padding-bottom: 5px">{{ component.author.name }}</div>
                 <p class="ng-binding"> {{component.description | limitTo: 120 }}{{ component.description.length > 50 ? '...' : '' }}</i></p> 
                 <tag ng-repeat="tag in component.tags | filter:notDisplayedInColumn"
                  name='{{ tag }}'
