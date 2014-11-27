@@ -58,7 +58,7 @@
 		<td>{{ component.strModified }}
 		<td> 
 			<span ng-if="component.snipURL">
-			<img width=133 height=100 src="http://screenshoter.biojs.net/?url=workmen.biojs.net/demo/{{ component.name }}/{{ component.latest.sniper.first}}&delay=2&resizeWidth=133&resizeHeight=100&width=800&height=600"></img>
+			<img width=133 height=100 src="http://screenshoter.biojs.net/?url=workmen.biojs.net/demo/{{ component.name }}/{{ component.latest.sniper.first}}&delay=2&resizeWidth=133&resizeHeight=100&width=800&height=600" fallback-src="img/no_screenshot.svg"></img>
 
 			<!-- <div class="text-center" > ({{ component.snipNum }} demos) </div> -->
 		</span>
