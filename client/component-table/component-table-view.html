@@ -21,6 +21,7 @@
         <th>
             <tag name="has:demos" active="{{ filter.tagPresent('has:demos') }}"
                  ng-click="filter.togglePresent('has:demos')"></tag>
+
        <!--  <th>
             <tag name="has:readme" active="{{ filter.tagPresent('has:readme') }}"
             ng-click="filter.togglePresent('has:readme')"></tag> -->
@@ -33,17 +34,7 @@
         <th>
             <tag name="has:tests" active="{{ filter.tagPresent('has:tests') }}"
                  ng-click="filter.togglePresent('has:tests')"></tag> -->
-    <!--    
-		<th>Author
-		<th>Forks
-        <th>Issues
-		<th>Watchers
-		<th>License
-		<th>Created
-		<th>Releases
-		<th>Commits
-		<th>Cite -->
-        </tr>
+       </tr>
     </thead>
     <tbody>
     <!-- TODO: add orderBy -->
@@ -60,12 +51,17 @@
                  ng-click="filter.togglePresent(tag)"></tag>
             </div>
 		<!-- <td>{{ component.description | limitTo: 50 }}{{ component.description.length > 50 ? '...' : '' }}</i> -->
-        <!-- <td>{{ component.version }} -->
 		<td><!-- Place this tag where you want the button to render. -->
         <a class="button button-primary button-circle button-action">{{ component.stars }}</a>
 		<td><a class="button button-primary button-circle button-action">{{ component.downloads }}</a>
 		<td>{{ component.strModified }}
-	    <td ng-repeat="col in ['demos','readme']" ng-bind-html="component.columns[col]"></td>
+		<td> 
+			<span ng-if="component.snipURL">
+			<img width=133 height=100 src="http://screenshoter.biojs.net/?url=workmen.biojs.net/demo/{{ component.name }}/{{ component.latest.sniper.first}}&delay=2&resizeWidth=133&resizeHeight=100&width=800&height=600"></img>
+
+			<!-- <div class="text-center" > ({{ component.snipNum }} demos) </div> -->
+		</span>
+
         <!-- <td><tag ng-repeat="tag in component.tags | filter:notDisplayedInColumn"s
                  name='{{ tag }}'
                  active="{{ filter.tagPresent(tag) }}"
