@@ -44,13 +44,13 @@ angular.module('registry').directive('componentTable', function (Component) {
     })
 
 
-angular.module("registry").directive('fallbackSrc', function () {
-  var fallbackSrc = {
-    link: function postLink(scope, iElement, iAttrs) {
+angular.module("registry").directive('fallbackHide', function () {
+  var fallbackHide = {
+    link: function postLink(scope, iElement) {
       iElement.bind('error', function() {
-        angular.element(this).attr("src", iAttrs.fallbackSrc);
+        angular.element(this).attr("visibility", "hidden");
       });
     }
    }
-   return fallbackSrc;
+   return fallbackHide;
 });
