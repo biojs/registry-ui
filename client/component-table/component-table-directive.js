@@ -48,7 +48,7 @@ angular.module("registry").directive('fallbackHide', function () {
   var fallbackHide = {
     link: function postLink(scope, iElement) {
       iElement.bind('error', function() {
-        angular.element(this).attr("visibility", "hidden");
+        this.style.visibility = "hidden";
       });
     }
    }
