@@ -74,7 +74,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         }
 
         // github
-        if(component.github !== null){
+        if(component.github !== null && component.github.owner != undefined){
           component.starbutton = $sce.trustAsResourceUrl("http://ghbtns.com/github-btn.html?user=" + component.github.owner.login 
                                         + "&repo=" + component.name + "&type=watch&count=true");
           component.stars = component.github.stargazers_count;
@@ -93,6 +93,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
           component.readmeSrc = "http://github-raw-cors-proxy.herokuapp.com/"+component.github.full_name+ "/blob/"+component.github.default_branch+"/" + component.readmeFilename;
 
         }else{
+          console.log("no github repo found for %s", component.name);
           component.stars = 0;
         }
 
