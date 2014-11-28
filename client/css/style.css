@@ -229,6 +229,11 @@ a.home {
 .component-detail .valueBtn a:hover {
     text-decoration: none;
 }
+
+#biojs-logo-link{
+    text-decoration: none;
+    color: #777;
+}
 .detail-first-row {
     margin-top: 20px;
 }
