@@ -55,6 +55,9 @@
         <div class="col-md-7">
            <component-search filter="filter"></component-search>
         </div>
+		<div class"col-md-2" ng-if="view == 'list'">
+		{{ displayedComponents.length }}
+		</div>
 
 
         <div class="col-md-5 filter-box" ng-if="!filter.empty()" ng-cloak>

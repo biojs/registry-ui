@@ -1,18 +1,20 @@
-angular.module('registry').service("Component", function ($http, $window, $sce) {
+angular.module('registry').service("Component", function ($http, $window, $sce, $q) {
 
     function preProcessComponent(component) {
         component.columns = {
             build: null, tests: null, readme: null, demos: null,  reference: null, website: null };
         component.tags = [];
-        _(component.latest.shields).forEach(function (shield, key) {
-            switch (key) {
-                case 'build': case 'tests': case 'website': case 'reference':{
-                    component.columns[key] =
-                        $sce.trustAsHtml('<a class="shield" href="'+shield.href+'"><img src="'+shield.img+'"></a>');
-                    component.tags.push("has:"+key);
-                } break;
-            }
-        });
+        if(component.latest){
+          _(component.latest.shields).forEach(function (shield, key) {
+              switch (key) {
+                  case 'build': case 'tests': case 'website': case 'reference':{
+                      component.columns[key] =
+                          $sce.trustAsHtml('<a class="shield" href="'+shield.href+'"><img src="'+shield.img+'"></a>');
+                      component.tags.push("has:"+key);
+                  } break;
+              }
+          });
+        }
         if (false) { // TODO
             component.columns['jsdocs'] =
                 $sce.trustAsHtml('<a href="???">???</a>');
@@ -43,7 +45,10 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         component.strModified = moment(component.modified).fromNow();
         // modified and created are two keys
         component.releases = component.versions;
-        component.issueHref = component.bugs.url;
+
+        if(component.bugs){
+          component.issueHref = component.bugs.url;
+        }
 
         if(component.author != undefined){
           component.avatar = "https://sigil.cupcake.io/" + component.author.name;
@@ -53,7 +58,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         component.tags = component.keywords;
 
         // snippets
-        if(component.latest.sniper !== undefined){
+        if(component.latest !== undefined && component.latest.sniper !== undefined){
           var baseURL = "http://workmen.biojs.net/demo/" + component.name ;
           var jsBinURL = "http://workmen.biojs.net/jsbin/" + component.name ;
           var codePenURL = "http://workmen.biojs.net/codepen/" + component.name ;
@@ -74,7 +79,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
         }
 
         // github
-        if(component.github !== null && component.github.owner != undefined){
+        if(component.github !== undefined && component.github.owner !== undefined){
           component.starbutton = $sce.trustAsResourceUrl("http://ghbtns.com/github-btn.html?user=" + component.github.owner.login 
                                         + "&repo=" + component.name + "&type=watch&count=true");
           component.stars = component.github.stargazers_count;
@@ -106,7 +111,20 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
         component.citeHref = "";
         component.readme = "";
+
+        return component;
     }
+
+    function getPackage(name,components){
+      for(var index in components){
+        // search for package - probably there is a more efficient way
+        if(components[index].name === name){
+          return index;
+        }
+      }
+      return -1;
+    }
+ 
 
     function Component() {}
     Component.prototype = {};
@@ -114,31 +132,45 @@ angular.module('registry').service("Component", function ($http, $window, $sce) 
 
     Component.list = [];
 
+    Component.single = function single(name) {
+        var p = $q.defer();
+        var url = 'http://workmen.biojs.net/detail/' + name;
+        //url = 'http://localhost:3000/detail/'+ name;
+        $http.get(url).success(function(resp) {
+            //all.push(resp[key]);
+            var com = preProcessComponent(resp);
+            var index = getPackage(name,Component.list);
+            if(index >= 0){
+              Component.list[index] = com;
+            }else{
+              Component.list.push(com);
+            }
+            p.resolve(com);
+        });
+        return p.promise;
+    };
+
     Component.query = function query() {
         var all = [];
 
-
-        $window.JSON_CALLBACK = function JSON_CALLBACK(resp) {
-            Object.keys(resp).forEach(function(key) {
-                all.push(resp[key]);
-                preProcessComponent(resp[key]);
-            });
-        };
-
-        var promise;
-        //all.$promise = promise = $http.jsonp('http://localhost:3000/all');
+        var p = $q.defer();
 
         // ugly workaround to inject code - try GET
-        all.$promise = promise = $http.get('http://workmen.biojs.net/all').success(function(response) {
-            console.log("protractor json injection successful.");
-            if(all.length === 0){
-                $window.JSON_CALLBACK(response);
-            }
-        });
-
-        Component.list = all;
-
-        return all;
+        var url = 'http://workmen.biojs.net/all?short=1';
+        //url = 'http://localhost:3000/all?short=1';
+          $http.get(url).success(function(resp) {
+              if(all.length === 0){
+                Object.keys(resp).forEach(function(key) {
+                  all.push(resp[key]);
+                  preProcessComponent(resp[key]);
+                });
+                Component.list = all;
+                p.resolve(all);
+              }else{
+                  p.reject("already loaded");
+              }
+          });
+        return p.promise;
     };
 
     return Component;
