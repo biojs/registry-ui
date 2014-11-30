@@ -20,8 +20,8 @@
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
-        <div class="navbar-brand"><a href="http://biojs.net"><img alt="BioJS logo - a registry of biological visualizations" src=img/logo.png width=50 height=50></a>
-                    <h1 style="margin-left:0px;font-size:45px">BioJS <span class=reg>Registry </span><form></h1> 
+        <div class="navbar-brand"><a href="#"><img alt="BioJS logo - a registry of biological visualizations" src=img/logo.png width=50 height=50></a>
+			<h1 style="margin-left:0px;font-size:45px"><a href="http://biojs.net" id="biojs-logo-link" >BioJS </a> <span class=reg>Registry </span><form></h1> 
  <!--  <input ng-model="filter.searchTerm" id="search" name="search" placeholder="e.g. proteins" autofocus style="
     width: 650px;
     height: 35px;
@@ -54,11 +54,13 @@
 
         <div class="col-md-7">
            <component-search filter="filter"></component-search>
+           <div class"col-md-2" ng-if="view == 'list'">
+             <span style="font-size:12px; margin-left:2%; margin-top:2%">{{ displayedComponents.length }} components found</span>
+           </div>
         </div>
 
 
         <div class="col-md-5 filter-box" ng-if="!filter.empty()" ng-cloak>
-
 
             <span class='filter-label glyphicon glyphicon-filter'></span>
 
@@ -74,6 +76,7 @@
                      ng-click="filter.togglePresent(tag)"></tag>
             </div>
         </div>
+
     </div>
 
 	<!-- components -->
@@ -122,4 +125,23 @@
 
 <!-- Place this tag right after the last button or just before your close body tag. -->
 <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51509688-4', 'auto');
+  ga('send', 'pageview');
+
+app.run(function ($rootScope, $location) {
+    $rootScope.$on('$routeChangeSuccess', function(){
+        ga('send', 'pageview', $location.path());
+    });
+});
+
+</script>
+
 </body>

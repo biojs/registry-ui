@@ -113,7 +113,7 @@
         <div class="panel-body container-fluid">
 			<div clas="row">
             	<div ng-repeat="author in c.github.contribs | orderBy:'contributions':true" class="col-xs-2 col-lg-1">
-					<a ng-href='https://github.com/{{ author.login }}'><img ng-src='{{ author.avatar_url}}&s=50' /> </a>
+					<a ng-href='https://github.com/{{ author.login }}'><img ng-src='{{ author.avatar_url}}&s=50' width=50 height=50 /> </a>
                 	<div>{{ author.login }}</div>
                 	<div>{{ author.contributions}}</div>
                 </div>

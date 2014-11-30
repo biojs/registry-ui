@@ -4,7 +4,7 @@ angular.module('registry')
 
     function ComponentFilter() {
         this.tags = [];
-        this.searchTerm = null;
+        this.searchTerm = undefined;
     }
 
     ComponentFilter.prototype = {
@@ -30,8 +30,9 @@ angular.module('registry')
         notDisplayedInColumn: function (tag) {
             return !(tag in tagsDisplayedInOwnColumn);
         },
-        match: function match(component) {
 
+        match: function match(component) {
+          
              // there must be a match for each of the search terms
              var bResult = true;
 
