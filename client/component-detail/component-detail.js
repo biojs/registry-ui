@@ -88,8 +88,17 @@ angular.module('registry')
           response = response.replace(/\\"/g, '"');
   
           var html = marked( response );
-  
-         scope.c.readme = $sce.trustAsHtml(html);
+
+          console.log(scope.c);
+          var regex = /src="((?!http).*?)(?=")/mg;
+          html = html.replace(regex,function(match){
+            return 'src="' + scope.c.github.raw_url + match.substring(5);
+          });
+
+          scope.c.readme = $sce.trustAsHtml(html);
+
+
+          fixImgLinks(document.getElementById("readme", "url"));
          })
          .error(function(response){
              console.log("error");
@@ -117,3 +126,4 @@ return {
         })
     }
 }}])
+
