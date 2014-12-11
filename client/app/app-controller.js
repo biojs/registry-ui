@@ -31,6 +31,9 @@ angular.module('registry').controller('AppController', function ($scope, $route,
     }else{
       $scope.view = 'list';
     }
+
+    // let google know
+    ga('send', 'pageview', $location.path());
    })
 
 	//// Show components that match the current filter

@@ -75,7 +75,7 @@ angular.module('registry')
   function getReadme(pkg){
   
     scope = $scope;
-     console.log("received readme:" +scope.c.readmeSrc);
+     //console.log("received readme:" +scope.c.readmeSrc);
      $http.get(scope.c.readmeSrc)
         .success(function(response) {
   
@@ -89,16 +89,12 @@ angular.module('registry')
   
           var html = marked( response );
 
-          console.log(scope.c);
           var regex = /src="((?!http).*?)(?=")/mg;
           html = html.replace(regex,function(match){
             return 'src="' + scope.c.github.raw_url + match.substring(5);
           });
 
           scope.c.readme = $sce.trustAsHtml(html);
-
-
-          fixImgLinks(document.getElementById("readme", "url"));
          })
          .error(function(response){
              console.log("error");

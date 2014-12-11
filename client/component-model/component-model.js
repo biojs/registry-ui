@@ -3,6 +3,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
     function preProcessComponent(component) {
         component.columns = {
             build: null, tests: null, readme: null, demos: null,  reference: null, website: null };
+        /*
         component.tags = [];
         if(component.latest){
           _(component.latest.shields).forEach(function (shield, key) {
@@ -20,6 +21,9 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
                 $sce.trustAsHtml('<a href="???">???</a>');
             component.tags.push("has:jsdocs");
         }
+        // remove duplicates - angular doesn't like them
+        component.tags = _.uniq(component.tags);
+        */
 
         //// use a little ✗ for missing columns
         _(component.columns).forEach(function (colHTML, type) {
@@ -37,7 +41,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
             !component.readme.substring(0, 5) === "ERROR") {
             component.columns['readme'] =
                 $sce.trustAsHtml('<a href="'+component.readmeFilename+'">README</a>');
-            component.tags.push("has:readme");
+            //component.tags.push("has:readme");
          }
 
 
@@ -56,6 +60,8 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
 
         component.downloads = component.npmDownloads;
         component.tags = component.keywords;
+        // remove duplicates - angular doesn't like them
+        component.tags = _.uniq(component.tags);
 
         // snippets
         if(component.latest !== undefined && component.latest.sniper !== undefined){
