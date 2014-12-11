@@ -34,6 +34,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
 
         // defaults
         component.avatar = "https://sigil.cupcake.io/" + component.name;
+        component.registryHeight = 400;
 
 
         // readme
@@ -54,7 +55,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
           component.issueHref = component.bugs.url;
         }
 
-        if(component.author != undefined){
+        if(component.author !== undefined){
           component.avatar = "https://sigil.cupcake.io/" + component.author.name;
         }
 
@@ -82,6 +83,12 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
             component.columns['demos'] =
               $sce.trustAsHtml('<img src="http://img.shields.io/badge/%23-'+component.snipNum+'-blue.svg">');
           }
+        }
+
+        // biojs stuff
+        if(component.latest !== undefined && component.latest.biojs !== undefined){
+          component.registryHeight = component.latest.biojs.registryHeight || component.registryHeight;
+          component.registryHeight.trim().replace("px", ""); // just in case
         }
 
         // github
