@@ -68,16 +68,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
 
         // snippets
         if(component.latest !== undefined && component.latest.sniper !== undefined){
-          var baseURL = "http://workmen.biojs.net/demo/" + component.name ;
-          var jsBinURL = "http://workmen.biojs.net/jsbin/" + component.name ;
-          var codePenURL = "http://workmen.biojs.net/codepen/" + component.name ;
-
-          component.snipURL = $sce.trustAsResourceUrl(baseURL);
-          component.firstSnipURL = baseURL + "/" + component.latest.sniper.first;
-          component.firstSnipBinURL = $sce.trustAsResourceUrl(jsBinURL + "/" + component.latest.sniper.first);
-          component.firstSnipCodePenURL = $sce.trustAsResourceUrl(codePenURL + "/" + component.latest.sniper.first);
-
-
+         
           // maybe the github repo might be wrong
           if(component.latest.sniper.srcs != undefined){
             component.snipNum = Object.keys(component.latest.sniper.srcs).length;
@@ -85,6 +76,9 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
               $sce.trustAsHtml('<img src="http://img.shields.io/badge/%23-'+component.snipNum+'-blue.svg">');
             component.snips = _.keys(component.latest.sniper.srcs);
           }
+
+          component.selectedSnip = component.latest.sniper.first || component.snips[0];
+          updateSnippets(component);
 
           component.tags.push("has:demos");
         }

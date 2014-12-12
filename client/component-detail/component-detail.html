@@ -32,24 +32,24 @@
 
 	  <div class="row row-centered">
 	  	<div class="col-xs-2 valueBtn col-centered">
-	  		<a ng-href=" {{ c.firstSnipURL }}" target="_blank"> 
+	  		<a ng-href=" {{ c.selectedSnipURL | trusted }}" target="_blank"> 
 	  			<value-display value="New window" glyph="fullscreen"></value-display>
 	  		</a>
 	  	</div>
 	  	<div class="col-xs-2 valueBtn col-centered">
-	  		<a ng-href=" {{ c.firstSnipBinURL }}" target="_blank"> 
+	  		<a ng-href=" {{ c.selectedSnipBinURL | trusted }}" target="_blank"> 
 	  			<value-display value="Edit" glyph="edit"></value-display>
 	  		</a>
 	  	</div>
 
 		<div class="col-xs-2 valueBtn col-centered">
-			<a ng-href=" {{ c.firstSnipCodePenURL }}" target="_blank"> 
+			<a ng-href=" {{ c.selectedSnipCodePenURL | trusted }}" target="_blank"> 
 				<value-display value="Edit (CP)" glyph="edit"></value-display>
 			</a>
 		</div>
 
 	      <div class="col-xs-2 valueBtn col-centered">
-	  		<a ng-href=" {{ c.snipURL }}" target="_blank"> 
+	  		<a ng-href=" {{ c.snipURL | trusted}}" target="_blank"> 
 				<value-display value="All ({{ c.snipNum }})" glyph="align-justify"></value-display>
 	  		</a>
 	      </div>
@@ -69,7 +69,7 @@
 
 	  </div>
 
-	  <iframe ng-src="{{ c.firstSnipURL | trusted }}" id='demo-frame' width="100%" height="{{ c.registryHeight }}px" iframe-onload="frameLoaded('demo-frame')">
+	  <iframe ng-src="{{ c.selectedSnipURL | trusted }}" id='demo-frame' width="100%" height="{{ c.registryHeight }}px" iframe-onload="frameLoaded('demo-frame')">
 	  </iframe>
 	</div>
 
