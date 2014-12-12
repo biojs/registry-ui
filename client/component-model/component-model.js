@@ -125,6 +125,19 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
           component.lDescription = component.description.toLowerCase();
         }
 
+        // biojs settings overwrite github
+        if(component.latest !== undefined && component.latest.biojs !== undefined){
+          var cBio = component.latest.biojs;
+          if(cBio.logo !== undefined){
+            var hasFileExtension = /^.*\.[^\\]+$/;
+            // fallback to a default logo
+            if(! hasFileExtension.test(cBio.logo)){
+              cBio.logo += "logo.png";
+            }
+            cBio.logo = component.github.raw_url + cBio.logo;
+            component.avatar = cBio.logo;
+          }
+        }
 
         component.citeHref = "";
         component.readme = "";
