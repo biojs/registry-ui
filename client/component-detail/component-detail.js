@@ -9,6 +9,11 @@ angular.module('registry')
 
   $scope.frameLoaded = function(id){
     var demoFrame = document.getElementById(id); 
+  };
+
+  $scope.changeDemo = function(){
+    var url = "http://workmen.biojs.net/demo/" + $scope.c.name + "/" + $scope.c.selectedSnip;
+    $scope.c.firstSnipURL = url;
   }
 
   // TODO: remove listener when the view gets destroyed
@@ -103,6 +108,12 @@ angular.module('registry')
 
   Component.single(name).then(function(pkg){
     $scope.c = pkg;
+
+    // set other default values
+    if(pkg.latest.sniper){
+      $scope.c.selectedSnip = $scope.c.latest.sniper.first;
+    }
+
     getReadme(pkg);
   });
 

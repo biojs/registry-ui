@@ -34,9 +34,10 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
 
         // defaults
         component.avatar = "https://sigil.cupcake.io/" + component.name;
-        component.registryHeight = 400;
+        component.registryHeight = "400";
 
 
+        /*
         // readme
         if (!_(component.readmeFilename).isEmpty() &&
             !component.readme.substring(0, 5) === "ERROR") {
@@ -44,6 +45,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
                 $sce.trustAsHtml('<a href="'+component.readmeFilename+'">README</a>');
             //component.tags.push("has:readme");
          }
+         */
 
 
         component.strCreated = moment(component.created).fromNow();
@@ -71,18 +73,20 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
           var codePenURL = "http://workmen.biojs.net/codepen/" + component.name ;
 
           component.snipURL = $sce.trustAsResourceUrl(baseURL);
-          component.firstSnipURL = $sce.trustAsResourceUrl(baseURL + "/" + component.latest.sniper.first);
+          component.firstSnipURL = baseURL + "/" + component.latest.sniper.first;
           component.firstSnipBinURL = $sce.trustAsResourceUrl(jsBinURL + "/" + component.latest.sniper.first);
           component.firstSnipCodePenURL = $sce.trustAsResourceUrl(codePenURL + "/" + component.latest.sniper.first);
 
-          component.tags.push("has:demos");
 
           // maybe the github repo might be wrong
           if(component.latest.sniper.srcs != undefined){
             component.snipNum = Object.keys(component.latest.sniper.srcs).length;
             component.columns['demos'] =
               $sce.trustAsHtml('<img src="http://img.shields.io/badge/%23-'+component.snipNum+'-blue.svg">');
+            component.snips = _.keys(component.latest.sniper.srcs);
           }
+
+          component.tags.push("has:demos");
         }
 
         // biojs stuff
@@ -93,8 +97,8 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
 
         // github
         if(component.github !== undefined && component.github.owner !== undefined){
-          component.starbutton = $sce.trustAsResourceUrl("http://ghbtns.com/github-btn.html?user=" + component.github.owner.login 
-                                        + "&repo=" + component.name + "&type=watch&count=true");
+          //component.starbutton = $sce.trustAsResourceUrl("http://ghbtns.com/github-btn.html?user=" + component.github.owner.login 
+                                        //+ "&repo=" + component.name + "&type=watch&count=true");
           component.stars = component.github.stargazers_count;
           component.watchers = component.github.subscribers_count;
           component.forks = component.github.forks_count;

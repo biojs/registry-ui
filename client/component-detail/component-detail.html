@@ -59,9 +59,17 @@
 	  		</a>
 	      </div>
 
+		  <div class="col-xs-2 valueBtn col-centered">
+			<select ng-model="c.selectedSnip" ng-change="changeDemo(s)" ng-options="s for s in c.snips" >
+				<!--<option ng-repeat="s in c.snips" ng-model="s" ng-value="s" ng-selected="s == c.latest.sniper.first" >{{ s }} </option>-->
+			</select>
+			<br>
+			{{ c.snips.length }} examples available.
+	      </div>
+
 	  </div>
 
-	  <iframe ng-src="{{ c.firstSnipURL }}" id='demo-frame' width="100%" height="{{ c.registryHeight }}px" iframe-onload="frameLoaded('demo-frame')">
+	  <iframe ng-src="{{ c.firstSnipURL | trusted }}" id='demo-frame' width="100%" height="{{ c.registryHeight }}px" iframe-onload="frameLoaded('demo-frame')">
 	  </iframe>
 	</div>
 

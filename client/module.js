@@ -9,10 +9,14 @@ angular.module("registry", ['ngRoute'])
 
         }
     })
+    .filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+    }])
     .run(function ($rootScope) {
         $rootScope.constructor.prototype._ = _;
     })
-
     .config(['$routeProvider',
       function($routeProvider) {
         $routeProvider.
