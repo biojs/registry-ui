@@ -2,7 +2,7 @@ angular.module('registry')
 .directive('componentCards', function () {
     return {
         restrict: 'E',
-        templateUrl: 'component-cards/component-cards.html',
+        templateUrl: TEMPLATE_URL + 'component-cards/component-cards.html',
         replace: true,
         scope: true,
         link: function postLink($scope, iElement, iAttrs/*, controller*/) {

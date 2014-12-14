@@ -2,7 +2,7 @@ angular.module('registry')
 .directive('valueDisplay', function () {
     return {
         restrict: 'E',
-        templateUrl: 'value-display/value-display.html',
+        templateUrl: TEMPLATE_URL + 'value-display/value-display.html',
 	    scope: {
 		    value:   '@',
 		    glyph:   '@',

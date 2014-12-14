@@ -1,7 +1,7 @@
 angular.module('registry').directive('tag', function (knownTags, tagsDisplayedInOwnColumn) {
     return {
         restrict: 'E',
-        templateUrl: 'tag/tag-view.html',
+        templateUrl: TEMPLATE_URL + 'tag/tag-view.html',
         scope: {
             active: '@'
         },

@@ -54,3 +54,5 @@ angular.module('registry').controller('AppController', function ($scope, $route,
 	}, true);
 
 });
+
+TEMPLATE_URL = "angular/";

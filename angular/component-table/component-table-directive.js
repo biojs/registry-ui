@@ -1,7 +1,7 @@
 angular.module('registry').directive('componentTable', function (Component) {
     return {
         restrict: 'E',
-        templateUrl: 'component-table/component-table-view.html',
+        templateUrl: TEMPLATE_URL + 'component-table/component-table-view.html',
         replace: true,
         scope: true,
         link: function postLink($scope, iElement, iAttrs/*, controller*/) {

@@ -21,11 +21,11 @@ angular.module("registry", ['ngRoute'])
       function($routeProvider) {
         $routeProvider.
           when('/detail/:name', {
-            templateUrl: 'component-detail/component-detail.html',
+            templateUrl: TEMPLATE_URL + 'component-detail/component-detail.html',
             controller: 'DetailController'
           }).
           otherwise({
             redirectTo: '/',
-            templateUrl: 'component-list/component-list.html',
+            templateUrl: TEMPLATE_URL + 'component-list/component-list.html',
           });
       }])
