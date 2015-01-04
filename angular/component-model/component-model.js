@@ -77,10 +77,11 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
             component.snips = _.keys(component.latest.sniper.srcs);
           }
 
-          component.selectedSnip = component.latest.sniper.first || component.snips[0];
-          updateSnippets(component);
-
-          component.tags.push("has:demos");
+          if(component.snips != undefined){
+            component.selectedSnip = component.latest.sniper.first || component.snips[0];
+            updateSnippets(component);
+            component.tags.push("has:demos");
+          }
         }
 
         // biojs stuff
