@@ -66,6 +66,17 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
         // remove duplicates - angular doesn't like them
         component.tags = _.uniq(component.tags);
 
+        component.authors = "Unknown";
+        if(component.author !== undefined){
+          component.authors = [component.author];
+          if(component.author.url != undefined){
+            component.authors[0].url = component ;
+          }
+        }
+        if(component.contributors !== undefined){
+          component.authors = component.contributors;
+        }
+
         // snippets
         if(component.latest !== undefined && component.latest.sniper !== undefined){
          
