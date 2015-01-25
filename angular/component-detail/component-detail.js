@@ -88,6 +88,7 @@ angular.module('registry')
           // workaround to translated escaped new lines
           response = response.split("\\n").join("\n");
   
+          response = response.replace(/\\r/g, "");
           response = response.replace(/\\'/g, "'");
           response = response.replace(/\\"/g, '"');
   
