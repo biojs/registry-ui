@@ -125,6 +125,12 @@ ul.nav.navbar-nav {
     transform: rotate(180deg);
 }
 
+.navbar-brand img {
+    margin-top: -5px;
+    margin-left: -7px;
+    margin-right: -7px;
+}
+
 .component-list {
     margin-top: 3ex;
 }
@@ -249,3 +255,4 @@ a.home {
     font-style: italic;
     display: inline-block;
 }
+
