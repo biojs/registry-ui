@@ -237,3 +237,15 @@ a.home {
 .detail-first-row {
     margin-top: 20px;
 }
+
+
+#detail-authorInfo {
+    font-size: 11px;
+    color: steelblue;
+    margin-top: 10px;
+}
+
+#detail-description {
+    font-style: italic;
+    display: inline-block;
+}
