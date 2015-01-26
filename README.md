@@ -2,7 +2,7 @@ BioJS registry ui
 -----------------
 
 
-[`registry.biojs.net`](http://registry.biojs.net)
+[`biojs.io`](http://biojs.io)
 
 
 1. Run the tests
