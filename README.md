@@ -21,5 +21,5 @@ You might need to [install](https://github.com/angular/protractor/blob/master/do
 2. More doc
 ----------
 
-Join us on [Gitter](https://gitter.im/biojs/biojs2) or #biojs.
+Join us on [Gitter](https://gitter.im/biojs/biojs) or #biojs.
 
