@@ -20,7 +20,7 @@ angular.module('registry').controller('AppController', function ($scope, $route,
 	//// How to go to a specific detail page
 	//
 	$scope.switchView = function (name) {
-		$location.path("detail/" + name);
+		$location.path("d/" + name);
     $scope.view = 'detail';
 	};
 
