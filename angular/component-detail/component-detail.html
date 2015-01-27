@@ -47,15 +47,25 @@
 	  	</div>
 	  	<div class="col-xs-2 valueBtn col-centered">
 	  		<a ng-href=" {{ c.selectedSnipBinURL | trusted }}" target="_blank"> 
-	  			<value-display value="Edit" glyph="edit"></value-display>
+				<img height=47 src="/img/edit/jsbin.png"><br>
+				Edit (JSBin)
 	  		</a>
 	  	</div>
 
 		<div class="col-xs-2 valueBtn col-centered">
 			<a ng-href=" {{ c.selectedSnipCodePenURL | trusted }}" target="_blank"> 
-				<value-display value="Edit (CP)" glyph="edit"></value-display>
+				<img height=47 src="/img/edit/codepen.png"><br>
+				Edit (Codepen)
 			</a>
 		</div>
+
+		<div class="col-xs-2 valueBtn col-centered">
+			<a ng-href=" {{ c.selectedSnipJSBinURL | trusted }}" target="_blank"> 
+				<img height=47 src="/img/edit/plunker.png"><br>
+				Edit (Plunker)
+			</a>
+		</div>
+
 
 	      <div class="col-xs-2 valueBtn col-centered">
 	  		<a ng-href=" {{ c.snipURL | trusted}}" target="_blank"> 
