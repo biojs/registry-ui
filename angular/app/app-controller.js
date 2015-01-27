@@ -48,7 +48,7 @@ angular.module('registry').controller('AppController', function ($scope, $route,
 	//// Go back to table view on filter change
 	//
 	$scope.$watch("filter", function updateDisplayed(newFilter, oldFilter) {
-		if ($location.path().indexOf("/detail") >= 0 && !angular.equals(newFilter, oldFilter)) {
+		if ($location.path().indexOf("/d") >= 0 && !angular.equals(newFilter, oldFilter)) {
 			$location.path("/");
 		}
 	}, true);

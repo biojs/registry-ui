@@ -4,6 +4,8 @@ angular.module('registry')
   $scope.$route = $route;
   $scope.$location = $location;
   $scope.$routeParams = $routeParams;
+
+  $scope.$parent.view = "detail";
   
   $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
