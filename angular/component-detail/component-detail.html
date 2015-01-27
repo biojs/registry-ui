@@ -17,7 +17,8 @@
 				<br>
 				<div id="detail-authorInfo">
 					<span ng-repeat="author in c.authors">
-						<a href="{{author.url}}"> {{ author.name}} </a>
+						<a ng-if="author.url" ng-href="{{author.url}}"> {{ author.name}} </a>
+						<span ng-if="!author.url"> {{ author.name}} </span>
 						{{$last ? '' : ', '}}
 					</span>
 				</div>

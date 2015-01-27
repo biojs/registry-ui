@@ -70,7 +70,9 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
         if(component.author !== undefined){
           component.authors = [component.author];
           if(component.author.url != undefined){
-            component.authors[0].url = component ;
+            component.authors[0].url = component.author.url;
+          }else if(component.github != undefined && component.github.owner != undefined){
+            component.authors[0].url = "https://github.com/" + component.github.owner.login;
           }
         }
         if(component.contributors !== undefined){
