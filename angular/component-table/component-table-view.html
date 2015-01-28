@@ -15,7 +15,8 @@
 <!--         <th ng-click="setOrderProp('version')" ng-class="[{active: orderProp == 'version'},'listview-pointer']">Version
  -->    
         <th class="link" ng-click="setOrderProp('stars')" ng-class="[{active: orderProp == 'stars'},'listview-pointer']"><nobr><i class="fa fa-star"></i> Stars</nobr>
-        <th class="link" ng-click="setOrderProp('downloads')" ng-class="[{active: orderProp == 'downloads'},'listview-pointer']"><nobr><i class="fa fa-download"></i> Download</nobr> 
+        <th class="link" ng-click="setOrderProp('commits')" ng-class="[{active: orderProp == 'commits'},'listview-pointer']"><nobr> 			<div class="octicon octicon-history"></div>
+						Commits </nobr> 
        
 		<th class="link" ng-click="setOrderProp('modified')" ng-class="[{active: orderProp == 'modified'},'listview-pointer']"><nobr><i class="fa fa-refresh"></i> Modified</nobr>
         <th>
@@ -54,7 +55,7 @@
 		<!-- <td>{{ component.description | limitTo: 50 }}{{ component.description.length > 50 ? '...' : '' }}</i> -->
 		<td><!-- Place this tag where you want the button to render. -->
         <a class="button button-primary button-circle button-action">{{ component.stars }}</a>
-		<td><a class="button button-primary button-circle button-action">{{ component.downloads }}</a>
+		<td><a class="button button-primary button-circle button-action">{{ component.commits}}</a>
 		<td>{{ component.strModified }}
 		<td> 
 			<span ng-if="component.snipURL">
