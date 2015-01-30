@@ -9,4 +9,7 @@ function updateSnippets(c) {
   c.selectedSnipBinURL = jsBinURL + "/" + c.selectedSnip;
   c.selectedSnipCodePenURL = codePenURL + "/" + c.selectedSnip;
   c.selectedSnipPlunkerURL = plunkerURL + "/" + c.selectedSnip;
+
+  // refresh event console
+  c.eventsReceived = [];
 }

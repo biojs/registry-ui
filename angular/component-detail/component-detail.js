@@ -6,49 +6,45 @@ angular.module('registry')
   $scope.$routeParams = $routeParams;
 
   $scope.$parent.view = "detail";
-  
+
   $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
-  $scope.frameLoaded = function(id){
-    var demoFrame = document.getElementById(id); 
+  $scope.frameLoaded = function(id) {
+    var demoFrame = document.getElementById(id);
   };
 
-  $scope.changeDemo = function(){
+  $scope.changeDemo = function() {
     updateSnippets($scope.c);
   }
 
+
   // TODO: remove listener when the view gets destroyed
   window.addEventListener("message", receiveMessage, false);
-  function log(logger,eventName,data){
-    if(data !== undefined){
-      text = eventName  + " triggered with " + removeCircularRefs(data);
+
+  function log(logger, eventName, data) {
+    if (data !== undefined) {
+      text = eventName + " triggered with " + removeCircularRefs(data);
     }
-    message = document.createElement("div");
-    message.textContent = text;
-  
-    // insert the div always at the top
-    if(logger.childNodes.length > 0){
-      logger.insertBefore(message,logger.firstChild);
-    }else{
-      logger.appendChild(message);
+
+    $scope.c.eventsReceived.unshift(text);
+    while ($scope.c.eventsReceived.length > 10) {
+      $scope.c.eventsReceived.pop();
     }
-  
-    // cleanup
-    if(logger.childNodes.length > 10){
-      logger.removeChild(logger.lastChild);
-    }
+    $scope.$apply();
+    return;
   }
 
-  function removeCircularRefs(obj){
-    return JSON.stringify(obj, function( key, value) {
-      if( key == 'parent') { return value.id;}
-      else {return value;}
+  function removeCircularRefs(obj) {
+    return JSON.stringify(obj, function(key, value) {
+      if (key == 'parent') {
+        return value.id;
+      } else {
+        return value;
+      }
     })
   }
 
-  function receiveMessage(event)
-  {
-    console.log("cors", event.data);
+  function receiveMessage(event) {
     log(document.getElementById("evt-console"), event.data.name, event.data.data);
   }
 
@@ -56,59 +52,59 @@ angular.module('registry')
   var name = $route.current.params.name;
   name = name.trim().toLowerCase();
 
-  function loadPackage(name,scope,sce){
+  function loadPackage(name, scope, sce) {
     components = scope.$parent.components;
     var packIndex = getPackage(name);
-    if(packIndex < 0 ){
-         console.log("Package " +name+  " not found.");
-    }else{
+    if (packIndex < 0) {
+      console.log("Package " + name + " not found.");
+    } else {
       scope.c = components[packIndex];
     }
   }
 
-  function getPackage(name,scope){
-    for(var index in components){
+  function getPackage(name, scope) {
+    for (var index in components) {
       // search for package - probably
       // there is a more efficient way
-      if(components[index].name === name){
+      if (components[index].name === name) {
         return index;
       }
     }
     return -1;
   }
- 
 
-  function getReadme(pkg){
-  
+
+  function getReadme(pkg) {
+
     scope = $scope;
-     //console.log("received readme:" +scope.c.readmeSrc);
-     $http.get(scope.c.readmeSrc)
-        .success(function(response) {
-  
-         response = response.toString().substring(1,response.length - 1);
-  
-          // workaround to translated escaped new lines
-          response = response.split("\\n").join("\n");
-  
-          response = response.replace(/\\r/g, "");
-          response = response.replace(/\\'/g, "'");
-          response = response.replace(/\\"/g, '"');
-  
-          var html = marked( response );
+    //console.log("received readme:" +scope.c.readmeSrc);
+    $http.get(scope.c.readmeSrc)
+      .success(function(response) {
 
-          var regex = /src="((?!http).*?)(?=")/mg;
-          html = html.replace(regex,function(match){
-            return 'src="' + scope.c.github.raw_url + match.substring(5);
-          });
+        response = response.toString().substring(1, response.length - 1);
 
-          scope.c.readme = $sce.trustAsHtml(html);
-         })
-         .error(function(response){
-             console.log("error");
-         });
+        // workaround to translated escaped new lines
+        response = response.split("\\n").join("\n");
+
+        response = response.replace(/\\r/g, "");
+        response = response.replace(/\\'/g, "'");
+        response = response.replace(/\\"/g, '"');
+
+        var html = marked(response);
+
+        var regex = /src="((?!http).*?)(?=")/mg;
+        html = html.replace(regex, function(match) {
+          return 'src="' + scope.c.github.raw_url + match.substring(5);
+        });
+
+        scope.c.readme = $sce.trustAsHtml(html);
+      })
+      .error(function(response) {
+        console.log("error");
+      });
   }
 
-  Component.single(name).then(function(pkg){
+  Component.single(name).then(function(pkg) {
     $scope.c = pkg;
 
     getReadme(pkg);
@@ -119,15 +115,15 @@ angular.module('registry')
 
 // callback for frames
 angular.module('registry')
-.directive('iframeOnload', [function(){
-return {
-    scope: {
+  .directive('iframeOnload', [function() {
+    return {
+      scope: {
         callBack: '&iframeOnload'
-    },
-    link: function(scope, element, attrs){
-        element.on('load', function(){
-            return scope.callBack();
+      },
+      link: function(scope, element, attrs) {
+        element.on('load', function() {
+          return scope.callBack();
         })
+      }
     }
-}}])
-
+  }])

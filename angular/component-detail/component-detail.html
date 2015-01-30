@@ -93,9 +93,14 @@
 	  </iframe>
 	</div>
 
-	<div class="panel panel-default" style="margin-top: 20px" ng-if="c.events">
+	<div class="panel panel-default" style="margin-top: 20px" ng-if="c.eventsReceived.length > 0">
 		<div class="panel-heading"><h3 style="margin: 0">Event console</h3></div>
 		<div id="evt-console" height=100px class="panel-body">
+
+    		<div ng-repeat="event in c.eventsReceived track by $index">
+				{{ c.eventsReceived[$index] }}
+    		</div>
+
 
 		</div>
 	</div>
@@ -141,8 +146,8 @@
         <div class="panel-body container-fluid">
 			<div clas="row">
             	<div ng-repeat="author in c.github.contribs | orderBy:'contributions':true" class="col-xs-2 col-lg-1">
-					<a ng-href='https://github.com/{{ author.login }}'><img ng-src='{{ author.avatar_url}}&s=50' width=50 height=50 /> </a>
-                	<div>{{ author.login }}</div>
+					<a ng-href='https://github.com/{{ author.login }}' target="_blank"><img ng-src='{{ author.avatar_url}}&s=50' width=50 height=50 /> </a>
+                	<div>{{ author.login | limitTo: 12 }}{{author.login.length > 12 ? '.' : ''}}</div>
                 	<div>{{ author.contributions}}</div>
                 </div>
             </div>
