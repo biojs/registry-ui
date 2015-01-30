@@ -1,0 +1,228 @@
+/*body {*/
+    /*font-family: "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;*/
+/*}*/
+.tags {
+    list-style: none;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+    padding: 0;
+}
+tr {
+    border-top: solid 2px gray;
+}
+.tag-box {
+    display: inline-block;
+    padding: 2px 3px;
+    cursor: pointer;
+    background: #ddd;
+    margin-right: 2px;
+}
+.tag-box.column-tag {
+    font-weight: bold;
+}
+.tag-box.active-tag {
+    background-color: #bfc;
+}
+.tag-box.active-tag:hover {
+    background-color: #bfc;
+    text-decoration: line-through;
+}
+.tag-box:hover {
+    background: #eaeaea;
+}
+.happy {
+    background: #58ac46;
+    color: #fff;
+}
+.happy:hover{ 
+    color: #fff;
+}
+tr:hover {
+    background: #ddd;
+}
+.link:hover {
+    opacity: 0.5;
+}
+.navbar {
+    border: 0;
+    padding: 1ex 0;
+    border-bottom: 1px solid #eee;
+    background: rgba(0, 0, 0, .05);
+}
+.navbar h1 {
+    display: inline-block;
+    font-size: 4em;
+    margin: 0;
+    line-height: 1em;
+    vertical-align: middle;
+    margin-left: 0.25em;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+.navbar h1 .reg {
+    color: #bbb;
+    display: none;
+}
+
+.navbar-brand {
+    height: auto;
+    padding: 0;
+}
+ul.nav.navbar-nav {
+    display: none;
+    margin-left: 30%
+}
+@media (min-width: 400px) {
+    ul.nav.navbar-nav {
+        display: inline;
+    }
+    .navbar-nav li a {
+        line-height: 20px;
+    }
+    .navbar-nav li input {
+        line-height: 20px;
+    }
+    .navbar-nav,
+    .navbar-brand {
+        height: auto;
+    }
+}
+@media (min-width: 1200px) {
+    .navbar h1 .reg {
+        display: inline;
+    }
+}
+.navbar-brand img {
+    transform: rotate(0deg);
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.navbar-brand:hover img {
+    transform: rotate(180deg);
+}
+.navbar-brand img {
+    margin-top: -5px;
+    margin-left: -7px;
+    margin-right: -7px;
+}
+.navbar-brand a {
+    text-decoration: none;
+}
+.component-list {
+    margin-top: 3ex;
+}
+.component-list.table tr,
+.component-list.table td,
+.component-list.table th {
+    border: 0;
+    padding-left: 0;
+}
+.component-list.table .listview-name,
+.component-list.table .listview-pointer {
+    cursor: pointer;
+}
+.component-search input {
+    font-size: 1.5em;
+    width: 100%;
+    padding: 0.2em;
+}
+.filter-box {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 3em;
+}
+.filter-label {
+    display: block;
+    font-size: 1.5em;
+    margin-right: .5em;
+}
+.filter-sub-box {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.filter-sub-box .tag-box {
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+.btn {
+    border-radius: 0;
+}
+a.home {
+    float: right;
+    line-height: 64px;
+}
+.component-cards {
+    list-style-type: none;
+    overflow: auto;
+    margin: 0;
+    margin-top: 2em;
+    padding: 0;
+}
+.component-card {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+.layout-icon {
+    font-size: 2em;
+    cursor: pointer;
+    margin-right: 0.25em;
+    color: #bbb;
+}
+.layout-icon:hover {
+    text-decoration: none;
+    color: #6bd757;
+}
+.layout-icon.active {
+    cursor: default;
+    color: #42861d;
+}
+.layout-icon.active:hover {
+    color: #42861d;
+}
+.component-detail .glyphicon,
+.component-detail .octicon {
+    font-size: 3em;
+}
+.component-detail .octicon {
+    display: block;
+}
+.component-detail .col-md-2 .glyphicon,
+.component-detail .col-xs-2 .glyphicon {
+    display: block;
+}
+.component-detail .col-md-2,
+.component-detail .col-xs-2 {
+    text-align: center;
+}
+.component-detail .valueBtn a {
+    color: black;
+}
+.component-detail .valueBtn a:hover {
+    text-decoration: none;
+}
+#biojs-logo-link {
+    text-decoration: none;
+    color: #777;
+}
+.detail-first-row {
+    margin-top: 20px;
+}
+#detail-authorInfo {
+    font-size: 11px;
+    color: steelblue;
+    margin-top: 10px;
+}
+#detail-description {
+    font-style: italic;
+    display: inline-block;
+}
