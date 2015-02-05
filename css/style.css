@@ -228,3 +228,8 @@ a.home {
     font-style: italic;
     display: inline-block;
 }
+
+#registry-nav-menu a {
+    display: inline-block;
+    padding-left: 0px;
+}
