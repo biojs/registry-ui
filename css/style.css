@@ -1,6 +1,7 @@
 /*body {*/
-    /*font-family: "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;*/
+/*font-family: "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;*/
 /*}*/
+
 .tags {
     list-style: none;
     display: inline-flex;
@@ -37,7 +38,7 @@ tr {
     background: #58ac46;
     color: #fff;
 }
-.happy:hover{ 
+.happy:hover {
     color: #fff;
 }
 tr:hover {
@@ -228,8 +229,21 @@ a.home {
     font-style: italic;
     display: inline-block;
 }
-
 #registry-nav-menu a {
     display: inline-block;
     padding-left: 0px;
+}
+#github-ribbon {
+    background-image: url(../img/ribbons/github_right_red.png);
+    right: 0;
+}
+#github-ribbon {
+    position: absolute;
+    top: 0;
+    border: 0;
+    height: 149px;
+    width: 149px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
 }
