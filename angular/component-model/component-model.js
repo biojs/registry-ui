@@ -146,6 +146,32 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
             component.avatar = cBio.logo;
           }
         }
+        if(component.iotags){
+          component.iotags = _.map(component.iotags, function(msg){
+            var text;
+            switch(msg){
+              case "bad-doc": 
+                text = "The documentation of this component shows major deficiencies";
+                break;
+              default:
+                text = "The documentation of this component has the error: " + msg;
+                break;
+            }
+            var type = "danger";
+            types = {
+              "danger":  ["bad_docu"]
+            }
+            _.each(types, function(v, key){
+              if(v.indexOf(msg) >= 0){
+                type = key;
+              }
+            });
+            return {
+              type: type, 
+              text: text
+            }
+          });
+        }
 
         component.citeHref = "";
         component.readme = "";

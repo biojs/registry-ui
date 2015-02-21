@@ -1,5 +1,9 @@
 <div class="component-detail" style="margin-top: 20px;">
 
+	<div ng-repeat="iotag in c.iotags" ng-class="'alert alert-' + iotag.type">
+		{{ iotag.text }}	
+	</div>
+
 	<div class="row">
 		<div class="col-xs-8">
 			<div style="float: left; display: inline-block; border: solid 0px lightgray; padding: 5px 10px 5px 85px; margin-right: 10px; width: 100%">
