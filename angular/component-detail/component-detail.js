@@ -86,7 +86,14 @@ angular.module('registry')
         // workaround to translated escaped new lines
         response = response.split("\\n").join("\n");
 
+        // we have to apply this twice - or write a smarter regex
         response = response.replace(/\\r/g, "");
+        response = response.replace(/\\r/g, "");
+
+        // replace tabs with two spaces
+        response = response.replace(/\\t/g, "  ");
+
+        // replace all escaped quotes
         response = response.replace(/\\'/g, "'");
         response = response.replace(/\\"/g, '"');
 
