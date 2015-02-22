@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+- 2.1
+install: bundle install
+script: echo "http://workman.biojs.io" > config.js
+after_success: bundle exec s3_website push
+branches:
+  only:
+  - stable
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: vKOn/jlRJC5HyLCvyke7PAoc+xozx1koAwRXL3R5vhysYwmkct/+bfdW7/UOy0WAa1/DYBSmyiTkha8aWWMASm7mB/z4lYWeL4zVmhRaCHNiqY+Krou6XvovdioH2wE7yLY2RNuKWH1X/fOCJt3/qCQgQTm6wOHyXF30OO8gpP0=
+  - secure: txKo8JzZTNPRq/8L2dkqR2R47EBhkkEgB7wEVI9uN7GdheSfgg6u6+3oiXty6vAIV7+V6ZuaYL6PRe52UKXTNvCaxRWs/KUhCIKy5gs+WXFqgzSqqDs9C25YFhDaooXi1EP23u/bq7qQDUI+ElP1b5XcmSphP7ayI+9AOWUhNz8=
