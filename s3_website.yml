@@ -30,8 +30,8 @@ site: .
 exclude_from_upload:
     - "Gemfile*"
     - "node_modules"
-    - ".git"
-    - ".idea"
+    - "[.]git"
+    - "[.]idea"
 
 # s3_reduced_redundancy: true
 
