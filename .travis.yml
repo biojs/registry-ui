@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.1
 install: bundle install
-script: echo "http://workman.biojs.io" > config.js
+script: bash build.sh 
 after_success: bundle exec s3_website push
 branches:
   only:
