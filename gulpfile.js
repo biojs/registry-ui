@@ -17,7 +17,8 @@ var outFolder = "prod";
 var out = __dirname + "/" + outFolder + "/";
 
 var paths = {
-  scripts: ['concat/*.js'],
+  scripts: ['concat/libs.js'],
+  angular: ['concat/angular.js'],
   styles: ['css/**/*.css', 'lib/**/*.css'],
   html: ['index.html', 'angular/**/*.html'],
   images: ['img/**/*.{png,svg,jpg,ico}'],
@@ -75,7 +76,19 @@ gulp.task('minify-js', ["concat"], function() {
     })
     .pipe(sourcemaps.init())
     .pipe(uglify({
-      compress: false
+    }))
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest(out));
+});
+
+gulp.task('minify-angular', ["concat"], function() {
+  return gulp.src(paths.angular, {
+      cwd: out,
+      base: out
+    })
+    .pipe(sourcemaps.init())
+    .pipe(uglify({
+      mangle: false
     }))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(out));
@@ -131,4 +144,4 @@ gulp.task('copy-other', ['init'], function() {
 
 
 // TODO: remove unnecessary files from prod
-gulp.task("default", ["concat", "minify-html", "minify-css", "copy-other", "minify-img", "minify-index"]);
+gulp.task("default", ["concat", "minify-html", "minify-js","minify-angular", "minify-css", "copy-other", "minify-img", "minify-index"]);
