@@ -9,8 +9,8 @@ cloudfront_distribution_id: E3V5AA1536QDUT
 # site: path-to-your-website
 
 max_age:
-   "assets/*": 6000
-   "*": 300
+   "lib/*": 6000
+   "*": 600
 
 gzip:
    - .html
