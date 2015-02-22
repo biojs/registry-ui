@@ -198,7 +198,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
 
     Component.single = function single(name) {
         var p = $q.defer();
-        var url = 'http://workmen.biojs.net/detail/' + name;
+        var url = REGISTRY_URL + '/detail/' + name;
         //url = 'http://localhost:3000/detail/'+ name;
         $http.get(url).success(function(resp) {
             //all.push(resp[key]);
@@ -220,7 +220,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
         var p = $q.defer();
 
         // ugly workaround to inject code - try GET
-        var url = 'http://workmen.biojs.net/all?short=1';
+        var url = REGISTRY_URL + '/all?short=1';
         //url = 'http://localhost:3000/all?short=1';
           $http.get(url).success(function(resp) {
               if(all.length === 0){

@@ -1,8 +1,8 @@
 function updateSnippets(c) {
-  var baseURL = "http://workmen.biojs.net/demo/" + c.name;
-  var jsBinURL = "http://workmen.biojs.net/jsbin/" + c.name;
-  var codePenURL = "http://workmen.biojs.net/codepen/" + c.name;
-  var plunkerURL = "http://workmen.biojs.net/plunker/" + c.name;
+  var baseURL = REGISTRY_URL + "/demo/" + c.name;
+  var jsBinURL = REGISTRY_URL + "/jsbin/" + c.name;
+  var codePenURL = REGISTRY_URL + "/codepen/" + c.name;
+  var plunkerURL = REGISTRY_URL + "/plunker/" + c.name;
 
   c.snipURL = baseURL;
   c.selectedSnipURL = baseURL + "/" + c.selectedSnip;
