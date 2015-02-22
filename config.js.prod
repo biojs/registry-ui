@@ -1,0 +1,2 @@
+// production settings
+REGISTRY_URL = "http://workmen.biojs.net";

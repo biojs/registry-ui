@@ -1,8 +1,9 @@
 language: ruby
 rvm:
 - 2.1
+before_script: npm install
 install: bundle install
-script: bash build.sh 
+script: npm run prod
 after_success: bundle exec s3_website push
 branches:
   only:
