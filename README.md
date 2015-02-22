@@ -4,6 +4,26 @@ BioJS registry ui
 
 [`biojs.io`](http://biojs.io)
 
+[![Build Status](https://travis-ci.org/biojs/registry-ui.svg?branch=stable)](https://travis-ci.org/biojs/registry-ui)
+
+
+Dev instance
+------------
+
+* directly linked to github pages
+* branch `gh-pages`
+
+
+[dev.biojs.io](http://dev.biojs.io)
+
+Production instance
+------------
+
+* deployed to Amazon S3 and Cloudfront
+* only deploy "stable" stuff to our registry frontend ;-)
+* branch `stable`
+
+[biojs.io](http://biojs.io)
 
 1. Run the tests
 ----------------
@@ -22,4 +42,3 @@ You might need to [install](https://github.com/angular/protractor/blob/master/do
 ----------
 
 Join us on [Gitter](https://gitter.im/biojs/biojs) or #biojs.
-
