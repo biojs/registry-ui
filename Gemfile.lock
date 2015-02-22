@@ -6,7 +6,7 @@ GEM
       deep_merge (= 1.0.0)
     deep_merge (1.0.0)
     dotenv (1.0.2)
-    s3_website (2.8.1)
+    s3_website (2.8.3)
       colored (= 1.2)
       configure-s3-website (= 1.7.1)
       dotenv (~> 1.0)
