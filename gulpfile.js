@@ -22,7 +22,7 @@ var paths = {
   styles: ['css/**/*.css', 'lib/**/*.css'],
   html: ['index.html', 'angular/**/*.html'],
   images: ['img/**/*.{png,svg,jpg,ico}'],
-  other: ['lib/bootstrap/dist/fonts/*', 'lib/angular/angular.min.{js,js.map}', 'lib/*.map'],
+  other: ['lib/bootstrap/dist/fonts/*', 'lib/octicons/octicons/*', 'lib/angular/angular.min.{js,js.map}', 'lib/*.map'],
 };
 
 gulp.task('init', function() {
@@ -75,8 +75,7 @@ gulp.task('minify-js', ["concat"], function() {
       base: out
     })
     .pipe(sourcemaps.init())
-    .pipe(uglify({
-    }))
+    .pipe(uglify({}))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(out));
 });
@@ -144,4 +143,4 @@ gulp.task('copy-other', ['init'], function() {
 
 
 // TODO: remove unnecessary files from prod
-gulp.task("default", ["concat", "minify-html", "minify-js","minify-angular", "minify-css", "copy-other", "minify-img", "minify-index"]);
+gulp.task("default", ["concat", "minify-html", "minify-js", "minify-angular", "minify-css", "copy-other", "minify-img", "minify-index"]);
