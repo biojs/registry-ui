@@ -150,7 +150,7 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
           component.iotags = _.map(component.iotags, function(msg){
             var text;
             switch(msg){
-              case "bad-doc": 
+              case "sparse_doc": 
                 text = "The documentation of this component shows major deficiencies";
                 break;
               default:
