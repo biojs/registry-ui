@@ -173,6 +173,14 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
           });
         }
 
+        // download links
+        component.dl = {};
+        component.dl.html = "https://wzrd.in/bundle/" + component.name + "@" + component.version;
+        if(component.latest !== undefined && component.latest.style !== undefined){
+          component.dl.css = "http://parce.li/bundle/" + component.name + "@" + component.version;
+        }
+
+
         component.citeHref = "";
         component.readme = "";
 

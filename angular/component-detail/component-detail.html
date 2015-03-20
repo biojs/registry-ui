@@ -39,7 +39,23 @@
 		</div>
 	</div>
 
-	<pre style="margin-top: 20px">npm install {{c.name}}</pre>
+	<div style="margin-top: 20px;" class="row row-centered">
+	  	<div class="col-centered" ng-class="{true:'col-xs-10', false:'col-xs-11'}[!!c.dl.css]">
+			<pre>npm install {{c.name}}</pre>
+		</div>
+	  	<div class="col-xs-1 col-centered">
+	  		<a ng-href=" {{ c.dl.html | trusted }}" target="_blank"> 
+				<div class="glyphicon glyphicon-download-alt" style="margin-bottom: 4px"></div>
+			</a>
+			HTML
+		</div>
+	  	<div class="col-xs-1 col-centered" ng-if="c.dl.css">
+	  		<a ng-href=" {{ c.dl.css | trusted }}" target="_blank"> 
+				<div class="glyphicon glyphicon-download-alt" style="margin-bottom: 4px"></div>
+			</a>
+			CSS
+		</div>
+	</div>
 
 
 	<div id="first-snippet" ng-if="c.snipURL">
@@ -84,7 +100,7 @@
 	      </div>
 
 		  <div class="col-xs-2 valueBtn col-centered">
-			<select ng-model="c.selectedSnip" ng-change="changeDemo(s)" ng-options="s for s in c.snips" >
+			<select ng-model="c.selectedSnip" ng-change="changeDemo(s)" ng-options="s for s in c.snips" style="margin-top: 13px">
 				<!--<option ng-repeat="s in c.snips" ng-model="s" ng-value="s" ng-selected="s == c.latest.sniper.first" >{{ s }} </option>-->
 			</select>
 			<br>
