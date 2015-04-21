@@ -126,7 +126,7 @@
 
 	<div class="panel panel-default" style="margin-top: 20px" ng-if="c.eventsReceived.length > 0">
 		<div class="panel-heading"><h3 style="margin: 0">Event console</h3></div>
-		<div id="evt-console" height=100px class="panel-body">
+		<div id="evt-console" class="panel-body" style="overflow-y: scroll; max-height: 60ex;">
 
     		<div ng-repeat="event in c.eventsReceived track by $index">
 				{{ c.eventsReceived[$index] }}
