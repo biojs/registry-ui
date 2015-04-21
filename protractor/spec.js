@@ -10,7 +10,8 @@
    */
 
 
-require("./dummy");
+//require("./dummy");
+//FIXME: somehow the injection of a default json output is broken
 
 describe('biojs registry', function() {
 
