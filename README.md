@@ -33,10 +33,10 @@ grunt watch
 ```
 
 ```
-protactor  proctactor/conf.js
+protractor  protractor/conf.js
 ```
 
-You might need to [install](https://github.com/angular/protractor/blob/master/docs/tutorial.md) proctactor.
+You might need to [install](https://github.com/angular/protractor/blob/master/docs/tutorial.md) protractor.
 
 2. More doc
 ----------
