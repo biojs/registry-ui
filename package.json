@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prod": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -p 8080"
+    "test": "protractor ./protractor/conf.js",
+    "start": "http-server -p 8080",
+    "start-driver": "webdriver-manager start"
   },
   "keywords": [
     "biojs"
@@ -27,6 +28,7 @@
     "rimraf": "^2.2.8"
   },
   "devDependencies": {
-    "http-server": "^0.8.0"
+    "http-server": "^0.8.0",
+    "protractor": "^2.0.0"
   }
 }

@@ -1,15 +1,27 @@
 language: ruby
 rvm:
 - 2.1
-before_script: npm install
-install: bundle install
+install:
+ - npm install
+ - bundle install
+ - ./node_modules/protractor/bin/webdriver-manager update
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- nohup bash -c "npm start-driver 2>&1 &"
+- nohup bash -c "npm start 2>&1 &"
 script: npm run prod
 after_success: bundle exec s3_website push
 branches:
   only:
   - stable
+  - travis
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - secure: jlcamI//fH2Rc9yadX1wkPexVbHoKuVb6wnD9iHBEl3FSQEz11uCkFKUolxdmiCHPUyet2LUcYOSKl2FpEtteL3bwTDuwI7YcJwU16tzMmNVUgR2LiZTB8S6BHUAulosRhk47mXcrVPgWsgvmzxEMI1Ot7wZaZOQhtX/BDfmODo=
   - secure: cQxNTt3KClCZVgYsyKcwWGJ1qHIKSkKdpI3LlUjAVw4lY0X8hjX9StcyV9v3BHF651714T/Kb327+BXXKAMVcqUc4nIeFfg2UAAAd0kqEK0+GYmZq2POTPTOrJcHOsDKAYHzpm4Fh48ZiLccjSe3/1AU9zkm67DO2P5ZY68CDX0=
+  - secure: trA/FVKYzFuL6l4iGeaV8y6MUquJvWqr3SMGlvCCs8V6loR34fGBws2lGoENI50xFZ0kqPqzIrTx5Bbt3DpeEFcqIBirSe1dHPZ74EaJqjD03k6tRiPVeJyOXq16dzeyF2iEWJh9Erl2iZrP/B/8zrOfKiGiT1ONfaPK/kAPPZ8=
+  - secure: Ac/3nXUYqNcl/3u7HtGL6U0f7tDvx1qnlT7fp6IzYx5q5mC/tPgDcuVPaf1XGNzeoM81Z3Q2s3VHb//ASM9uUUKzPQUOTA6vdoGuAfSzKVNMSVGWOnDi+Rw9iWcX40Lt+6W49nh91jsfAcY1X52xbAvt6uAwPWVho5qm2MF9SLM=
+addons:
+  sauce_connect: true
