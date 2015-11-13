@@ -2,6 +2,24 @@
 /*font-family: "Helvetica Neue", "Open Sans", Helvetica, Arial, sans-serif;*/
 /*}*/
 
+/*
+    Css for the BiVi banner
+*/
+
+.banner {
+    background-color: #C3F2BD;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.banner h4 {
+    text-align: center;
+}
+
+/*
+    End banner css
+*/
+
+
 .tags {
     list-style: none;
     display: inline-flex;
