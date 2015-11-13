@@ -11,7 +11,7 @@
     border-bottom: 1px solid #d5d5d5;
 }
 
-#banner h4 h5 h6 {
+#banner, h4, h5, h6 {
     text-align: center;
 }
 
