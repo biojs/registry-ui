@@ -1,7 +1,7 @@
-<div class="component-detail" style="margin-top: 20px;">
+<div class="component-detail" style="margin-top: 20px;" ng-if="c">
 
 	<div ng-repeat="iotag in c.iotags" ng-class="'alert alert-' + iotag.type">
-		{{ iotag.text }}	
+		{{ iotag.text }}
 	</div>
 
 	<div class="row">
@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="col-xs-2 valueBtn" ng-if="c.src">
-			<a href=" {{ c.src }}" target="_blank"> 
+			<a href=" {{ c.src }}" target="_blank">
 				<value-display value="View Code" octicon="mark-github"></value-display>
 			</a>
 		</div>
@@ -40,7 +40,7 @@
 		</div>
 		-->
 		<div class="col-xs-1 text-center">
-			<a href="https://github.com/biojs/io-ratings" target="_blank"> 
+			<a href="https://github.com/biojs/io-ratings" target="_blank">
 				<value-display value="Report/Flag" octicon="bug"></value-display>
 			</a>
 		</div>
@@ -52,7 +52,7 @@
 		</div>
 	  	<div class="col-xs-1 text-center">
 			<div>
-				<a ng-href=" {{ c.dl.html | trusted }}" target="_blank"> 
+				<a ng-href=" {{ c.dl.html | trusted }}" target="_blank">
 					<div class="glyphicon glyphicon-download-alt" style="margin-bottom: 4px"></div>
 				</a>
 			</div>
@@ -60,7 +60,7 @@
 		</div>
 	  	<div class="col-xs-1 text-center" ng-if="c.dl.css">
 			<div>
-	  			<a ng-href=" {{ c.dl.css | trusted }}" target="_blank"> 
+	  			<a ng-href=" {{ c.dl.css | trusted }}" target="_blank">
 					<div class="glyphicon glyphicon-download-alt" style="margin-bottom: 4px"></div>
 				</a>
 			</div>
@@ -73,26 +73,26 @@
 
 	  <div class="row row-centered">
 	  	<div class="col-xs-2 valueBtn col-centered">
-	  		<a ng-href=" {{ c.selectedSnipURL | trusted }}" target="_blank"> 
+	  		<a ng-href=" {{ c.selectedSnipURL | trusted }}" target="_blank">
 	  			<value-display value="New window" glyph="fullscreen"></value-display>
 	  		</a>
 	  	</div>
 	  	<div class="col-xs-2 valueBtn col-centered">
-	  		<a ng-href=" {{ c.selectedSnipBinURL | trusted }}" target="_blank"> 
+	  		<a ng-href=" {{ c.selectedSnipBinURL | trusted }}" target="_blank">
 				<img height=47 src="/img/edit/jsbin.png"><br>
 				Edit (JSBin)
 	  		</a>
 	  	</div>
 
 		<div class="col-xs-2 valueBtn col-centered">
-			<a ng-href=" {{ c.selectedSnipCodePenURL | trusted }}" target="_blank"> 
+			<a ng-href=" {{ c.selectedSnipCodePenURL | trusted }}" target="_blank">
 				<img height=47 src="/img/edit/codepen.png"><br>
 				Edit (Codepen)
 			</a>
 		</div>
 
 		<div class="col-xs-2 valueBtn col-centered">
-			<a ng-href=" {{ c.selectedSnipPlunkerURL | trusted }}" target="_blank"> 
+			<a ng-href=" {{ c.selectedSnipPlunkerURL | trusted }}" target="_blank">
 				<img height=47 src="/img/edit/plunker.png"><br>
 				Edit (Plunker)
 			</a>
@@ -100,12 +100,12 @@
 
 
 	      <div class="col-xs-2 valueBtn col-centered">
-	  		<a ng-href=" {{ c.snipURL | trusted}}" target="_blank"> 
+	  		<a ng-href=" {{ c.snipURL | trusted}}" target="_blank">
 				<value-display value="All ({{ c.snipNum }})" glyph="align-justify"></value-display>
 	  		</a>
 	      </div>
   		  <div class="col-xs-2 valueBtn col-centered" ng-if="c.events">
-	  		<a ng-href=" {{ c.src  + '/blob/' + c.github.default_branch + '/events.json' }}" target="_blank"> 
+	  		<a ng-href=" {{ c.src  + '/blob/' + c.github.default_branch + '/events.json' }}" target="_blank">
 				<value-display value="{{ _.size(c.events) }} events" octicon="radio-tower"></value-display>
 	  		</a>
 	      </div>
@@ -215,6 +215,17 @@
 	</div>
 	-->
 
-	<div id=readme" ng-bind-html="c.readme"></div>
+	<div id="readme" ng-bind-html="c.readme"></div>
 
+</div>
+
+<!-- component not found message -->
+<div class="row" style="margin-top: 80px;" ng-if="notFound">
+	<div class="col-md-12 text-center">
+		<i class="fa fa-meh-o fa-5x"></i>
+	</div>
+	<div class="col-md-12 text-center">
+			<h2>404</h2>
+		<h4>Compnent not found. Please check component name.</h4>
+	</div>
 </div>
