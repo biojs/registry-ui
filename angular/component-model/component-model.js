@@ -1,7 +1,7 @@
 var ComponentService = angular.module('registry').service("Component", function ($http, $window, $sce, $q) {
 
     function preProcessComponent(component) {
-        console.log("new revision");
+
         component.columns = {
             build: null, tests: null, readme: null, demos: null,  reference: null, website: null };
         /*
