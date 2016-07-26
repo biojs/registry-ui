@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var q = require('bluebird');
 var mkdirp = require('mkdirp');
 var del = require('rimraf');
+var rev = require('gulp-rev');
 
 // all the fancy gulp stuff
 var minifyHTML = require('gulp-minify-html');
@@ -77,6 +78,7 @@ gulp.task('minify-js', ["concat"], function() {
     .pipe(sourcemaps.init())
     .pipe(uglify({}))
     .pipe(sourcemaps.write("."))
+    .pipe(rev())
     .pipe(gulp.dest(out));
 });
 
@@ -90,6 +92,7 @@ gulp.task('minify-angular', ["concat"], function() {
       mangle: false
     }))
     .pipe(sourcemaps.write("."))
+    .pipe(rev())
     .pipe(gulp.dest(out));
 });
 
@@ -123,6 +126,7 @@ gulp.task('minify-css', ["init"], function() {
       base: "./"
     })
     .pipe(minifyCSS())
+    .pipe(rev())
     .pipe(gulp.dest(out));
 });
 
@@ -131,6 +135,7 @@ gulp.task('minify-img', ['init'], function() {
   return gulp.src(paths.images, {
       base: "./"
     })
+    .pipe(rev())
     .pipe(gulp.dest(out));
 });
 
