@@ -1,4 +1,4 @@
-angular.module('registry').service("Component", function ($http, $window, $sce, $q) {
+var ComponentService = angular.module('registry').service("Component", function ($http, $window, $sce, $q) {
 
     function preProcessComponent(component) {
         component.columns = {
@@ -234,6 +234,8 @@ angular.module('registry').service("Component", function ($http, $window, $sce, 
               if(all.length === 0){
                 Object.keys(resp).forEach(function(key) {
                   all.push(resp[key]);
+                 // console.log("resp: " + JSON.stringify(resp));
+                  // console.log("resp key: " + JSON.stringify(resp[key]));
                   preProcessComponent(resp[key]);
                 });
                 Component.list = all;

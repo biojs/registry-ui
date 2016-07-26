@@ -10,7 +10,7 @@
    */
 
 
-//require("./dummy");
+require("./dummy2");
 //FIXME: somehow the injection of a default json output is broken
 
 describe('biojs registry', function() {
@@ -19,17 +19,19 @@ describe('biojs registry', function() {
   var hiddenCount = element(by.binding("hiddenCount"));
   var table = element.all(by.repeater("component in components | filter:filterFn"));
   var seqTag = element(by.name("sequence"));
+  // httpBackend.when("GET", "http://dev.workmen.biojs.net/all?short=1").respond(myMock);
 
   beforeEach(function(){
     browser.get(browser.params.url);
   });
 
   it('should have a title', function() {
-    expect(browser.getTitle()).toEqual('Bio.JS registry');
+    expect(browser.getTitle()).toEqual('BioJS Registry');
   });
 
   it('should have results', function() {
     expect(table.count()).toEqual(5);
+ 
   });
 
   it('should filter on search', function() {

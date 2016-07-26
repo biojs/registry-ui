@@ -50,7 +50,9 @@ angular.module('registry')
 
   // get package name from the URL
   var name = $route.current.params.name;
-  name = name.trim().toLowerCase();
+
+    name = name.trim();
+ 
 
   function loadPackage(name, scope, sce) {
     components = scope.$parent.components;
