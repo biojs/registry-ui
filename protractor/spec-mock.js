@@ -72,8 +72,6 @@ describe('biojs registry', function() {
     browser.wait(function(){
       return  $('.glyphicon-download-alt').isPresent();
     });
-    // expect(downloadButton.waitReady()).toBeTruthy();
-   // expect($('.glyphicon-download-alt').count()).toEqual(1);
     
   });
 

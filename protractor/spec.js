@@ -19,7 +19,6 @@ describe('biojs registry', function() {
   var hiddenCount = element(by.binding("hiddenCount"));
   var table = element.all(by.repeater("component in components | filter:filterFn"));
   var seqTag = element(by.name("sequence"));
-  // httpBackend.when("GET", "http://dev.workmen.biojs.net/all?short=1").respond(myMock);
 
   beforeEach(function(){
     browser.get(browser.params.url);
@@ -37,7 +36,6 @@ describe('biojs registry', function() {
   it('should filter on search', function() {
 
     searchBox.sendKeys("clustal");
-    //browser.debugger();
 
     expect(hiddenCount.getText()).toEqual("4 components hidden");
     expect(table.count()).toEqual(1);
