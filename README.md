@@ -25,20 +25,44 @@ Production instance
 
 [biojs.io](http://biojs.io)
 
-1. Run the tests
+1. Setup Your Local Dev Environment
+
+Clone the repository, install all dependencies and run up the server:
+
+````
+git clone https://github.com/biojs/registry-ui.git
+cd registry-ui/
+npm install
+npm run start
+````
+
+Any issues with this? You might need to install the following dependencies globally which could be missing yet:
+
+- http-server
+````
+npm install -g http-server
+````
+- protractor (for testing, see also 2.)
+````
+npm install -g protractor
+webdriver-manager update
+````
+
+2. Run the tests
 ----------------
 
-```
-grunt watch
-```
+To start up the Selenium test server and run the test suite, go with:
 
 ```
+webdriver-manager start --standalone
 protractor  protractor/conf.js
+
 ```
 
 You might need to [install](https://github.com/angular/protractor/blob/master/docs/tutorial.md) protractor.
+See also 1.)
 
-2. More doc
+3. More doc
 ----------
 
 Join us on [Gitter](https://gitter.im/biojs/biojs) or #biojs.
