@@ -26,6 +26,7 @@ Production instance
 [biojs.io](http://biojs.io)
 
 1. Setup Your Local Dev Environment
+-----------------------------------
 
 Clone the repository, install all dependencies and run up the server:
 
