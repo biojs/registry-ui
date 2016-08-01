@@ -10,7 +10,7 @@
    */
 
 
-//require("./dummy");
+require("./dummy2");
 //FIXME: somehow the injection of a default json output is broken
 
 describe('biojs registry', function() {
@@ -25,17 +25,17 @@ describe('biojs registry', function() {
   });
 
   it('should have a title', function() {
-    expect(browser.getTitle()).toEqual('Bio.JS registry');
+    expect(browser.getTitle()).toEqual('BioJS Registry');
   });
 
   it('should have results', function() {
     expect(table.count()).toEqual(5);
+ 
   });
 
   it('should filter on search', function() {
 
     searchBox.sendKeys("clustal");
-    //browser.debugger();
 
     expect(hiddenCount.getText()).toEqual("4 components hidden");
     expect(table.count()).toEqual(1);

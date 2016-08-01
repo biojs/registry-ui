@@ -1,6 +1,7 @@
-angular.module('registry').service("Component", function ($http, $window, $sce, $q) {
+var ComponentService = angular.module('registry').service("Component", function ($http, $window, $sce, $q) {
 
     function preProcessComponent(component) {
+
         component.columns = {
             build: null, tests: null, readme: null, demos: null,  reference: null, website: null };
         /*

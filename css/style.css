@@ -265,3 +265,7 @@ a.home {
     background-position: center;
     z-index: 1;
 }
+
+.component-card {
+  cursor: pointer;
+}
