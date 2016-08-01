@@ -10,8 +10,8 @@ BioJS registry ui
 Dev instance
 ------------
 
-* directly linked to github pages
-* branch `gh-pages`
+* code on branch `gh-pages`
+* automatic update of dev app on push to `gh-pages` branch
 
 
 [dev.biojs.io](http://dev.biojs.io)
