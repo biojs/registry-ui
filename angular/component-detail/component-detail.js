@@ -9,6 +9,9 @@ angular.module('registry')
 
   $scope.notDisplayedInColumn = $scope.$parent.filter.notDisplayedInColumn;
 
+  //to handle component not fount message
+  $scope.notFound = false;
+
   $scope.frameLoaded = function(id) {
     var demoFrame = document.getElementById(id);
   };
@@ -114,9 +117,13 @@ angular.module('registry')
   }
 
   Component.single(name).then(function(pkg) {
-    $scope.c = pkg;
-
-    getReadme(pkg);
+    
+    if(pkg){
+      $scope.c = pkg;
+      getReadme(pkg);}
+    else {
+      $scope.notFound = true;
+    }
   });
 
   //$scope.$parent.components.promise.finally(function(){

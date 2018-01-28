@@ -82,7 +82,7 @@ var ComponentService = angular.module('registry').service("Component", function 
 
         // snippets
         if(component.latest !== undefined && component.latest.sniper !== undefined){
-         
+
           // maybe the github repo might be wrong
           if(component.latest.sniper.srcs != undefined){
             component.snipNum = Object.keys(component.latest.sniper.srcs).length;
@@ -106,7 +106,7 @@ var ComponentService = angular.module('registry').service("Component", function 
 
         // github
         if(component.github !== undefined && component.github.owner !== undefined){
-          //component.starbutton = $sce.trustAsResourceUrl("http://ghbtns.com/github-btn.html?user=" + component.github.owner.login 
+          //component.starbutton = $sce.trustAsResourceUrl("http://ghbtns.com/github-btn.html?user=" + component.github.owner.login
                                         //+ "&repo=" + component.name + "&type=watch&count=true");
           component.stars = component.github.stargazers_count;
           component.watchers = component.github.subscribers_count;
@@ -151,7 +151,7 @@ var ComponentService = angular.module('registry').service("Component", function 
           component.iotags = _.map(component.iotags, function(msg){
             var text;
             switch(msg){
-              case "sparse_doc": 
+              case "sparse_doc":
                 text = "The documentation of this component shows major deficiencies";
                 break;
               default:
@@ -168,7 +168,7 @@ var ComponentService = angular.module('registry').service("Component", function 
               }
             });
             return {
-              type: type, 
+              type: type,
               text: text
             }
           });
@@ -197,7 +197,7 @@ var ComponentService = angular.module('registry').service("Component", function 
       }
       return -1;
     }
- 
+
 
     function Component() {}
     Component.prototype = {};
@@ -211,14 +211,18 @@ var ComponentService = angular.module('registry').service("Component", function 
         //url = 'http://localhost:3000/detail/'+ name;
         $http.get(url).success(function(resp) {
             //all.push(resp[key]);
-            var com = preProcessComponent(resp);
-            var index = getPackage(name,Component.list);
-            if(index >= 0){
-              Component.list[index] = com;
-            }else{
-              Component.list.push(com);
+            if(!resp.error) {
+              var com = preProcessComponent(resp);
+              var index = getPackage(name,Component.list);
+              if(index >= 0){
+                Component.list[index] = com;
+              }else{
+                Component.list.push(com);
+              }
+              p.resolve(com);
+            } else {
+              p.resolve(null)
             }
-            p.resolve(com);
         });
         return p.promise;
     };
