@@ -1,3 +1,12 @@
+This repo is no longer in use. For the registry front-end for BioJS, see https://github.com/biojs/biojs-frontend
+
+
+==============================
+
+# OUTDATED
+
+# OUTDATED
+
 BioJS registry ui
 -----------------
 
